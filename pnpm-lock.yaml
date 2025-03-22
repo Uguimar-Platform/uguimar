@@ -26,18 +26,15 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
-<<<<<<< HEAD
+      react-icons:
+        specifier: ^5.5.0
+        version: 5.5.0(react@18.2.0)
       tailwind-merge:
         specifier: ^3.0.2
         version: 3.0.2
       tw-animate-css:
         specifier: ^1.2.4
         version: 1.2.4
-=======
-      react-icons:
-        specifier: ^5.5.0
-        version: 5.5.0(react@18.2.0)
->>>>>>> b015539019fdfd375ba22ac4815d880226efe2b2
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3
