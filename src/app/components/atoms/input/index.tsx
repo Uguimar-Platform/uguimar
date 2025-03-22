@@ -19,7 +19,6 @@ const InputAtom: React.FC<InputAtomProps> = ({
   height = "40px",
   backgroundColor = "#ffffff",
 }) => {
-
   return (
     <div className="flex flex-col w-full">
       {label && (

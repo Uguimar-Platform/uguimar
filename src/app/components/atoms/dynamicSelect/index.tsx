@@ -3,7 +3,15 @@
 import React, { useState } from "react";
 
 const DynamicSelect: React.FC = () => {
-  const options = ["React", "Angular", "Vue", "Svelte", "Solid", "Next.js", "Nuxt.js"];
+  const options = [
+    "React",
+    "Angular",
+    "Vue",
+    "Svelte",
+    "Solid",
+    "Next.js",
+    "Nuxt.js",
+  ];
   const [text, setText] = useState<string>("");
   const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
 
@@ -14,7 +22,7 @@ const DynamicSelect: React.FC = () => {
     if (value.trim() === "") {
       setFilteredOptions([]);
     } else {
-      const filtered = options.filter(option =>
+      const filtered = options.filter((option) =>
         option.toLowerCase().includes(value.toLowerCase())
       );
       setFilteredOptions(filtered);

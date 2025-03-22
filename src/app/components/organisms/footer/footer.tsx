@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
         <Image src="/logo.svg" alt="Logo" width={80} height={80} />
 
         {/* Enlace de Términos y Condiciones */}
-        <LinkAtom to="/terms" label="Términos y condiciones"/>
+        <LinkAtom to="/terms" label="Términos y condiciones" />
 
         {/* Contenedor de redes sociales en 2 columnas */}
         <div className="grid grid-cols-2 gap-4">
