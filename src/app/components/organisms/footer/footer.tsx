@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import LinkAtom from "../../atoms/linkProps/sideBarLink";
+import LinkAtom from "../../atoms/linkProps";
 
 const Footer: React.FC = () => {
   return (
