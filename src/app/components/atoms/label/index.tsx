@@ -1,5 +1,10 @@
 import React, { isValidElement, cloneElement } from "react";
-
+export type FontFamily =
+  | "poppins"
+  | "onest"
+  | "black-mango"
+  | "sf-pro"
+  | string;
 export type LabelProps = {
   text: string;
   as?: "h1" | "h2" | "h3" | "label" | "p" | "span";
@@ -8,7 +13,8 @@ export type LabelProps = {
   icon?: React.ReactNode;
   iconPosition?: "left" | "right";
   className?: string;
-  font?: string;
+  font?: FontFamily;
+  fontWeight?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 };
 
 export const Label: React.FC<LabelProps> = ({
@@ -18,7 +24,8 @@ export const Label: React.FC<LabelProps> = ({
   icon,
   iconPosition = "left",
   textColor = "text-black",
-  font = "",
+  font = "poppins",
+  fontWeight = 400,
   className = "",
 }) => {
   const Tag = as;
@@ -38,10 +45,27 @@ export const Label: React.FC<LabelProps> = ({
           })
         : icon;
 
+  // Mapeo para los nombres de fuentes
+  const fontFamilyMap = {
+    poppins: "Poppins",
+    onest: "Onest",
+    "black-mango": "Black Mango",
+    "sf-pro": "SF Pro Display",
+  };
+
+  // Obtener el nombre de la fuente del mapeo o usar el valor original
+  const fontName = fontFamilyMap[font as keyof typeof fontFamilyMap] || font;
+
+  // Estilo inline para la fuente y su peso
+  const fontStyle = {
+    fontFamily: `'${fontName}'`,
+    fontWeight: fontWeight,
+  };
   return (
     <Tag
       {...(as === "label" ? { htmlFor } : {})}
-      className={`py-2 px-2 m-2 inline-flex items-center transition duration-300 ease-in-out flex-row ${textColor} ${font} ${className}`}
+      className={`py-2 px-2 m-2 inline-flex items-center transition duration-300 ease-in-out flex-row ${textColor} ${className}`}
+      style={fontStyle}
     >
       {iconPosition === "left" && iconWithMargin}
       <span>{text}</span>
