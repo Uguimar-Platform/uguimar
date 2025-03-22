@@ -19,12 +19,8 @@
     "react-dom": "^18.2.0",
     "react-icons": "^5.5.0",
     "tailwind-merge": "^3.0.2",
-<<<<<<< HEAD
     "tw-animate-css": "^1.2.4",
     "yup": "^1.6.1"
-=======
-    "tw-animate-css": "^1.2.4"
->>>>>>> 8c8748ea184b3d0999b35d505c3c04e31f2b9ac8
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
