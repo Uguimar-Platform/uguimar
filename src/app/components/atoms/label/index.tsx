@@ -15,6 +15,7 @@ export type LabelProps = {
   className?: string;
   font?: FontFamily;
   fontWeight?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+  style?: React.CSSProperties; // Para estilos en línea (como colores HEX)
 };
 
 export const Label: React.FC<LabelProps> = ({
@@ -27,6 +28,7 @@ export const Label: React.FC<LabelProps> = ({
   font = "poppins",
   fontWeight = 400,
   className = "",
+  style,
 }) => {
   const Tag = as;
 
