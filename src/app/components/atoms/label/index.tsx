@@ -31,10 +31,10 @@ export const Label: React.FC<LabelProps> = ({
           className: `text-xl mr-1 ${(icon as React.ReactElement<any>).props.className || ""}`,
         })
       : isIconElement && iconPosition === "right"
-      ? cloneElement(icon as React.ReactElement<any>, {
-          className: `text-xl ml-1 ${(icon as React.ReactElement<any>).props.className || ""}`,
-        })
-      : icon;
+        ? cloneElement(icon as React.ReactElement<any>, {
+            className: `text-xl ml-1 ${(icon as React.ReactElement<any>).props.className || ""}`,
+          })
+        : icon;
 
   return (
     <Tag
