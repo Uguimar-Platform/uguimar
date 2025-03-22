@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@mynaui/icons-react':
+        specifier: ^0.3.3
+        version: 0.3.3(react@18.2.0)
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
@@ -256,6 +259,11 @@ packages:
     engines: {node: ^18.17.0 || ^20.3.0 || >=21.0.0}
     cpu: [x64]
     os: [win32]
+
+  '@mynaui/icons-react@0.3.3':
+    resolution: {integrity: sha512-vUA7T9xlPrFrXnApTb5Jdm9rbFKpENAL4cgXEmY+CpWOth+y4vdmw2gp3xGJ4Fhjpw+N4WH+yErHIoNzUD9HhA==}
+    peerDependencies:
+      react: ^16.5.1 || ^17.0.0 || ^18.0.0
 
   '@napi-rs/wasm-runtime@0.2.7':
     resolution: {integrity: sha512-5yximcFK5FNompXfJFoWanu5l8v1hNGqNHh9du1xETp9HWk/B/PzvchX55WYOPaIeNglG8++68AAiauBAtbnzw==}
@@ -1926,6 +1934,11 @@ snapshots:
 
   '@img/sharp-win32-x64@0.33.5':
     optional: true
+
+  '@mynaui/icons-react@0.3.3(react@18.2.0)':
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
 
   '@napi-rs/wasm-runtime@0.2.7':
     dependencies:
