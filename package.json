@@ -15,8 +15,12 @@
     "next": "15.2.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+<<<<<<< HEAD
     "tailwind-merge": "^3.0.2",
     "tw-animate-css": "^1.2.4"
+=======
+    "react-icons": "^5.5.0"
+>>>>>>> b015539019fdfd375ba22ac4815d880226efe2b2
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
