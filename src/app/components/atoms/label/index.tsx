@@ -1,4 +1,6 @@
 import React, { isValidElement, cloneElement } from "react";
+import type { MynaIconsProps } from "@mynaui/icons-react";
+
 export type FontFamily =
   | "poppins"
   | "onest"
@@ -38,12 +40,16 @@ export const Label: React.FC<LabelProps> = ({
   // Clonar el ícono y aplicarle tamaño y margen según su posición
   const iconWithMargin =
     isIconElement && iconPosition === "left"
-      ? cloneElement(icon as React.ReactElement<any>, {
-          className: `text-xl mr-1 ${(icon as React.ReactElement<any>).props.className || ""}`,
+      ? cloneElement(icon as React.ReactElement<MynaIconsProps>, {
+          className: `${(icon as React.ReactElement<MynaIconsProps>).props.className || ""}`,
+          size: 20, // Tamaño estándar para MynaUI icons
+          style: { display: "flex", alignItems: "center", marginRight: "8px" },
         })
       : isIconElement && iconPosition === "right"
-        ? cloneElement(icon as React.ReactElement<any>, {
-            className: `text-xl ml-1 ${(icon as React.ReactElement<any>).props.className || ""}`,
+        ? cloneElement(icon as React.ReactElement<MynaIconsProps>, {
+            className: `${(icon as React.ReactElement<MynaIconsProps>).props.className || ""}`,
+            size: 20, // Tamaño estándar para MynaUI icons
+            style: { display: "flex", alignItems: "center", marginLeft: "8px" },
           })
         : icon;
 
@@ -62,15 +68,16 @@ export const Label: React.FC<LabelProps> = ({
   const fontStyle = {
     fontFamily: `'${fontName}'`,
     fontWeight: fontWeight,
+    ...style,
   };
   return (
     <Tag
       {...(as === "label" ? { htmlFor } : {})}
-      className={`py-2 px-2 m-2 inline-flex items-center transition duration-300 ease-in-out flex-row ${textColor} ${className}`}
+      className={`py-2 px-2 m-2 inline-flex items-center transition duration-300 ease-in-out ${textColor} ${className}`}
       style={fontStyle}
     >
       {iconPosition === "left" && iconWithMargin}
-      <span>{text}</span>
+      <span className="flex items-center">{text}</span>
       {iconPosition === "right" && iconWithMargin}
     </Tag>
   );
