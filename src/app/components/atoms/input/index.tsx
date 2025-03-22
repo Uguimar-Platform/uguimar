@@ -3,43 +3,36 @@
 interface InputAtomProps {
   type?: string;
   placeholder?: string;
-  label?: string;
-  disabled?: boolean;
-  width?: string;
-  height?: string;
-  backgroundColor?: string;
+  name: string;
+  value?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  className?: string;
+  style?: React.CSSProperties;
 }
 
 const InputAtom: React.FC<InputAtomProps> = ({
-  //valores por defecto en caso el usuario no ingrese props
+  type = "text",
   placeholder = "",
-  label = "",
-  disabled = false,
-  width = "100%",
-  height = "40px",
-  backgroundColor = "#ffffff",
+  name,
+  value,
+  onChange,
+  onBlur,
+  className = "",
+  style,
 }) => {
-
   return (
-    <div className="flex flex-col w-full">
-      {label && (
-        <label className="mb-1 text-sm font-medium text-gray-700">
-          {label}
-        </label>
-      )}
-
-      <div className="relative">
-        <input
-          placeholder={placeholder}
-          disabled={disabled}
-          className="border-none rounded-md px-3 py-2 focus:outline-none w-full placeholder-gray-500"
-          style={{
-            width,
-            height,
-            backgroundColor,
-          }}
-        />
-      </div>
+    <div className="relative">
+      <input
+        type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
+        onBlur={onBlur}
+        placeholder={placeholder}
+        className={`rounded-md px-3 py-2 focus:outline-none w-full ${className}`}
+        style={style}
+      />
     </div>
   );
 };

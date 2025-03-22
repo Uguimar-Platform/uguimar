@@ -4,11 +4,10 @@ export type LabelProps = {
   text: string;
   as?: "h1" | "h2" | "h3" | "label" | "p" | "span";
   htmlFor?: string;
-  textColor?: string;
   icon?: React.ReactNode;
   iconPosition?: "left" | "right";
   className?: string;
-  font?: string;
+  style?: React.CSSProperties; // Para estilos en línea (como colores HEX)
 };
 
 export const Label: React.FC<LabelProps> = ({
@@ -17,9 +16,8 @@ export const Label: React.FC<LabelProps> = ({
   htmlFor,
   icon,
   iconPosition = "left",
-  textColor = "text-black",
-  font = "",
   className = "",
+  style,
 }) => {
   const Tag = as;
 
@@ -41,7 +39,8 @@ export const Label: React.FC<LabelProps> = ({
   return (
     <Tag
       {...(as === "label" ? { htmlFor } : {})}
-      className={`py-2 px-2 m-2 inline-flex items-center transition duration-300 ease-in-out flex-row ${textColor} ${font} ${className}`}
+      className={`py-2 px-2 m-2 inline-flex items-center transition duration-300 ease-in-out flex-row ${className}`}
+      style={style} // Aplicamos estilos en línea directamente
     >
       {iconPosition === "left" && iconWithMargin}
       <span>{text}</span>
