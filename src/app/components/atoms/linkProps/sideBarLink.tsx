@@ -3,12 +3,12 @@
 import Link from "next/link";
 import React from "react";
 
-interface SidebarLinkProps {
+interface LinkProps {
   to: string;
   label: string;
 }
 
-const SidebarLink: React.FC<SidebarLinkProps> = ({ to, label }) => {
+const LinkAtom: React.FC<LinkProps> = ({ to, label }) => {
   return (
     <Link href={to} className="inline-block p-2 text-sm rounded">
       {label}
@@ -16,4 +16,4 @@ const SidebarLink: React.FC<SidebarLinkProps> = ({ to, label }) => {
   );
 };
 
-export default SidebarLink;
+export default LinkAtom;

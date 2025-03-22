@@ -1,6 +1,6 @@
 import Image from "next/image";
 import React from "react";
-import SidebarLink from "../../atoms/linkProps/sideBarLink";
+import LinkAtom from "../../atoms/linkProps/sideBarLink";
 
 const Footer: React.FC = () => {
   return (
@@ -12,11 +12,11 @@ const Footer: React.FC = () => {
 
         {/* Contenedor de enlaces */}
         <div className="flex gap-6">
-          <SidebarLink to="/terms" label="Términos y condiciones" />
-          <SidebarLink to="/whatsapp" label="WhatsApp" />
-          <SidebarLink to="/instagram" label="Instagram" />
-          <SidebarLink to="/facebook" label="Facebook" />
-          <SidebarLink to="/youtube" label="YouTube" />
+          <LinkAtom to="/terms" label="Términos y condiciones" />
+          <LinkAtom to="/whatsapp" label="WhatsApp" />
+          <LinkAtom to="/instagram" label="Instagram" />
+          <LinkAtom to="/facebook" label="Facebook" />
+          <LinkAtom to="/youtube" label="YouTube" />
         </div>
       </div>
 
@@ -26,14 +26,14 @@ const Footer: React.FC = () => {
         <Image src="/logo.svg" alt="Logo" width={80} height={80} />
 
         {/* Enlace de Términos y Condiciones */}
-        <SidebarLink to="/terms" label="Términos y condiciones" className="text-sm font-medium" />
+        <LinkAtom to="/terms" label="Términos y condiciones"/>
 
         {/* Contenedor de redes sociales en 2 columnas */}
         <div className="grid grid-cols-2 gap-4">
-          <SidebarLink to="/whatsapp" label="WhatsApp" />
-          <SidebarLink to="/instagram" label="Instagram" />
-          <SidebarLink to="/facebook" label="Facebook" />
-          <SidebarLink to="/youtube" label="YouTube" />
+          <LinkAtom to="/whatsapp" label="WhatsApp" />
+          <LinkAtom to="/instagram" label="Instagram" />
+          <LinkAtom to="/facebook" label="Facebook" />
+          <LinkAtom to="/youtube" label="YouTube" />
         </div>
       </div>
     </footer>
