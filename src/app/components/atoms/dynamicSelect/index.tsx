@@ -31,12 +31,12 @@ interface DynamicSelectProps {
 
 /**
  * A controlled autocomplete input component with a dropdown.
- * 
+ *
  * The DynamicSelect component provides an input field with autocomplete functionality.
  * As the user types, it filters a list of items and displays matching options in a dropdown menu.
  * The user can select an option to update the input value and trigger the `onValueChange` callback.
  * It uses the `Label` component for a customizable label and Tailwind CSS for styling.
- * 
+ *
  * @example
  * ```tsx
  * // Example with static data
@@ -45,7 +45,7 @@ interface DynamicSelectProps {
  *   { value: "2", content: "Angular" },
  *   { value: "3", content: "Vue" },
  * ];
- * 
+ *
  * <DynamicSelect
  *   label="Framework"
  *   items={staticItems}
@@ -59,7 +59,7 @@ interface DynamicSelectProps {
  *   }}
  * />
  * ```
- * 
+ *
  * @remarks
  * - This component uses Tailwind CSS for styling.
  * - The `Label` component may require specific fonts (e.g., Poppins, Onest) to be imported in your project.
@@ -77,9 +77,7 @@ const DynamicSelect: React.FC<DynamicSelectProps> = ({
   // State to store the filtered items based on the input value
   const [filteredItems, setFilteredItems] = useState(items);
   // State to store the current input value, initialized with the controlled value or empty string
-  const [inputValue, setInputValue] = useState<string>(
-    value?.toString() ?? ""
-  );
+  const [inputValue, setInputValue] = useState<string>(value?.toString() ?? "");
   // State to control the visibility of the dropdown menu
   const [isOpen, setIsOpen] = useState(false);
   // Ref to track the component's DOM node for click-outside detection
@@ -95,7 +93,10 @@ const DynamicSelect: React.FC<DynamicSelectProps> = ({
   // Add an event listener to close the dropdown when clicking outside the component
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (componentRef.current && !componentRef.current.contains(event.target as Node)) {
+      if (
+        componentRef.current &&
+        !componentRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };

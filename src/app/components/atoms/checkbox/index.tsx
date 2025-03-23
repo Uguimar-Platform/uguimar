@@ -34,6 +34,10 @@ const Checkbox: React.FC<CheckboxProps> = ({
   disabled = false,
   color = "text-[#081F5C]",
 }) => {
+  /**
+   * Generate a unique ID for the checkbox to associate it with its label.
+   * This improves accessibility and allows clicking on the label to activate the checkbox.
+   */
   const id = React.useMemo(
     () => "checkbox-" + Math.random().toString(36).slice(2, 11),
     []
