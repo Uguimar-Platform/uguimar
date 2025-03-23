@@ -1,3 +1,4 @@
+import { MynaIconsProps } from "@mynaui/icons-react";
 import React, { isValidElement, cloneElement } from "react";
 
 /**

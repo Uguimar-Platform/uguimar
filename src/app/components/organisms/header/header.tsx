@@ -1,9 +1,5 @@
 "use client";
-
 import React from "react";
-
-import ButtonAtom from "../../atoms/button-nav";
-
 /**
  * Header Navigation Component
  *
@@ -59,8 +55,7 @@ const Header: React.FC = () => {
       </nav>
         {/* Auth Buttons */}
         <div className="flex items-center space-x-2 ">
-          <ButtonAtom label="Iniciar sesión" variant="secondary" />
-          <ButtonAtom label="Registro" variant="primary" />
+    
         </div>
         
         {/* Mobile Menu Button - Only visible on small screens */}
