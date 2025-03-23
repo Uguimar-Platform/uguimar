@@ -2,6 +2,10 @@
 
 import React, { useState } from "react";
 
+/**
+ * Component that implements a dynamic selector with filtering functionality.
+ * It displays filtered options based on the text entered by the user.
+ */
 const DynamicSelect: React.FC = () => {
   const options = [
     "React",
@@ -15,6 +19,12 @@ const DynamicSelect: React.FC = () => {
   const [text, setText] = useState<string>("");
   const [filteredOptions, setFilteredOptions] = useState<string[]>([]);
 
+  /**
+   * Method that implements the logic to filter options.
+   * It updates the text and filtered options based on user input.
+   *
+   * @param e The change event containing information about the current input.
+   */
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setText(value);

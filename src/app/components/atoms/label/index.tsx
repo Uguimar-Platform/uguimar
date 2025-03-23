@@ -17,7 +17,7 @@ export type LabelProps = {
   className?: string;
   font?: FontFamily;
   fontWeight?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
-  style?: React.CSSProperties; // Para estilos en línea (como colores HEX)
+  style?: React.CSSProperties;
 };
 
 export const Label: React.FC<LabelProps> = ({
@@ -34,26 +34,23 @@ export const Label: React.FC<LabelProps> = ({
 }) => {
   const Tag = as;
 
-  // Detectar si el ícono es válido
   const isIconElement = isValidElement(icon);
 
-  // Clonar el ícono y aplicarle tamaño y margen según su posición
   const iconWithMargin =
     isIconElement && iconPosition === "left"
       ? cloneElement(icon as React.ReactElement<MynaIconsProps>, {
           className: `${(icon as React.ReactElement<MynaIconsProps>).props.className || ""}`,
-          size: 20, // Tamaño estándar para MynaUI icons
+          size: 20,
           style: { display: "flex", alignItems: "center", marginRight: "8px" },
         })
       : isIconElement && iconPosition === "right"
         ? cloneElement(icon as React.ReactElement<MynaIconsProps>, {
             className: `${(icon as React.ReactElement<MynaIconsProps>).props.className || ""}`,
-            size: 20, // Tamaño estándar para MynaUI icons
+            size: 20,
             style: { display: "flex", alignItems: "center", marginLeft: "8px" },
           })
         : icon;
 
-  // Mapeo para los nombres de fuentes
   const fontFamilyMap = {
     poppins: "Poppins",
     onest: "Onest",
@@ -61,10 +58,8 @@ export const Label: React.FC<LabelProps> = ({
     "sf-pro": "SF Pro Display",
   };
 
-  // Obtener el nombre de la fuente del mapeo o usar el valor original
   const fontName = fontFamilyMap[font as keyof typeof fontFamilyMap] || font;
 
-  // Estilo inline para la fuente y su peso
   const fontStyle = {
     fontFamily: `'${fontName}'`,
     fontWeight: fontWeight,

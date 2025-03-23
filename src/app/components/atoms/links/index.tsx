@@ -1,4 +1,4 @@
-"use client"; // Importante para componentes interactivos en Next.js
+"use client";
 
 import Link from "next/link";
 import React from "react";
