@@ -2,7 +2,7 @@
 
 import React from "react";
 import LinkAtom from "../../atoms/linkProps";
-import ButtonAtom from "../../atoms/button1";
+import ButtonAtom from "../../atoms/button-nav";
 
 /**
  * Header Navigation Component
