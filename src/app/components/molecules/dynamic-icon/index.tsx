@@ -1,6 +1,10 @@
 import { IconCloud } from "../../atoms/icon-cloud";
 import { Label } from "../../atoms/label";
 
+/**
+ * List of slugs representing technology icons to be displayed.
+ * These slugs are used to build image URLs from SimpleIcons.
+ */
 const slugs = [
   "typescript",
   "javascript",
@@ -34,6 +38,15 @@ const slugs = [
   "figma",
 ];
 
+/**
+ * Interface defining the properties for the DynamicIcon component.
+ *
+ * @interface DynamicIconProps
+ * @property {string} [labelText] - The text to be displayed below the icons.
+ * @property {string} [labelColor] - The color of the text in Tailwind class format.
+ * @property {string} [className] - Additional CSS classes for the main container.
+ * @property {string} [labelClassName] - Additional CSS classes for the Label component.
+ */
 interface DynamicIconProps {
   labelText?: string;
   labelColor?: string;
@@ -41,12 +54,25 @@ interface DynamicIconProps {
   labelClassName?: string;
 }
 
+/**
+ * Component that displays a cloud of technology icons with a descriptive text.
+ *
+ * @param {DynamicIconProps} props - The component properties.
+ * @param {string} props.labelText - The text to be displayed below the icons.
+ * @param {string} props.labelColor - The color of the text in Tailwind class format.
+ * @param {string} props.className - Additional CSS classes for the main container.
+ * @param {string} props.labelClassName - Additional CSS classes for the Label component.
+ * @returns {JSX.Element} A React component that displays icons and descriptive text.
+ */
 export default function DynamicIcon({
   labelText = "Aprende, crece y destaca con cursos prácticos y accesibles en un solo lugar.",
   labelColor = "text-[#081F5C]",
   className = "",
   labelClassName = "text-center max-w-[400px] -mt-8 text-xl leading-6",
 }: DynamicIconProps) {
+  /**
+   * Generates image URLs for each slug in the array.
+   */
   const images = slugs.map(
     (slug) => `https://cdn.simpleicons.org/${slug}/${slug}`
   );

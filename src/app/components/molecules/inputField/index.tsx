@@ -4,9 +4,6 @@ import React from "react";
 import InputAtom from "../../atoms/input";
 import { Label } from "../../atoms/label";
 
-/**
- * Props for the InputField component.
- */
 interface InputFieldProps {
   /** Label text to display above the input. */
   label: string;
@@ -32,6 +29,13 @@ interface InputFieldProps {
   style?: React.CSSProperties;
 }
 
+/**
+ * Component that represents an input field with label and error message.
+ * Integrates with Formik for form management.
+ *
+ * @param props The component properties as defined in InputFieldProps.
+ * @returns An input field component with label and validation.
+ */
 const InputField: React.FC<InputFieldProps> = ({
   label,
   name,
@@ -76,8 +80,8 @@ const InputField: React.FC<InputFieldProps> = ({
         type={type}
         name={name}
         placeholder={placeholder}
-        className={`border px-4 rounded-md w-full ${inputClassName}`}
-        style={style}
+        className={`border px-4 py-2 rounded-md ${inputClassName}`} // Aseguramos que las clases se apliquen
+        style={style} // Pasamos los estilos en línea
       />
     </div>
   );
