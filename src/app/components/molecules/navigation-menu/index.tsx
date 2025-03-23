@@ -28,7 +28,7 @@ const NavigationMenu: React.FC = () => {
   ];
 
   return (
-    <nav className="max-w-[1200px] mx-auto bg-[#F9FCFF] rounded-full border border-[#334EAC] px-6 flex justify-center gap-6">
+    <nav className="max-w-[800px] mx-auto bg-[#F9FCFF] rounded-full border border-[#334EAC] px-6 flex justify-center gap-6">
       <ul className="flex">
         {menuItems.map((item, index) => (
           <li
