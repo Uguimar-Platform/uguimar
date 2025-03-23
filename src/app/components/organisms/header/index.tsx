@@ -3,7 +3,6 @@ import React from "react";
 import Dropdown from "../../atoms/dropdown";
 import NavigationMenu from "../../molecules/navigation-menu";
 import Button from "../../atoms/button";
-
 /**
  * Options for the dropdown menu in the Header component.
  */
