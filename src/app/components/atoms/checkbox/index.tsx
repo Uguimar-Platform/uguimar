@@ -1,30 +1,38 @@
+"use client";
 import React from "react";
-
 /**
- * Interface that defines the properties for the Checkbox component.
- *
- * @param label Text to be displayed next to the checkbox.
- * @param disabled Indicates if the checkbox is disabled.
- * @param color Color of the label text (using theme color variables).
+ * Propiedades para el componente Checkbox.
  */
 interface CheckboxProps {
+  /** Texto de la etiqueta que se muestra junto a la casilla. */
   label?: string;
+  /** Indica si la casilla está deshabilitada. */
   disabled?: boolean;
+  /** Color del texto de la etiqueta en formato de clase de Tailwind CSS. */
   color?: string;
 }
-
 /**
- * Checkbox component that renders a checkbox input with a label.
- * Allows customization of text color and disabled state.
+ * Un componente de casilla de verificación personalizable con una etiqueta.
  *
- * @param label Text to be displayed next to the checkbox, empty by default.
- * @param disabled Disabled state of the checkbox, false by default.
- * @param color Color of the label text, "blue-dark" by default.
+ * El componente Checkbox permite crear una casilla de verificación estilizada con una etiqueta opcional.
+ * Admite un estado deshabilitado y permite personalizar el color del texto de la etiqueta.
+ *
+ * @example
+ * ```tsx
+ * <Checkbox
+ *   label="Acepto los términos y condiciones"
+ *   disabled={false}
+ *   color="text-[#334EAC]"
+ * />
+ * @notas
+ * - Este componente utiliza Tailwind CSS para el estilo.
+ * - La fuente "Poppins" se aplica al texto de la etiqueta; asegúrate de importarla en tu proyecto.
+ * - El color de acento de la casilla de verificación está fijado en #334EAC y no se puede personalizar mediante props.
  */
 const Checkbox: React.FC<CheckboxProps> = ({
   label = "",
   disabled = false,
-  color = "blue-dark",
+  color = "text-[#081F5C]",
 }) => {
   /**
    * Generate a unique ID for the checkbox to associate it with its label.
@@ -34,34 +42,6 @@ const Checkbox: React.FC<CheckboxProps> = ({
     () => "checkbox-" + Math.random().toString(36).slice(2, 11),
     []
   );
-
-  /**
-   * Method that determines the text color class based on the color property.
-   * Converts the color name to the corresponding CSS class.
-   * 
-   * @returns CSS class for the text color.
-   */
-  const getTextColorClass = (): string => {
-    switch (color) {
-      case "blue-dark":
-        return "text-[#081F5C]";
-      case "blue-medium":
-        return "text-[#334EAC]";
-      case "blue-light":
-        return "text-[#7098D1]";
-      case "blue-lightest":
-        return "text-[#D0E3FF]";
-      case "blue-lighter":
-        return "text-[#E7F1FF]";
-      case "blue-faint":
-        return "text-[#F9FCFF]";
-      case "grey-light":
-        return "text-[#E7E7E7]";
-      default:
-        return "text-[#081F5C]";
-    }
-  };
-
   return (
     <label
       htmlFor={id}
@@ -75,7 +55,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
         disabled={disabled}
         className="w-4 h-4 accent-[#334EAC] rounded"
       />
-      <span className={`${getTextColorClass()} font-poppins`}>{label}</span>
+      <span className={`${color} font-poppins`}>{label}</span>
     </label>
   );
 };
