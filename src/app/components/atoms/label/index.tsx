@@ -1,7 +1,8 @@
 import React, { isValidElement, cloneElement } from "react";
+import type { MynaIconsProps } from "@mynaui/icons-react";
 
 /**
- * Supported font family options for the Label component.
+ * Available font types for text components
  */
 export type FontFamily =
   | "poppins"
@@ -11,74 +12,46 @@ export type FontFamily =
   | string;
 
 /**
- * Props for the Label component.
+ * Properties for the Label component
+ *
+ * @param text The text to be displayed in the label
+ * @param as The type of HTML element to be rendered
+ * @param htmlFor htmlFor attribute for form labels
+ * @param textColor Text color (CSS class)
+ * @param icon Optional icon to display with the text
+ * @param iconPosition Position of the icon relative to the text
+ * @param className Additional CSS classes
+ * @param font Font family to use
+ * @param fontWeight Font weight
+ * @param style Additional CSS styles
  */
 export type LabelProps = {
-  /** The text content to display in the label. */
   text: string;
-  /** HTML tag to render the label as (e.g., "h1", "label", "span"). */
   as?: "h1" | "h2" | "h3" | "label" | "p" | "span";
-  /** ID of the form element the label is associated with (used when `as` is "label"). */
   htmlFor?: string;
-  /** Tailwind CSS class for the text color (e.g., "text-black", "text-blue-500"). */
   textColor?: string;
-  /** Optional icon to display alongside the text (as a React node). */
   icon?: React.ReactNode;
-  /** Position of the icon relative to the text ("left" or "right"). */
   iconPosition?: "left" | "right";
-  /** Additional Tailwind CSS classes to apply to the label. */
   className?: string;
-  /** Font family to use for the label (predefined or custom). */
   font?: FontFamily;
-  /** Font weight for the label (100 to 900). */
   fontWeight?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
-  /** Inline styles to apply to the label (e.g., for custom colors or other CSS properties). */
   style?: React.CSSProperties;
 };
 
 /**
- * A customizable label component with support for icons, fonts, and styling.
+ * Label component that displays text with customization options
+ * Allows configuration of element type, color, font, icons, and styles
  *
- * The Label component renders a text element with optional icons, customizable font families, and styling.
- * It can be rendered as different HTML tags (e.g., "label", "h1", "span") using the `as` prop.
- * The component supports Tailwind CSS classes for text color and additional styling, and applies font family and weight via inline styles.
- * An icon can be displayed on the left or right of the text, with automatic margin adjustments.
- *
- * @example
- * ```tsx
- * import { Label } from "./Label";
- * import { ArrowDown } from "@mynaui/icons-react";
- *
- * // Basic usage with a custom text color and font
- * <Label
- *   text="Email Address"
- *   as="label"
- *   htmlFor="email"
- *   textColor="text-gray-700"
- *   font="poppins"
- *   fontWeight={500}
- *   className="mb-2"
- * />
- * ```
- *
- * @example
- * ```tsx
- * // With an icon on the right
- * <Label
- *   text="Select Option"
- *   icon={<ArrowDown />}
- *   iconPosition="right"
- *   textColor="text-blue-600"
- *   font="onest"
- *   fontWeight={600}
- * />
- * ```
- *
- * @remarks
- * - This component uses Tailwind CSS for styling (e.g., `text-black`, `py-2`, `px-2`).
- * - The `font` prop requires the specified font to be imported in your project (e.g., Poppins, Onest).
- * - When using `as="label"`, the `htmlFor` prop should be provided to associate the label with a form element.
- * - The `icon` prop accepts any React node (e.g., an SVG icon component).
+ * @param text The text to be displayed
+ * @param as HTML element type to render (default: "label")
+ * @param htmlFor htmlFor attribute for form labels
+ * @param icon Optional icon to display with the text
+ * @param iconPosition Icon position ("left" or "right")
+ * @param textColor Text color (default: "text-black")
+ * @param font Font family (default: "poppins")
+ * @param fontWeight Font weight (default: 400)
+ * @param className Additional CSS classes
+ * @param style Additional CSS styles
  */
 export const Label: React.FC<LabelProps> = ({
   text,
@@ -92,13 +65,18 @@ export const Label: React.FC<LabelProps> = ({
   className = "",
   style,
 }) => {
-  // Dynamically set the HTML tag to render based on the `as` prop
   const Tag = as;
 
-  // Check if the provided icon is a valid React element
+  /**
+   * Check if the icon is a valid React element
+   */
   const isIconElement = isValidElement(icon);
 
-  // Clone the icon and apply Tailwind CSS classes for size and margin based on its position
+  /**
+   * Configure the icon with margins based on its position
+   * If on the left, add right margin
+   * If on the right, add left margin
+   */
   const iconWithMargin =
     isIconElement && iconPosition === "left"
       ? cloneElement(icon as React.ReactElement<MynaIconsProps>, {
@@ -114,7 +92,9 @@ export const Label: React.FC<LabelProps> = ({
           })
         : icon;
 
-  // Mapping of font family keys to their actual font names
+  /**
+   * Mapping of font identifiers to real font names
+   */
   const fontFamilyMap = {
     poppins: "Poppins",
     onest: "Onest",
@@ -122,10 +102,14 @@ export const Label: React.FC<LabelProps> = ({
     "sf-pro": "SF Pro Display",
   };
 
-  // Get the font name from the mapping, or use the provided font value if not in the map
+  /**
+   * Get the real font name from the map or use the direct value
+   */
   const fontName = fontFamilyMap[font as keyof typeof fontFamilyMap] || font;
 
-  // Inline style object for applying font family and weight
+  /**
+   * Configure font styles for the component
+   */
   const fontStyle = {
     fontFamily: `'${fontName}'`,
     fontWeight: fontWeight,
