@@ -3,95 +3,31 @@
 import React, { useEffect, useRef, useState } from "react";
 import { renderToString } from "react-dom/server";
 
-/**
- * Interface for icon position and styling properties in the 3D cloud.
- */
 interface Icon {
-  /** X-coordinate of the icon in 3D space. */
   x: number;
-  /** Y-coordinate of the icon in 3D space. */
   y: number;
-  /** Z-coordinate of the icon in 3D space. */
   z: number;
-  /** Scale of the icon based on its depth. */
   scale: number;
-  /** Opacity of the icon based on its depth. */
   opacity: number;
-  /** Unique identifier for the icon. */
   id: number;
 }
 
-/**
- * Props for the IconCloud component.
- */
 interface IconCloudProps {
-  /** Array of React nodes (e.g., SVG icons) to display in the cloud. */
   icons?: React.ReactNode[];
-  /** Array of image URLs to display in the cloud. */
   images?: string[];
 }
 
-/**
- * Easing function for smooth animations (cubic ease-out).
- * @param t - Progress value between 0 and 1.
- * @returns Eased progress value.
- */
 function easeOutCubic(t: number): number {
   return 1 - Math.pow(1 - t, 3);
 }
 
-/**
- * A 3D interactive icon cloud component.
- *
- * The IconCloud component renders a 3D sphere of icons or images that rotate based on mouse interaction.
- * Users can drag to rotate the cloud, hover to influence its motion, or click an icon to bring it to the front.
- * Icons can be provided as React nodes (e.g., SVGs) or image URLs. If neither is provided, numbered circles are displayed.
- * The component uses a canvas element for rendering and Tailwind CSS for basic styling.
- *
- * @example
- * ```tsx
- * // Example with SVG icons
- * import { IconCloud } from "./IconCloud";
- * import { ReactIcon, AngularIcon, VueIcon } from "@mynaui/icons-react";
- *
- * const icons = [<ReactIcon />, <AngularIcon />, <VueIcon />];
- *
- * <IconCloud icons={icons} />
- * ```
- *
- * @example
- * ```tsx
- * // Example with image URLs
- * import { IconCloud } from "./IconCloud";
- *
- * const images = [
- *   "https://example.com/react.png",
- *   "https://example.com/angular.png",
- *   "https://example.com/vue.png",
- * ];
- *
- * <IconCloud images={images} />
- * ```
- *
- * @remarks
- * - This component uses Tailwind CSS for basic styling (e.g., `rounded-lg`).
- * - Icons are rendered on a canvas, so they must be compatible with canvas drawing (SVGs or images).
- * - The component includes basic accessibility attributes (`aria-label`, `role`), but further enhancements could be added.
- */
 export function IconCloud({ icons, images }: IconCloudProps) {
-  // Reference to the canvas element for rendering
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  // State for the positions and properties of icons in the 3D cloud
   const [iconPositions, setIconPositions] = useState<Icon[]>([]);
-  // State for the current rotation of the cloud (in radians)
   const [rotation, setRotation] = useState({ x: 0, y: 0 });
-  // State to track if the user is dragging the cloud
   const [isDragging, setIsDragging] = useState(false);
-  // State to store the last mouse position during dragging
   const [lastMousePos, setLastMousePos] = useState({ x: 0, y: 0 });
-  // State to store the current mouse position for hover effects
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
-  // State for targeted rotation animation when an icon is clicked
   const [targetRotation, setTargetRotation] = useState<{
     x: number;
     y: number;
@@ -101,16 +37,12 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     startTime: number;
     duration: number;
   } | null>(null);
-  // Reference to store the animation frame ID for cleanup
   const animationFrameRef = useRef<number>(0);
-  // Reference to store the current rotation for use in animation
   const rotationRef = useRef(rotation);
-  // Reference to store offscreen canvases for rendering icons/images
   const iconCanvasesRef = useRef<HTMLCanvasElement[]>([]);
-  // Reference to track which images/icons have loaded
   const imagesLoadedRef = useRef<boolean[]>([]);
 
-  // Create offscreen canvases for icons or images to optimize rendering
+  // Create icon canvases once when icons/images change
   useEffect(() => {
     if (!icons && !images) return;
 
@@ -125,26 +57,26 @@ export function IconCloud({ icons, images }: IconCloudProps) {
 
       if (offCtx) {
         if (images) {
-          // Handle image URLs by loading and drawing them onto the offscreen canvas
+          // Handle image URLs directly
           const img = new Image();
           img.crossOrigin = "anonymous";
           img.src = items[index] as string;
           img.onload = () => {
             offCtx.clearRect(0, 0, offscreen.width, offscreen.height);
 
-            // Create a circular clipping path for the image
+            // Create circular clipping path
             offCtx.beginPath();
             offCtx.arc(20, 20, 20, 0, Math.PI * 2);
             offCtx.closePath();
             offCtx.clip();
 
-            // Draw the image within the circular clip
+            // Draw the image
             offCtx.drawImage(img, 0, 0, 40, 40);
 
             imagesLoadedRef.current[index] = true;
           };
         } else {
-          // Handle SVG icons by converting them to base64 and drawing them
+          // Handle SVG icons
           offCtx.scale(0.4, 0.4);
           const svgString = renderToString(item as React.ReactElement);
           const img = new Image();
@@ -162,13 +94,13 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     iconCanvasesRef.current = newIconCanvases;
   }, [icons, images]);
 
-  // Generate initial positions for icons on a Fibonacci sphere
+  // Generate initial icon positions on a sphere
   useEffect(() => {
     const items = icons || images || [];
     const newIcons: Icon[] = [];
     const numIcons = items.length || 20;
 
-    // Use Fibonacci sphere algorithm to evenly distribute icons
+    // Fibonacci sphere parameters
     const offset = 2 / numIcons;
     const increment = Math.PI * (3 - Math.sqrt(5));
 
@@ -192,7 +124,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     setIconPositions(newIcons);
   }, [icons, images]);
 
-  // Handle mouse down event for dragging or clicking an icon
+  // Handle mouse events
   const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const rect = canvasRef.current?.getBoundingClientRect();
     if (!rect || !canvasRef.current) return;
@@ -203,7 +135,6 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     const ctx = canvasRef.current.getContext("2d");
     if (!ctx) return;
 
-    // Check if an icon was clicked to rotate it to the front
     iconPositions.forEach((icon) => {
       const cosX = Math.cos(rotationRef.current.x);
       const sinX = Math.sin(rotationRef.current.x);
@@ -254,7 +185,6 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     setLastMousePos({ x: e.clientX, y: e.clientY });
   };
 
-  // Handle mouse movement for dragging and hover effects
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const rect = canvasRef.current?.getBoundingClientRect();
     if (rect) {
@@ -276,12 +206,11 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     }
   };
 
-  // Handle mouse up to stop dragging
   const handleMouseUp = () => {
     setIsDragging(false);
   };
 
-  // Animation loop for rendering the 3D cloud
+  // Animation and rendering
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
@@ -298,7 +227,6 @@ export function IconCloud({ icons, images }: IconCloudProps) {
       const distance = Math.sqrt(dx * dx + dy * dy);
       const speed = 0.003 + (distance / maxDistance) * 0.01;
 
-      // Apply targeted rotation if an icon was clicked
       if (targetRotation) {
         const elapsed = performance.now() - targetRotation.startTime;
         const progress = Math.min(1, elapsed / targetRotation.duration);
@@ -317,14 +245,12 @@ export function IconCloud({ icons, images }: IconCloudProps) {
           setTargetRotation(null);
         }
       } else if (!isDragging) {
-        // Apply gentle rotation based on mouse position when not dragging
         rotationRef.current = {
           x: rotationRef.current.x + (dy / canvas.height) * speed,
           y: rotationRef.current.y + (dx / canvas.width) * speed,
         };
       }
 
-      // Render each icon with 3D transformations
       iconPositions.forEach((icon, index) => {
         const cosX = Math.cos(rotationRef.current.x);
         const sinX = Math.sin(rotationRef.current.x);
@@ -347,7 +273,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
         ctx.globalAlpha = opacity;
 
         if (icons || images) {
-          // Render icons or images if provided and loaded
+          // Only try to render icons/images if they exist
           if (
             iconCanvasesRef.current[index] &&
             imagesLoadedRef.current[index]
@@ -355,7 +281,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
             ctx.drawImage(iconCanvasesRef.current[index], -20, -20, 40, 40);
           }
         } else {
-          // Render numbered circles as a fallback
+          // Show numbered circles if no icons/images are provided
           ctx.beginPath();
           ctx.arc(0, 0, 20, 0, Math.PI * 2);
           ctx.fillStyle = "#4444ff";
