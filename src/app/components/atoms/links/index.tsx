@@ -4,43 +4,33 @@ import Link from "next/link";
 import React from "react";
 
 /**
- * Props for the LinkAtom component.
+ * Interface that defines the properties for the LinkAtom component.
+ *
+ * @param to The destination URL where the link will direct to.
+ * @param label The text that will be displayed in the link.
+ * @param className Optional CSS classes to customize the link's style.
  */
 interface LinkProps {
-  /** The URL or path to navigate to (used as the `href` for Next.js Link). */
   to: string;
-  /** The text to display as the link label. */
   label: string;
+  className?: string;
 }
 
 /**
- * A reusable link component for navigation in Next.js applications.
- * 
- * The LinkAtom component renders a styled link using Next.js's `Link` component.
- * It provides a simple way to create navigable links with a consistent appearance,
- * using Tailwind CSS for default styling (padding, text size, and rounded corners).
- * The component is designed for use in Next.js applications and requires the `"use client"` directive
- * for client-side interactivity.
- * 
- * @example
- * ```tsx
- * import LinkAtom from "./LinkAtom";
- * 
- * // Basic usage for a navigation link
- * <LinkAtom
- *   to="/about"
- *   label="About Us"
- * />
- * ```
- * 
- * @remarks
- * - This component uses Tailwind CSS for default styling (e.g., `inline-block`, `p-2`, `text-sm`, `rounded`).
- * - The `"use client"` directive is required because `next/link` relies on client-side functionality.
- * - Accessibility is handled by Next.js's `Link` component, but you can enhance it by adding `aria-label` if needed.
+ * Atomic component that represents a navigation link.
+ * Uses Next.js Link component to handle client-side navigation.
+ *
+ * @param to The destination URL where the link will direct to.
+ * @param label The text that will be displayed in the link.
+ * @param className Optional CSS classes to customize the link's style.
+ * @returns A styled link component with the provided properties.
  */
-const LinkAtom: React.FC<LinkProps> = ({ to, label }) => {
+const LinkAtom: React.FC<LinkProps> = ({ to, label, className = "" }) => {
   return (
-    <Link href={to} className="inline-block p-2 text-sm rounded">
+    <Link
+      href={to}
+      className={`inline-block p-2 text-lg font-medium ${className}`}
+    >
       {label}
     </Link>
   );
