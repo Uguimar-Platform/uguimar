@@ -1,3 +1,4 @@
+import { MynaIconsProps } from "@mynaui/icons-react";
 import React, { isValidElement, cloneElement } from "react";
 import type { MynaIconsProps } from "@mynaui/icons-react";
 
@@ -119,7 +120,7 @@ export const Label: React.FC<LabelProps> = ({
   return (
     <Tag
       {...(as === "label" ? { htmlFor } : {})}
-      className={`py-2 px-2 m-2 inline-flex items-center transition duration-300 ease-in-out ${textColor} ${className}`}
+      className={`${textColor} ${className}`}
       style={fontStyle}
     >
       {iconPosition === "left" && iconWithMargin}

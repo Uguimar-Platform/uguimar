@@ -43,15 +43,13 @@ interface DropdownProps {
  * @remarks
  * - This component uses Tailwind CSS for styling.
  * - The component is controlled internally with state.
- * - Includes `aria-label` for accessibility.
  */
 const Dropdown: React.FC<DropdownProps> = ({ options, className = "" }) => {
   const [selectedOption, setSelectedOption] = useState<string>("");
 
   return (
     <select
-      aria-label="Seleccionar opción"
-      className={`p-2 rounded-md ${className}`.trim()}
+      className={`${className}`}
       value={selectedOption}
       onChange={(e) => setSelectedOption(e.target.value)}
     >
