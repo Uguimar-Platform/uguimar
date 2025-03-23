@@ -1,7 +1,7 @@
 "use client"; // Important for interactive components in Next.js
 
 import React from "react";
-import LinkAtom from "../../atoms/linkProps";
+import LinkAtom from "../../atoms/links";
 
 /**
  * NavigationMenu
