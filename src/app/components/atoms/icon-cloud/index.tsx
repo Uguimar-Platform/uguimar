@@ -3,6 +3,16 @@
 import React, { useEffect, useRef, useState } from "react";
 import { renderToString } from "react-dom/server";
 
+/**
+ * Interface that defines the structure of an icon in 3D space.
+ * 
+ * @property x Position on the X axis.
+ * @property y Position on the Y axis.
+ * @property z Position on the Z axis.
+ * @property scale Scale factor of the icon.
+ * @property opacity Opacity level of the icon.
+ * @property id Unique identifier for the icon.
+ */
 interface Icon {
   x: number;
   y: number;
@@ -12,15 +22,37 @@ interface Icon {
   id: number;
 }
 
+/**
+ * Props for the IconCloud component.
+ * 
+ * @property icons Optional list of React components to be displayed as icons.
+ * @property images Optional list of image URLs to be displayed as icons.
+ */
 interface IconCloudProps {
   icons?: React.ReactNode[];
   images?: string[];
 }
 
+/**
+ * Easing function for animations.
+ * Implements a cubic easing curve for more natural movements.
+ * 
+ * @param t Normalized time value between 0 and 1.
+ * @returns Value transformed according to the easing function.
+ */
 function easeOutCubic(t: number): number {
   return 1 - Math.pow(1 - t, 3);
 }
 
+/**
+ * Component that creates an interactive 3D cloud of icons.
+ * Allows the visualization of icons or images on a 3D sphere that the user can rotate.
+ * 
+ * @param props The component props.
+ * @param props.icons Optional list of React components to be displayed as icons.
+ * @param props.images Optional list of image URLs to be displayed as icons.
+ * @returns Canvas component with the interactive icon cloud.
+ */
 export function IconCloud({ icons, images }: IconCloudProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [iconPositions, setIconPositions] = useState<Icon[]>([]);
@@ -42,7 +74,10 @@ export function IconCloud({ icons, images }: IconCloudProps) {
   const iconCanvasesRef = useRef<HTMLCanvasElement[]>([]);
   const imagesLoadedRef = useRef<boolean[]>([]);
 
-  // Create icon canvases once when icons/images change
+  /**
+   * Creates canvases for each icon when icons or images change.
+   * Prepares images or SVGs to be rendered on the main canvas.
+   */
   useEffect(() => {
     if (!icons && !images) return;
 
@@ -94,7 +129,10 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     iconCanvasesRef.current = newIconCanvases;
   }, [icons, images]);
 
-  // Generate initial icon positions on a sphere
+  /**
+   * Generates initial icon positions on a sphere.
+   * Uses the Fibonacci sphere algorithm to evenly distribute icons.
+   */
   useEffect(() => {
     const items = icons || images || [];
     const newIcons: Icon[] = [];
@@ -124,7 +162,13 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     setIconPositions(newIcons);
   }, [icons, images]);
 
-  // Handle mouse events
+  /**
+   * Handles the mouse down event.
+   * Detects if an icon was clicked and animates rotation toward that icon.
+   * If no icon was clicked, initiates drag mode.
+   * 
+   * @param e Mouse event.
+   */
   const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const rect = canvasRef.current?.getBoundingClientRect();
     if (!rect || !canvasRef.current) return;
@@ -185,6 +229,12 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     setLastMousePos({ x: e.clientX, y: e.clientY });
   };
 
+  /**
+   * Handles the mouse move event.
+   * Updates mouse position and, if in drag mode, rotates the sphere.
+   * 
+   * @param e Mouse event.
+   */
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
     const rect = canvasRef.current?.getBoundingClientRect();
     if (rect) {
@@ -206,11 +256,18 @@ export function IconCloud({ icons, images }: IconCloudProps) {
     }
   };
 
+  /**
+   * Handles the mouse up event.
+   * Ends drag mode.
+   */
   const handleMouseUp = () => {
     setIsDragging(false);
   };
 
-  // Animation and rendering
+  /**
+   * Effect for animation and rendering of the icon cloud.
+   * Manages automatic rotation, transition animations, and icon drawing.
+   */
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
