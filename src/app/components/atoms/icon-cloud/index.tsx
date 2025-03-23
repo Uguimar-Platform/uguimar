@@ -42,37 +42,37 @@ function easeOutCubic(t: number): number {
 
 /**
  * A 3D interactive icon cloud component.
- * 
+ *
  * The IconCloud component renders a 3D sphere of icons or images that rotate based on mouse interaction.
  * Users can drag to rotate the cloud, hover to influence its motion, or click an icon to bring it to the front.
  * Icons can be provided as React nodes (e.g., SVGs) or image URLs. If neither is provided, numbered circles are displayed.
  * The component uses a canvas element for rendering and Tailwind CSS for basic styling.
- * 
+ *
  * @example
  * ```tsx
  * // Example with SVG icons
  * import { IconCloud } from "./IconCloud";
  * import { ReactIcon, AngularIcon, VueIcon } from "@mynaui/icons-react";
- * 
+ *
  * const icons = [<ReactIcon />, <AngularIcon />, <VueIcon />];
- * 
+ *
  * <IconCloud icons={icons} />
  * ```
- * 
+ *
  * @example
  * ```tsx
  * // Example with image URLs
  * import { IconCloud } from "./IconCloud";
- * 
+ *
  * const images = [
  *   "https://example.com/react.png",
  *   "https://example.com/angular.png",
  *   "https://example.com/vue.png",
  * ];
- * 
+ *
  * <IconCloud images={images} />
  * ```
- * 
+ *
  * @remarks
  * - This component uses Tailwind CSS for basic styling (e.g., `rounded-lg`).
  * - Icons are rendered on a canvas, so they must be compatible with canvas drawing (SVGs or images).

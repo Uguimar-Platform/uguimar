@@ -38,17 +38,17 @@ export type LabelProps = {
 
 /**
  * A customizable label component with support for icons, fonts, and styling.
- * 
+ *
  * The Label component renders a text element with optional icons, customizable font families, and styling.
  * It can be rendered as different HTML tags (e.g., "label", "h1", "span") using the `as` prop.
  * The component supports Tailwind CSS classes for text color and additional styling, and applies font family and weight via inline styles.
  * An icon can be displayed on the left or right of the text, with automatic margin adjustments.
- * 
+ *
  * @example
  * ```tsx
  * import { Label } from "./Label";
  * import { ArrowDown } from "@mynaui/icons-react";
- * 
+ *
  * // Basic usage with a custom text color and font
  * <Label
  *   text="Email Address"
@@ -60,7 +60,7 @@ export type LabelProps = {
  *   className="mb-2"
  * />
  * ```
- * 
+ *
  * @example
  * ```tsx
  * // With an icon on the right
@@ -73,7 +73,7 @@ export type LabelProps = {
  *   fontWeight={600}
  * />
  * ```
- * 
+ *
  * @remarks
  * - This component uses Tailwind CSS for styling (e.g., `text-black`, `py-2`, `px-2`).
  * - The `font` prop requires the specified font to be imported in your project (e.g., Poppins, Onest).
@@ -101,12 +101,16 @@ export const Label: React.FC<LabelProps> = ({
   // Clone the icon and apply Tailwind CSS classes for size and margin based on its position
   const iconWithMargin =
     isIconElement && iconPosition === "left"
-      ? cloneElement(icon as React.ReactElement<any>, {
-          className: `text-xl mr-1 ${(icon as React.ReactElement<any>).props.className || ""}`,
+      ? cloneElement(icon as React.ReactElement<MynaIconsProps>, {
+          className: `${(icon as React.ReactElement<MynaIconsProps>).props.className || ""}`,
+          size: 20,
+          style: { display: "flex", alignItems: "center", marginRight: "8px" },
         })
       : isIconElement && iconPosition === "right"
-        ? cloneElement(icon as React.ReactElement<any>, {
-            className: `text-xl ml-1 ${(icon as React.ReactElement<any>).props.className || ""}`,
+        ? cloneElement(icon as React.ReactElement<MynaIconsProps>, {
+            className: `${(icon as React.ReactElement<MynaIconsProps>).props.className || ""}`,
+            size: 20,
+            style: { display: "flex", alignItems: "center", marginLeft: "8px" },
           })
         : icon;
 
@@ -125,16 +129,17 @@ export const Label: React.FC<LabelProps> = ({
   const fontStyle = {
     fontFamily: `'${fontName}'`,
     fontWeight: fontWeight,
+    ...style,
   };
 
   return (
     <Tag
       {...(as === "label" ? { htmlFor } : {})}
-      className={`py-2 px-2 m-2 inline-flex items-center transition duration-300 ease-in-out flex-row ${textColor} ${className}`}
+      className={`py-2 px-2 m-2 inline-flex items-center transition duration-300 ease-in-out ${textColor} ${className}`}
       style={fontStyle}
     >
       {iconPosition === "left" && iconWithMargin}
-      <span>{text}</span>
+      <span className="flex items-center">{text}</span>
       {iconPosition === "right" && iconWithMargin}
     </Tag>
   );

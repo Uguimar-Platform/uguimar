@@ -24,10 +24,10 @@ interface DropdownProps {
 
 /**
  * A customizable dropdown component that allows users to select an option from a list.
- * 
+ *
  * The Dropdown component renders a select element with a list of options.
  * It uses Tailwind CSS for styling and allows custom classes, including color customization.
- * 
+ *
  * @example
  * ```tsx
  * <Dropdown
@@ -39,7 +39,7 @@ interface DropdownProps {
  *   className="w-full border rounded bg-[#f0f0f0] text-[#1e3a8a]"
  * />
  * ```
- * 
+ *
  * @remarks
  * - This component uses Tailwind CSS for styling.
  * - The component is controlled internally with state.

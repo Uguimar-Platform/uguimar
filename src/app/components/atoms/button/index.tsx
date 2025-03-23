@@ -59,10 +59,10 @@ interface ButtonProps {
 }
 /**
  * * A customizable checkbox component with a label.
- * 
+ *
  * The Checkbox component allows you to create a styled checkbox with an optional label.
  * It supports a disabled state and custom text color for the label.
- * 
+ *
  * @example
  * ```tsx
  * <Checkbox
@@ -91,6 +91,10 @@ const Button: React.FC<ButtonProps> = ({
   fontFamily = "Poppins",
   fontWeight = 400,
 }) => {
+  /**
+   * Renders the selected icon based on the icon property.
+   * @returns The corresponding icon component or null if there is no icon.
+   */
   const renderIcon = () => {
     if (!icon) return null;
 
@@ -104,6 +108,9 @@ const Button: React.FC<ButtonProps> = ({
     }
   };
 
+  /**
+   * Font styles applied directly to the button.
+   */
   const fontStyle = {
     fontFamily,
     fontWeight,

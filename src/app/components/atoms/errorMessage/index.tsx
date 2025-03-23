@@ -14,18 +14,18 @@ interface ErrorMessageProps {
 
 /**
  * A component to display error messages with customizable styling.
- * 
+ *
  * The ErrorMessage component renders a span element with an error message.
  * It only renders if the `children` prop is provided, otherwise it returns null.
  * The default styling includes red text and a small font size, but this can be customized via the `className` prop.
- * 
+ *
  * @example
  * ```tsx
  * <ErrorMessage className="text-red-700 text-base">
  *   Este campo es obligatorio.
  * </ErrorMessage>
  * ```
- * 
+ *
  * @remarks
  * - This component uses Tailwind CSS for default styling (e.g., `text-red-500`, `text-sm`).
  * - If no `children` is provided, the component will not render.
