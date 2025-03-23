@@ -1,22 +1,20 @@
-"use client"; // Important for interactive components in Next.js
+"use client";
 
 import React from "react";
 import LinkAtom from "../../atoms/links";
 
 /**
- * NavigationMenu
+ * Main navigation menu component.
  *
- * This component represents the main navigation menu of the application.
- * It displays a list of links to different sections of the app.
+ * This component renders a horizontal navigation menu with links
+ * to different sections of the application.
  *
- * @component
- * @example
- * <NavigationMenu />
+ * @returns A navigation component with styled links.
  */
 const NavigationMenu: React.FC = () => {
   /**
-   * List of menu items displayed in the navigation menu.
-   * Each item contains a label and a route.
+   * Array of menu items with their labels and corresponding routes.
+   * @type {Array<{label: string, route: string}>}
    */
   const menuItems = [
     { label: "Inicio", route: "/" },
