@@ -64,7 +64,7 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   /**
    * Function that renders the selected icon
-   * 
+   *
    * @returns The corresponding icon component or null if there is no icon
    */
   const renderIcon = () => {

@@ -26,7 +26,7 @@ export type CarInstructorProps = {
 
 /**
  * Component that displays an instructor's information with their image and details.
- * 
+ *
  * @param {Object} props - The component properties.
  * @param {string} props.imageSrc - URL of the instructor's image.
  * @param {string} props.title - Title or name of the instructor.

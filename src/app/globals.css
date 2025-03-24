@@ -2,72 +2,72 @@
 @import "tw-animate-css";
 
 @font-face {
-  font-family: 'Black Mango';
-  src: url('/fonts/black_mango/BlackMango-Thin.woff2') format('woff2');
+  font-family: "Black Mango";
+  src: url("/fonts/black_mango/BlackMango-Thin.woff2") format("woff2");
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Black Mango';
-  src: url('/fonts/black_mango/BlackMango-ExtraLight.woff2') format('woff2');
+  font-family: "Black Mango";
+  src: url("/fonts/black_mango/BlackMango-ExtraLight.woff2") format("woff2");
   font-weight: 200;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Black Mango';
-  src: url('/fonts/black_mango/BlackMango-Light.woff2') format('woff2');
+  font-family: "Black Mango";
+  src: url("/fonts/black_mango/BlackMango-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Black Mango';
-  src: url('/fonts/black_mango/BlackMango-Regular.woff2') format('woff2');
+  font-family: "Black Mango";
+  src: url("/fonts/black_mango/BlackMango-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Black Mango';
-  src: url('/fonts/black_mango/BlackMango-Medium.woff2') format('woff2');
+  font-family: "Black Mango";
+  src: url("/fonts/black_mango/BlackMango-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Black Mango';
-  src: url('/fonts/black_mango/BlackMango-SemiBold.woff2') format('woff2');
+  font-family: "Black Mango";
+  src: url("/fonts/black_mango/BlackMango-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Black Mango';
-  src: url('/fonts/black_mango/BlackMango-Bold.woff2') format('woff2');
+  font-family: "Black Mango";
+  src: url("/fonts/black_mango/BlackMango-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Black Mango';
-  src: url('/fonts/black_mango/BlackMango-ExtraBold.woff2') format('woff2');
+  font-family: "Black Mango";
+  src: url("/fonts/black_mango/BlackMango-ExtraBold.woff2") format("woff2");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Black Mango';
-  src: url('/fonts/black_mango/BlackMango-Black.woff2') format('woff2');
+  font-family: "Black Mango";
+  src: url("/fonts/black_mango/BlackMango-Black.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -75,64 +75,64 @@
 
 /* Onest Font */
 @font-face {
-  font-family: 'Onest';
-  src: url('/fonts/onest/Onest-ExtraLight.woff2') format('woff2');
+  font-family: "Onest";
+  src: url("/fonts/onest/Onest-ExtraLight.woff2") format("woff2");
   font-weight: 200;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Onest';
-  src: url('/fonts/onest/Onest-Light.woff2') format('woff2');
+  font-family: "Onest";
+  src: url("/fonts/onest/Onest-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Onest';
-  src: url('/fonts/onest/Onest-Regular.woff2') format('woff2');
+  font-family: "Onest";
+  src: url("/fonts/onest/Onest-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Onest';
-  src: url('/fonts/onest/Onest-Medium.woff2') format('woff2');
+  font-family: "Onest";
+  src: url("/fonts/onest/Onest-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Onest';
-  src: url('/fonts/onest/Onest-SemiBold.woff2') format('woff2');
+  font-family: "Onest";
+  src: url("/fonts/onest/Onest-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Onest';
-  src: url('/fonts/onest/Onest-Bold.woff2') format('woff2');
+  font-family: "Onest";
+  src: url("/fonts/onest/Onest-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Onest';
-  src: url('/fonts/onest/Onest-ExtraBold.woff2') format('woff2');
+  font-family: "Onest";
+  src: url("/fonts/onest/Onest-ExtraBold.woff2") format("woff2");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Onest';
-  src: url('/fonts/onest/Onest-Black.woff2') format('woff2');
+  font-family: "Onest";
+  src: url("/fonts/onest/Onest-Black.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -140,72 +140,72 @@
 
 /* Poppins Font */
 @font-face {
-  font-family: 'Poppins';
-  src: url('/fonts/poppins/Poppins-Thin.woff2') format('woff2');
+  font-family: "Poppins";
+  src: url("/fonts/poppins/Poppins-Thin.woff2") format("woff2");
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('/fonts/poppins/Poppins-ExtraLight.woff2') format('woff2');
+  font-family: "Poppins";
+  src: url("/fonts/poppins/Poppins-ExtraLight.woff2") format("woff2");
   font-weight: 200;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('/fonts/poppins/Poppins-Light.woff2') format('woff2');
+  font-family: "Poppins";
+  src: url("/fonts/poppins/Poppins-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('/fonts/poppins/Poppins-Regular.woff2') format('woff2');
+  font-family: "Poppins";
+  src: url("/fonts/poppins/Poppins-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('/fonts/poppins/Poppins-Medium.woff2') format('woff2');
+  font-family: "Poppins";
+  src: url("/fonts/poppins/Poppins-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('/fonts/poppins/Poppins-SemiBold.woff2') format('woff2');
+  font-family: "Poppins";
+  src: url("/fonts/poppins/Poppins-SemiBold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('/fonts/poppins/Poppins-Bold.woff2') format('woff2');
+  font-family: "Poppins";
+  src: url("/fonts/poppins/Poppins-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('/fonts/poppins/Poppins-ExtraBold.woff2') format('woff2');
+  font-family: "Poppins";
+  src: url("/fonts/poppins/Poppins-ExtraBold.woff2") format("woff2");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'Poppins';
-  src: url('/fonts/poppins/Poppins-Black.woff2') format('woff2');
+  font-family: "Poppins";
+  src: url("/fonts/poppins/Poppins-Black.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -213,72 +213,74 @@
 
 /* SF Pro Display Font */
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/sf_pro_display/SF-Pro-Display-Thin.woff2') format('woff2');
+  font-family: "SF Pro Display";
+  src: url("/fonts/sf_pro_display/SF-Pro-Display-Thin.woff2") format("woff2");
   font-weight: 100;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/sf_pro_display/SF-Pro-Display-Ultralight.woff2') format('woff2');
+  font-family: "SF Pro Display";
+  src: url("/fonts/sf_pro_display/SF-Pro-Display-Ultralight.woff2")
+    format("woff2");
   font-weight: 200;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/sf_pro_display/SF-Pro-Display-Light.woff2') format('woff2');
+  font-family: "SF Pro Display";
+  src: url("/fonts/sf_pro_display/SF-Pro-Display-Light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/sf_pro_display/SF-Pro-Display-Regular.woff2') format('woff2');
+  font-family: "SF Pro Display";
+  src: url("/fonts/sf_pro_display/SF-Pro-Display-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/sf_pro_display/SF-Pro-Display-Medium.woff2') format('woff2');
+  font-family: "SF Pro Display";
+  src: url("/fonts/sf_pro_display/SF-Pro-Display-Medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/sf_pro_display/SF-Pro-Display-Semibold.woff2') format('woff2');
+  font-family: "SF Pro Display";
+  src: url("/fonts/sf_pro_display/SF-Pro-Display-Semibold.woff2")
+    format("woff2");
   font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/sf_pro_display/SF-Pro-Display-Bold.woff2') format('woff2');
+  font-family: "SF Pro Display";
+  src: url("/fonts/sf_pro_display/SF-Pro-Display-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/sf_pro_display/SF-Pro-Display-Heavy.woff2') format('woff2');
+  font-family: "SF Pro Display";
+  src: url("/fonts/sf_pro_display/SF-Pro-Display-Heavy.woff2") format("woff2");
   font-weight: 800;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: 'SF Pro Display';
-  src: url('/fonts/sf_pro_display/SF-Pro-Display-Black.woff2') format('woff2');
+  font-family: "SF Pro Display";
+  src: url("/fonts/sf_pro_display/SF-Pro-Display-Black.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
   font-display: swap;

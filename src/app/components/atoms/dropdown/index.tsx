@@ -5,7 +5,7 @@ import { ChevronDown } from "@mynaui/icons-react";
 
 /**
  * Interface that defines the structure of a dropdown option
- * 
+ *
  * @param id Unique identifier for the option
  * @param name Text that will be displayed for the option
  */
@@ -16,7 +16,7 @@ interface DropdownOption {
 
 /**
  * Interface that defines the properties of the Dropdown component
- * 
+ *
  * @param options List of options to be displayed in the dropdown
  * @param className Additional CSS classes to customize the component
  * @param defaultOption Default selected option when the component loads
@@ -30,7 +30,7 @@ interface DropdownProps {
 /**
  * Dropdown component that allows selecting an option from a dropdown list
  * Displays the selected option and allows changing it on click
- * 
+ *
  * @param options Available options to select from
  * @param className Additional CSS classes to style the component
  * @param defaultOption The default selected option (uses the first one if not specified)
@@ -53,7 +53,7 @@ const Dropdown: React.FC<DropdownProps> = ({
 
   /**
    * Handles the selection of a dropdown option
-   * 
+   *
    * @param optionId The ID of the selected option
    */
   const handleOptionSelect = (optionId: string) => {
@@ -69,7 +69,7 @@ const Dropdown: React.FC<DropdownProps> = ({
     /**
      * Handles clicks outside the dropdown component
      * Closes the dropdown when a click is detected outside
-     * 
+     *
      * @param event The mouse click event
      */
     const handleClickOutside = (event: MouseEvent) => {

@@ -7,7 +7,7 @@ import { FaUser, FaChartBar } from "react-icons/fa";
 
 /**
  * Interface that defines the properties for the CardCourses component.
- * 
+ *
  * @param courseImage The URL of the course image.
  * @param alt The alternative text for the course image.
  * @param courseName The name of the course.
@@ -30,7 +30,7 @@ interface CardCoursesProps {
  * Component that displays a course card with its relevant information.
  * Shows the course image, name, instructor, recommended age, price, and category.
  * Also includes a button to add the course.
- * 
+ *
  * @param props The component properties as defined in CardCoursesProps interface.
  * @returns A course card component.
  */

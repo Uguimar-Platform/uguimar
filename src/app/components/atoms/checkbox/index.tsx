@@ -3,7 +3,7 @@ import React from "react";
 
 /**
  * Interface that defines the properties for the Checkbox component.
- * 
+ *
  * @param label The text to be displayed next to the checkbox.
  * @param disabled Indicates if the checkbox is disabled.
  * @param color The color of the label text.
@@ -17,7 +17,7 @@ interface CheckboxProps {
 /**
  * Checkbox component that renders a checkbox input element with a label.
  * Allows users to select or deselect an option.
- * 
+ *
  * @param label The text to be displayed next to the checkbox.
  * @param disabled Indicates if the checkbox is disabled.
  * @param color The color of the label text.

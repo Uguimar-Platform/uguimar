@@ -5,7 +5,7 @@ import { renderToString } from "react-dom/server";
 
 /**
  * Interface that defines the structure of an icon in 3D space.
- * 
+ *
  * @property x Position on the X axis.
  * @property y Position on the Y axis.
  * @property z Position on the Z axis.
@@ -24,7 +24,7 @@ interface Icon {
 
 /**
  * Props for the IconCloud component.
- * 
+ *
  * @property icons Optional list of React components to be displayed as icons.
  * @property images Optional list of image URLs to be displayed as icons.
  */
@@ -36,7 +36,7 @@ interface IconCloudProps {
 /**
  * Easing function for animations.
  * Implements a cubic easing curve for more natural movements.
- * 
+ *
  * @param t Normalized time value between 0 and 1.
  * @returns Value transformed according to the easing function.
  */
@@ -47,7 +47,7 @@ function easeOutCubic(t: number): number {
 /**
  * Component that creates an interactive 3D cloud of icons.
  * Allows the visualization of icons or images on a 3D sphere that the user can rotate.
- * 
+ *
  * @param props The component props.
  * @param props.icons Optional list of React components to be displayed as icons.
  * @param props.images Optional list of image URLs to be displayed as icons.
@@ -166,7 +166,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
    * Handles the mouse down event.
    * Detects if an icon was clicked and animates rotation toward that icon.
    * If no icon was clicked, initiates drag mode.
-   * 
+   *
    * @param e Mouse event.
    */
   const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -232,7 +232,7 @@ export function IconCloud({ icons, images }: IconCloudProps) {
   /**
    * Handles the mouse move event.
    * Updates mouse position and, if in drag mode, rotates the sphere.
-   * 
+   *
    * @param e Mouse event.
    */
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
