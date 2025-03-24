@@ -15,9 +15,9 @@ const Footer: React.FC = () => {
        * Displays the logo and links in a horizontal layout
        */}
       <div className="hidden md:flex items-center justify-center gap-10 w-full">
-        <Image src="/logo.svg" alt="Logo" width={100} height={100} />
+        <Image src="/Logo.webp" alt="Logo" width={100} height={100} />
 
-        <div className="flex gap-6">
+        <div className="flex gap-6 text-[#334EAC] font-style: italic">
           <LinkAtom to="/terms" label="Términos y condiciones" />
           <LinkAtom to="/whatsapp" label="WhatsApp" />
           <LinkAtom to="/instagram" label="Instagram" />

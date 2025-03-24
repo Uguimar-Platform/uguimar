@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import InputAtom from "../../atoms/input/index";
 import Button from "../../atoms/button/index";
+import { Label } from "../../atoms/label";
 
 const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -21,8 +22,19 @@ const ContactSection: React.FC = () => {
   };
 
   return (
-    <section className="flex flex-col items-center bg-white py-10">
-      <div className="flex items-center justify-center bg-[#5670CA] rounded-lg pb-4 w-full ">
+    <section className="flex flex-col items-center py-10">
+      <div className="mb-8">
+        <Label
+          text="Contacto"
+          as="h1"
+          font="Onest"
+          fontWeight={700}
+          textColor="text-black"
+          className="text-5xl 7 text-center"
+        />
+      </div>
+
+      <div className="flex items-center justify-center bg-[#5670CA] pb-4 w-full ">
         <div className="hidden md:flex flex-col items-center justify-center w-1/3">
           <img src="/icon_contact.webp" alt="" />
         </div>
@@ -58,7 +70,9 @@ const ContactSection: React.FC = () => {
             type="submit"
             fontFamily="Poppins"
             fontWeight={600}
-            className="bg-[#334EAC] text-white flex justify-center items-center w-full p-2 rounded-lg hover:bg-[#364FC7]"
+            bgColor="bg-[#334EAC]"
+            hoverColor="hover:bg-[#081F5C]"
+            className=" text-white flex justify-center items-center w-full p-2 rounded-lg"
           >
             Enviar
           </Button>

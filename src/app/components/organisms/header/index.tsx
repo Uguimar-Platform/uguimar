@@ -12,7 +12,7 @@ const dropdownOptions = [
 
 const Header: React.FC = () => {
   return (
-    <header className="mt-4 flex items-center justify-between max-w-[1500px] mx-auto">
+    <header className="mt-8 flex items-center justify-between max-w-[1500px] mx-auto">
       <div className="flex items-center gap-4">
         <div className="relative">
           <img
