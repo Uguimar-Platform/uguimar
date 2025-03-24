@@ -3,127 +3,91 @@
 import React from "react";
 import { Label } from "../../atoms/label";
 import Button from "../../atoms/button";
-import { FaStar, FaCheckCircle } from "react-icons/fa";
+import { CheckWavesSolid } from "@mynaui/icons-react";
 
 interface CardPlanProps {
-    /**
-    * Array of image sources for icons.
-    */
-    imageSrc: string[];
-    
-    /**
-    * Small label text under the image.
-    */
-    smallLabel: string;
-
-    /**
-    * Title of the plan.
-    */
-    title: string;
-
-    /**
-    * Price of the plan.
-    */
-    price: string;
-
-    /**
-    * Features included in the plan.
-    */
-    features: string[];
-
-    /**
-    * Button text.
-    */
-    buttonText: string;
-
-    /**
-     * Background color of the card.
-     */
-    bgColor: string;
-
-    /**
-     * Color of the small label text.
-     */
-    labelColor: string;
-
-    /**
-     * Color of the main text (title and price).
-     */
-    textColor: string;
-
-    /**
-     * Background color of the button.
-     */
-    buttonBgColor: string;
-
-    /**
-     * Text color of the button.
-     */
-    buttonTextColor: string;
+  imageSrc: string[];
+  smallLabel: string;
+  title: string;
+  price: string;
+  features: string[];
+  buttonText: string;
+  bgColor: string;
+  labelColor: string;
+  textColor: string;
+  buttonBgColor: string;
+  buttonTextColor: string;
 }
 
-/**
- * CardPlan component represents a subscription or service plan.
- */
 const CardPlan: React.FC<CardPlanProps> = ({
-    imageSrc,
-    smallLabel,
-    title,
-    price,
-    features,
-    buttonText,
-    bgColor,
-    labelColor,
-    textColor,
-    buttonBgColor,
-    buttonTextColor,
+  imageSrc,
+  smallLabel,
+  title,
+  price,
+  features,
+  buttonText,
+  bgColor,
+  labelColor,
+  textColor,
+  buttonBgColor,
+  buttonTextColor,
 }) => {
-    return (
-        
-        <div className={`${bgColor} rounded-4xl shadow-md w-full max-w-[22rem] p-9 flex flex-col gap-4 border border-gray-200 items-center justify-center`}>
-        {/* Image Section */}
-        <div className="flex justify-center gap-2">
-            {imageSrc.map((src, index) => (
-                <img key={index} src={src} className="w-16 h-16 object-contain" />
-            ))}
-        </div>
-        
-        {/* Small Label */}
-        <Label text={smallLabel} className={`${labelColor} text-xs`}/>
+  return (
+    <div
+      className={`${bgColor} rounded-4xl py-12 w-full max-w-[22rem] p-9 flex flex-col gap-4 items-center justify-center`}
+    >
+      <div className="flex justify-center gap-2">
+        {imageSrc.map((src, index) => (
+          <img key={index} src={src} className="w-16 h-16 object-contain" />
+        ))}
+      </div>
+      <Label text={smallLabel} textColor={labelColor} className="text-sm" />
+      <Label
+        text={title}
+        as="h2"
+        fontWeight={700}
+        textColor={textColor}
+        className="text-4xl"
+      />
+      <div className="flex items-baseline gap-1 -mt-2">
+        <Label
+          text={`S/. ${price}`}
+          fontWeight={600}
+          textColor={textColor}
+          className="text-4xl"
+        />
+        <span className={`text-sm font-Poppins ${textColor}`}>/Anual</span>
+      </div>
 
-        {/* Plan Title */}
-        <Label text={title} as="h2" className={`${textColor} text-4xl !font-bold`}/>
-        
-        {/* Price */}
-        <div className="flex items-baseline gap-1">
-            <Label 
-            text={`S/. ${price}`} 
-            className={`text-4xl !font-semibold ${textColor}`}/>
-            <span className={`text-sm font-Poppins ${textColor}`}>/Anual</span>
-        </div>
+      <ul className="flex flex-col gap-2 mt-6">
+        <Label
+          text="Beneficios:"
+          textColor={textColor}
+          className="flex justify-center text-xl"
+          fontWeight={700}
+        />
+        {features.map((feature, index) => (
+          <li
+            key={index}
+            className={`flex items-center leading-tight gap-2.5 text-sm ${textColor}`}
+          >
+            <CheckWavesSolid className={`${textColor} w-5 h-5 flex-shrink-0`} />
+            <span className="font-['Poppins'] font-medium">{feature}</span>
+          </li>
+        ))}
+      </ul>
 
-        {/* Features List */}
-        <ul className="flex flex-col gap-2 mt-6">
-            <li className={`!font-bold text-base !font-poppins justify-center ${textColor}`}>Beneficios:</li>
-            {features.map((feature, index) => (
-                <li key={index} className={`flex items-center leading-tight gap-2.5 text-sm !font-Poppins ${textColor}`}>
-                    <FaCheckCircle className={`${textColor} w-4 h-auto`}/>
-                    <span>{feature}</span>
-                </li>
-            ))}
-        </ul>
-                
-        {/* Button */}
-        <Button
+      <Button
         textColor={buttonTextColor}
         bgColor={buttonBgColor}
-        className="w-[60%] justify-center items-center text-center rounded-4xl py-2 mt-10 text-lg !font-semibold">
-            {buttonText}
-        </Button>
+        hoverColor="hover:brightness-75"
+        fontWeight={600}
+        className="w-[60%] justify-center items-center text-center rounded-4xl py-2 mt-10 text-lg font-semibold"
+      >
+        {buttonText}
+      </Button>
     </div>
-
-    
-    );
+  );
 };
 
 export default CardPlan;
