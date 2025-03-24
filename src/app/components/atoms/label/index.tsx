@@ -91,8 +91,8 @@ export const Label: React.FC<LabelProps> = ({
   const fontFamilyMap = {
     poppins: "Poppins",
     onest: "Onest",
-    "black-mango": "Black Mango",
-    "sf-pro": "SF Pro Display",
+    blackmango: "Black Mango",
+    sfpro: "SF Pro Display",
   };
 
   const fontName = fontFamilyMap[font as keyof typeof fontFamilyMap] || font;

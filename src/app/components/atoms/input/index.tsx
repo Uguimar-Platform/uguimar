@@ -52,7 +52,7 @@ const InputAtom: React.FC<InputAtomProps> = ({
         onChange={onChange}
         onBlur={onBlur}
         placeholder={placeholder}
-        className={`rounded-md px-3 py-2 focus:outline-none w-full ${className}`}
+        className={`font-['SF_Pro_Display'] rounded-md px-3 py-2 focus:outline-none ${className}`}
         style={style}
       />
     </div>
