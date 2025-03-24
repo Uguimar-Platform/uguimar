@@ -8,7 +8,6 @@ interface CardCategoryCoursesProps {
   description?: string;
   categorycourseimage?: string;
   buttonText?: string;
-  buttonLink?: string;
 }
 
 const CardCategoryCourses: React.FC<CardCategoryCoursesProps> = ({
@@ -17,22 +16,25 @@ const CardCategoryCourses: React.FC<CardCategoryCoursesProps> = ({
     description = "",
     categorycourseimage = "",
     buttonText = "",
-    buttonLink = "#",
+ 
 }) => {
   return (
     <div className="w-[380px] bg-[#F9FCFF] border border-[#334EAC] rounded-3xl p-6 py-8 shadow-md">
         {/* Titulo a complementacion*/}
         <Label 
             text={title}  
-            className=" text-3xl text-left "
             fontWeight={700}
-            font="sf-pro"       
+            font="sfpro"    
+            className=" text-3xl text-left "
+           
         />
         {/* Cursos*/}
         <Label 
-            text={course}  
-            className="text-[#334EAC] text-3xl"
-            fontWeight={700}            
+            text={course}
+            textColor="text-[#334EAC]"  
+            className="text-3xl"
+            fontWeight={700}       
+            font="sfpro"     
         />
         {/* Descripción */}
         <Label 
@@ -46,11 +48,11 @@ const CardCategoryCourses: React.FC<CardCategoryCoursesProps> = ({
             alt={`${course}.webp`}
         />
         {/* Botón */}
-        <a className="flex justify-center" href={buttonLink}>
+        <div className="flex justify-center">
             <Button className="bg-[#334EAC] text-white px-4 py-2 rounded-lg">
                 {buttonText}
             </Button>
-        </a>
+        </div>
     </div>
   );
 };
