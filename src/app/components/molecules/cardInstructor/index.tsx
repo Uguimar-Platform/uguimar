@@ -1,70 +1,42 @@
 import React from "react";
-import { Label, FontFamily } from "../../atoms/label"; // Importamos el átomo Label
+import { Label, FontFamily } from "../../atoms/label";
+
 /**
- * Props for the CarInstructor component.
+ * Properties for the CarInstructor component.
+ * @typedef {Object} CarInstructorProps
+ * @property {string} imageSrc - URL of the instructor's image.
+ * @property {string} title - Title or name of the instructor.
+ * @property {string} description - Description or additional information about the instructor.
+ * @property {string} [textColor="text-black"] - Text color (Tailwind class).
+ * @property {FontFamily} [font="poppins"] - Font family to use.
+ * @property {number} [fontWeight=400] - Font weight.
+ * @property {string} [className=""] - Additional CSS classes.
+ * @property {React.CSSProperties} [style] - Additional inline styles.
  */
 export type CarInstructorProps = {
-  /** URL or path to the instructor's image. */
   imageSrc: string;
-  /** Title of the instructor card (e.g., the instructor's name). */
   title: string;
-  /** Description text for the instructor (e.g., a brief bio or role). */
   description: string;
-  /** Tailwind CSS class for the text color of the title and description (e.g., "text-black"). */
   textColor?: string;
-  /** Font family to use for the title and description (predefined or custom). */
   font?: FontFamily;
-  /** Font weight for the description (100 to 900). The title uses a fixed weight of 800. */
   fontWeight?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
-  /** Additional Tailwind CSS classes to apply to the card container. */
   className?: string;
-  /** Inline styles to apply to the card container (e.g., for custom colors or other CSS properties). */
   style?: React.CSSProperties;
 };
 
 /**
- * A card component to display instructor information with an image, title, and description.
- *
- * The CarInstructor component renders a card that includes an image, a title, and a description for an instructor.
- * It uses the `Label` atom to render the title and description with customizable font styles and text colors.
- * The card has a default layout with a shadow, rounded corners, and a flexible design, styled using Tailwind CSS.
- * The title is displayed in uppercase with a fixed font weight of 800, while the description's font weight is customizable.
- *
- * @example
- * ```tsx
- * import { CarInstructor } from "./CarInstructor";
- *
- * // Basic usage with default styling
- * <CarInstructor
- *   imageSrc="/instructor.jpg"
- *   title="John Doe"
- *   description="Experienced driving instructor with over 10 years of teaching."
- *   textColor="text-gray-800"
- *   font="poppins"
- *   fontWeight={400}
- * />
- * ```
- *
- * @example
- * ```tsx
- * // With custom styling
- * <CarInstructor
- *   imageSrc="/instructor.jpg"
- *   title="Jane Smith"
- *   description="Specializes in advanced driving techniques."
- *   textColor="text-blue-600"
- *   font="onest"
- *   fontWeight={500}
- *   className="bg-gray-100"
- *   style={{ border: "2px solid #e5e7eb" }}
- * />
- * ```
- *
- * @remarks
- * - This component uses Tailwind CSS for styling (e.g., `flex`, `p-4`, `rounded-3xl`, `shadow-md`).
- * - The `font` prop requires the specified font to be imported in your project (e.g., Poppins, Onest).
- * - The title is always rendered in uppercase with a font weight of 800, while the description uses the provided `fontWeight`.
- * - The image is styled with a fixed size (`w-30 h-30`) and rounded corners (`rounded-md`).
+ * Component that displays an instructor's information with their image and details.
+ * 
+ * @param {Object} props - The component properties.
+ * @param {string} props.imageSrc - URL of the instructor's image.
+ * @param {string} props.title - Title or name of the instructor.
+ * @param {string} props.description - Description or additional information about the instructor.
+ * @param {string} [props.textColor="text-black"] - Text color (Tailwind class).
+ * @param {FontFamily} [props.font="poppins"] - Font family to use.
+ * @param {number} [props.fontWeight=400] - Font weight.
+ * @param {string} [props.className=""] - Additional CSS classes.
+ * @param {React.CSSProperties} [props.style] - Additional inline styles.
+ * @returns {JSX.Element} Rendered instructor card component.
  */
 export const CarInstructor: React.FC<CarInstructorProps> = ({
   imageSrc,

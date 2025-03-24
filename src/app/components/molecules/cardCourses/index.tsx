@@ -5,48 +5,34 @@ import { Label } from "../../atoms/label";
 import Button from "../../atoms/button";
 import { FaUser, FaChartBar } from "react-icons/fa";
 
+/**
+ * Interface that defines the properties for the CardCourses component.
+ * 
+ * @param courseImage The URL of the course image.
+ * @param alt The alternative text for the course image.
+ * @param courseName The name of the course.
+ * @param teacher The name of the course instructor.
+ * @param age The recommended age range for the course.
+ * @param price The price of the course.
+ * @param category The category to which the course belongs.
+ */
 interface CardCoursesProps {
-  /**
-   * Representative image of the course.
-   */
   courseImage: string;
-
-  /**
-   * Alternative description for the course image.
-   */
   alt: string;
-
-  /**
-   * Course name.
-   */
   courseName: string;
-
-  /**
-   * Name of the instructor teaching the course.
-   */
   teacher: string;
-
-  /**
-   * Recommended age for taking the course.
-   */
   age: string;
-
-  /**
-   * Course price.
-   */
   price: string;
-
-  /**
-   * Category to which the course belongs.
-   */
   category: string;
 }
 
 /**
- * Component that represents a course card.
- *
- * This component displays detailed information about a course, including its name,
- * image, description, instructor, recommended age, price, and category.
+ * Component that displays a course card with its relevant information.
+ * Shows the course image, name, instructor, recommended age, price, and category.
+ * Also includes a button to add the course.
+ * 
+ * @param props The component properties as defined in CardCoursesProps interface.
+ * @returns A course card component.
  */
 const CardCourses: React.FC<CardCoursesProps> = ({
   courseImage,

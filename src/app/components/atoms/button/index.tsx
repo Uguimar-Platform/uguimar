@@ -1,79 +1,50 @@
 "use client";
 import React from "react";
 import { ArrowLeft, ArrowRight } from "@mynaui/icons-react";
-/**
- * Available font families for the Button component.
- */
-type FontFamily = "Poppins" | "Onest";
 
-/**
- * Available font weights for the Button component.
- */
+type FontFamily = "Poppins" | "Onest";
 type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 
 /**
- * Props for the Button component.
+ * Interface that defines the properties of the Button component
+ *
+ * @param children The content to be displayed inside the button
+ * @param onClick Function to be executed when clicking the button
+ * @param type Button type (button, submit, reset)
+ * @param className Additional CSS classes to customize the button
+ * @param textColor Button text color
+ * @param bgColor Button background color
+ * @param hoverColor Background color when hovering over the button
+ * @param disabled Button disabled state
+ * @param icon Icon to display in the button (ArrowLeft or ArrowRight)
+ * @param iconPosition Icon position (left or right)
+ * @param iconSize Icon size in pixels
+ * @param iconColor Icon color
+ * @param fontFamily Font family for the button text
+ * @param fontWeight Font weight for the button text
  */
 interface ButtonProps {
-  /** The content to be displayed inside the button. */
   children: React.ReactNode;
-
-  /** Callback function triggered when the button is clicked. */
   onClick?: () => void;
-
-  /** The type of the button. Defaults to "button". */
   type?: "button" | "submit" | "reset";
-
-  /** Additional CSS classes to apply to the button. */
   className?: string;
-
-  /** The text color of the button. Defaults to "text-white". */
   textColor?: string;
-
-  /** The background color of the button. Defaults to "bg-blue-500". */
   bgColor?: string;
-
-  /** The background color of the button on hover. Defaults to "hover:bg-blue-600". */
   hoverColor?: string;
-
-  /** Whether the button is disabled. Defaults to false. */
   disabled?: boolean;
-
-  /** The icon to display inside the button. Can be "ArrowLeft" or "ArrowRight". */
   icon?: "ArrowLeft" | "ArrowRight";
-
-  /** The position of the icon relative to the button content. Defaults to "left". */
   iconPosition?: "left" | "right";
-
-  /** The size of the icon in pixels. Defaults to 20. */
   iconSize?: number;
-
-  /** The color of the icon. Defaults to "currentColor". */
   iconColor?: string;
-
-  /** The font family of the button text. Defaults to "Poppins". */
   fontFamily?: FontFamily;
-
-  /** The font weight of the button text. Defaults to 400. */
   fontWeight?: FontWeight;
 }
+
 /**
- * * A customizable checkbox component with a label.
+ * Button component that renders a customizable button with options for icons,
+ * styles, and behavior.
  *
- * The Checkbox component allows you to create a styled checkbox with an optional label.
- * It supports a disabled state and custom text color for the label.
- *
- * @example
- * ```tsx
- * <Checkbox
- *   label="Acepto los términos y condiciones"
- *   disabled={false}
- *   color="text-[#334EAC]"
- * />
- * ```
- * @remarks
- * - The icons (`ArrowLeft`, `ArrowRight`) are imported from `@mynaui/icons-react`.
- * - The `textColor`, `bgColor`, and `hoverColor` props should use Tailwind CSS classes.
+ * @returns A React button component with the specified properties
  */
 const Button: React.FC<ButtonProps> = ({
   children,
@@ -92,8 +63,9 @@ const Button: React.FC<ButtonProps> = ({
   fontWeight = 400,
 }) => {
   /**
-   * Renders the selected icon based on the icon property.
-   * @returns The corresponding icon component or null if there is no icon.
+   * Function that renders the selected icon
+   * 
+   * @returns The corresponding icon component or null if there is no icon
    */
   const renderIcon = () => {
     if (!icon) return null;
@@ -108,9 +80,6 @@ const Button: React.FC<ButtonProps> = ({
     }
   };
 
-  /**
-   * Font styles applied directly to the button.
-   */
   const fontStyle = {
     fontFamily,
     fontWeight,
