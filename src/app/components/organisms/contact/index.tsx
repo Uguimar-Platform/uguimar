@@ -47,7 +47,7 @@ const ContactSection: React.FC = () => {
             <TextAreaAtom
               className="w-full rounded-xl"
               name="mensaje"
-              placeholder="Escibe tu mensaje"
+              placeholder="Escribe tu mensaje"
               height={100}
             />
           </div>
