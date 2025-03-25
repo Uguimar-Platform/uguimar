@@ -8,12 +8,6 @@ function Courses() {
     <div className=" min-h-screen ">
       <div className="grid grid-cols-3 gap-6 space-x-36 justify-between items-start max-w-7xl mx-auto">
         {/* Left Section: Course Cards */}
-        <div className="col-span-2 ">
-          <div className="grid grid-cols-2 gap-6 col-span-2">
-            {/* First Column */}
-            <div className="space-y-6">
-              <CardCourses
-                courseImage="/Course_Python.webp"
                 alt="course1"
                 courseName="Python"
                 teacher="Juan Pérez"
