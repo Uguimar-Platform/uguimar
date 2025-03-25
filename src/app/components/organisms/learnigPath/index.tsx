@@ -12,7 +12,7 @@ interface LearningPathProps {
 const LearningPathSection: React.FC<LearningPathProps> = ({}) => {
   return (
     <section className="flex flex-col items-center justify-center py-12 px-4 text-center">
-      <div className="flex flex-col items-center justify-center mb-12">
+      <div className="flex flex-col items-center justify-center mb-12 -space-y-6">
         <LabelAtom
           text="Descubre tu ruta de"
           as="h1"

@@ -26,14 +26,15 @@ type FontWeight =
   | "bold"
   | "extrabold"
   | "black";
-
+// Use the same InputType as in the InputAtom component
+type InputType = "text" | "email" | "password" | "number";
 interface InputFieldProps {
   /** Label text to display above the input. */
   label: string;
   /** Name attribute for the input field, useful for form handling. */
   name: string;
   /** The type of the input field (e.g., "text", "email", "password"). */
-  type?: string;
+  type?: InputType;
   /** Placeholder text to display in the input field. */
   placeholder?: string;
   /** Additional Tailwind CSS classes for the label. */

@@ -22,9 +22,10 @@ type FontWeight =
   | "bold"
   | "extrabold"
   | "black";
+type InputType = "text" | "email" | "password" | "number";
 
 interface InputAtomProps {
-  type?: string;
+  type?: InputType;
   placeholder?: string;
   name: string;
   value?: string;
