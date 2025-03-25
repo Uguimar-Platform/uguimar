@@ -27,31 +27,31 @@ const FeatureInstructor : React.FC = () => {
 
         <div className='flex flex-col gap-4 mt-6 w-full'>
           <CarInstructor
-            imageSrc='/Course_Python.webp'
+            imageSrc='/teacher_1.webp'
             textColor='#081F5C'
             title='Lionel Andrés Messi Cuccittini'
-            description='lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh.'
+            description="Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown-"
             className='border border-gray-400 bg-white self-start '
           />
           <CarInstructor
-            imageSrc='/Course_Python.webp'
+            imageSrc='/teacher_2.webp'
             title='Lionel Andrés Messi Cuccittini'
             textColor='#ffffff'
-            description='lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh.'
+            description="Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown-"
             className='border border-gray-400 bg-[#334EAC] self-end'
           />
           <CarInstructor
-            imageSrc='/Course_Python.webp'
+            imageSrc='/teacher_3.webp'
             title='Lionel Andrés Messi Cuccittini'
             textColor='#081F5C'
-            description='lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh.'
+            description="Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown-"
             className='border border-gray-400 bg-white self-start'
           />
           <CarInstructor
-            imageSrc='/Course_Python.webp'
+            imageSrc='/teacher_4.webp'
             title='Lionel Andrés Messi Cuccittini'
             textColor='#ffffff'
-            description='lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla nec purus feugiat, molestie ipsum et, consequat nibh. Nulla nec purus feugiat, molestie ipsum et, consequat nibh.'
+            description="Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown-"
             className='border border-gray-400 bg-[#334EAC] self-end'
           />
         </div>
