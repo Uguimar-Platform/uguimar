@@ -1,21 +1,37 @@
 "use client";
 
-import React from "react";
 import LinkAtom from "../../atoms/links";
 
-/**
- * Main navigation menu component.
- *
- * This component renders a horizontal navigation menu with links
- * to different sections of the application.
- *
- * @returns A navigation component with styled links.
- */
-const NavigationMenu: React.FC = () => {
-  /**
-   * Array of menu items with their labels and corresponding routes.
-   * @type {Array<{label: string, route: string}>}
-   */
+type FontFamily = "Poppins" | "Onest" | "SFProDisplay";
+type FontWeight =
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | "thin"
+  | "extralight"
+  | "light"
+  | "normal"
+  | "regular"
+  | "medium"
+  | "semibold"
+  | "bold"
+  | "extrabold"
+  | "black";
+interface NavigationMenuProps {
+  fontFamily?: FontFamily;
+  fontWeight?: FontWeight;
+}
+
+const NavigationMenu: React.FC<NavigationMenuProps> = ({
+  fontFamily = "Onest",
+  fontWeight = "medium",
+}) => {
   const menuItems = [
     { label: "Inicio", route: "/" },
     { label: "Cursos", route: "/cursos" },
@@ -36,6 +52,8 @@ const NavigationMenu: React.FC = () => {
             label={item.label}
             to={item.route}
             className="text-[15px]"
+            fontFamily={fontFamily}
+            fontWeight={fontWeight}
           />
         </li>
       ))}

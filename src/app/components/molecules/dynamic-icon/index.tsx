@@ -1,5 +1,27 @@
-import { IconCloud } from "../../atoms/icon-cloud";
-import { Label } from "../../atoms/label";
+import { IconCloudAtom } from "../../atoms/icon-cloud";
+import LabelAtom from "../../atoms/label";
+
+type FontFamily = "Poppins" | "Onest" | "SFProDisplay";
+type FontWeight =
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | "thin"
+  | "extralight"
+  | "light"
+  | "normal"
+  | "regular"
+  | "medium"
+  | "semibold"
+  | "bold"
+  | "extrabold"
+  | "black";
 
 /**
  * List of slugs representing technology icons to be displayed.
@@ -52,6 +74,8 @@ interface DynamicIconProps {
   labelColor?: string;
   className?: string;
   labelClassName?: string;
+  fontFamily?: FontFamily;
+  fontWeight?: FontWeight;
 }
 
 /**
@@ -69,6 +93,8 @@ export default function DynamicIcon({
   labelColor = "text-[#081F5C]",
   className = "",
   labelClassName = "text-center max-w-[400px] -mt-8 text-xl leading-6",
+  fontFamily = "SFProDisplay",
+  fontWeight = "medium",
 }: DynamicIconProps) {
   /**
    * Generates image URLs for each slug in the array.
@@ -79,12 +105,14 @@ export default function DynamicIcon({
 
   return (
     <div className={`flex flex-col items-center ${className}`}>
-      <IconCloud images={images} />
-      <Label
+      <IconCloudAtom images={images} />
+      <LabelAtom
         text={labelText}
         as="p"
         textColor={labelColor}
         className={labelClassName}
+        fontFamily={fontFamily}
+        fontWeight={fontWeight}
       />
     </div>
   );

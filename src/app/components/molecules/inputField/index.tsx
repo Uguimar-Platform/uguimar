@@ -2,10 +2,30 @@
 
 import React from "react";
 import InputAtom from "../../atoms/input";
-import { Label } from "../../atoms/label";
+import LabelAtom from "../../atoms/label";
 
 // Define font family type for easier selection
-export type FontFamily = "poppins" | "onest" | "blackmango" | "sfpro" | string;
+export type FontFamily = "Poppins" | "Onest" | "SFProDisplay";
+type FontWeight =
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | "thin"
+  | "extralight"
+  | "light"
+  | "normal"
+  | "regular"
+  | "medium"
+  | "semibold"
+  | "bold"
+  | "extrabold"
+  | "black";
 
 interface InputFieldProps {
   /** Label text to display above the input. */
@@ -31,11 +51,16 @@ interface InputFieldProps {
   /** Inline styles to apply to the input field. */
   style?: React.CSSProperties;
   /** Font weight for the label (e.g., "normal", "bold", "semibold"). */
-  labelFontWeight?: string | number;
+  labelFontWeight?: FontWeight;
   /** Font family for the label (simplified names: "poppins", "onest", "blackmango", "sfpro"). */
   labelFontFamily?: FontFamily;
+  /** Font family for the input */
+  inputFontFamily?: FontFamily;
+  /** Font weight for the input */
+  inputFontWeight?: FontWeight;
+  /** Background color for the input field */
+  colorBG?: string;
 }
-
 /**
  * Component that represents an input field with label and error message.
  * Integrates with Formik for form management.
@@ -55,17 +80,12 @@ const InputField: React.FC<InputFieldProps> = ({
   iconPosition = "left",
   labelPosition = "left",
   style,
-  labelFontWeight,
-  labelFontFamily,
+  labelFontWeight = "medium",
+  labelFontFamily = "SFProDisplay",
+  inputFontFamily = "Poppins",
+  inputFontWeight = "regular",
+  colorBG = "#E7F1FF",
 }) => {
-  // Font family mapping for easy selection
-  const fontFamilyMap: Record<string, string> = {
-    poppins: "Poppins",
-    onest: "Onest",
-    blackmango: "Black Mango",
-    sfpro: "SF Pro Display",
-  };
-
   // Clases para el contenedor del label y el input
   const getContainerClasses = () => {
     return "flex flex-col";
@@ -83,30 +103,27 @@ const InputField: React.FC<InputFieldProps> = ({
         return "self-start";
     }
   };
-  // Estilo para la fuente del label
-  const labelStyle: React.CSSProperties = {
-    fontWeight: labelFontWeight,
-    fontFamily: labelFontFamily
-      ? fontFamilyMap[labelFontFamily] || labelFontFamily
-      : undefined,
-  };
 
   return (
     <div className={`relative mb-7 ${getContainerClasses()} ${className}`}>
-      <Label
+      <LabelAtom
         text={label}
         htmlFor={name}
         icon={icon}
         iconPosition={iconPosition}
+        fontFamily={labelFontFamily}
+        fontWeight={labelFontWeight}
         className={`mb-2 ${getLabelPositionClasses()} ${labelClassName}`}
-        style={labelStyle}
       />
       <InputAtom
         type={type}
         name={name}
         placeholder={placeholder}
-        className={`border px-4 py-2 rounded-md ${inputClassName}`} // Aseguramos que las clases se apliquen
-        style={style} // Pasamos los estilos en línea
+        fontFamily={inputFontFamily}
+        fontWeight={inputFontWeight}
+        colorBG={colorBG}
+        className={`border px-4 py-2 rounded-md ${inputClassName}`}
+        style={style}
       />
     </div>
   );
