@@ -2,8 +2,7 @@
 
 import React from "react";
 import LabelAtom from "../../atoms/label";
-import Button from "../../atoms/button";
-import { CheckWavesSolid } from "@mynaui/icons-react";
+import ButtonAtom from "../../atoms/button";
 
 type FontFamily = "Poppins" | "Onest" | "SFProDisplay";
 type FontWeight =
@@ -35,6 +34,7 @@ interface CardPlanProps {
   features: string[];
   buttonText: string;
   bgColor: string;
+  buttonHoverColor: string;
   labelColor: string;
   textColor: string;
   buttonBgColor: string;
@@ -64,23 +64,15 @@ const CardPlan: React.FC<CardPlanProps> = ({
   labelColor,
   textColor,
   buttonBgColor,
+  buttonHoverColor,
   buttonTextColor,
-  smallLabelFontFamily = "Poppins",
-  smallLabelFontWeight = "medium",
-  titleFontFamily = "SFProDisplay",
-  titleFontWeight = 700,
-  priceFontFamily = "Poppins",
-  priceFontWeight = 600,
-  featuresTitleFontFamily = "Poppins",
-  featuresTitleFontWeight = 700,
-  featuresItemsFontFamily = "Poppins",
-  featuresItemsFontWeight = "medium",
-  buttonFontFamily = "Poppins",
-  buttonFontWeight = 600,
+
+
+  
 }) => {
   return (
     <div
-      className={`${bgColor} rounded-4xl py-12 w-full max-w-[22rem] p-9 flex flex-col gap-4 items-center justify-center`}
+      className={`${bgColor} rounded-4xl py-8 px-8 w-[450px] flex flex-col gap-4 items-center justify-start`}
     >
       <div className="flex justify-center gap-2">
         {imageSrc.map((src, index) => (
@@ -90,65 +82,71 @@ const CardPlan: React.FC<CardPlanProps> = ({
       <LabelAtom
         text={smallLabel}
         textColor={labelColor}
-        className="text-sm"
-        fontFamily={smallLabelFontFamily}
-        fontWeight={smallLabelFontWeight}
+        fontSize={14}
+        fontFamily="SFProDisplay"
+        fontWeight={400}
       />
       <LabelAtom
         text={title}
         as="h2"
-        fontFamily={titleFontFamily}
-        fontWeight={titleFontWeight}
+        fontFamily="Onest"
+        fontWeight={800}
         textColor={textColor}
-        className="text-4xl"
+        fontSize={40}
       />
       <div className="flex items-baseline gap-1 -mt-2">
         <LabelAtom
           text={`S/. ${price}`}
-          fontFamily={priceFontFamily}
-          fontWeight={priceFontWeight}
+          fontFamily="Onest"
+          fontWeight={700}
           textColor={textColor}
-          className="text-4xl"
+          fontSize={40}
         />
-        <span className={`text-sm font-Poppins ${textColor}`}>/Anual</span>
+        <LabelAtom
+          text="/Anual"
+          fontFamily="Poppins"
+          fontWeight={400}
+          fontSize={14}
+          textColor={textColor}
+        />
       </div>
 
       <ul className="flex flex-col gap-2 mt-6">
         <LabelAtom
           text="Beneficios:"
           textColor={textColor}
-          className="flex justify-center text-xl"
-          fontFamily={featuresTitleFontFamily}
-          fontWeight={featuresTitleFontWeight}
+          className="flex justify-center"
+          fontFamily="Poppins"
+          fontWeight={700}
+          fontSize={20}
         />
         {features.map((feature, index) => (
           <li
             key={index}
-            className={`flex items-center leading-tight gap-2.5 text-sm ${textColor}`}
-            style={{
-              fontFamily: featuresItemsFontFamily,
-              fontWeight:
-                featuresItemsFontWeight === "medium"
-                  ? 500
-                  : featuresItemsFontWeight,
-            }}
+            className="flex items-center leading-normal"
           >
-            <CheckWavesSolid className={`${textColor} w-5 h-5 flex-shrink-0`} />
-            <span className="font-['Poppins'] font-medium">{feature}</span>
+            <LabelAtom
+              text={feature}
+              icon="CheckWavesSolid"
+              textColor={textColor}
+              fontFamily="Poppins"
+              fontWeight={600}
+              fontSize={18}
+            />
           </li>
         ))}
       </ul>
 
-      <Button
+      <ButtonAtom
         textColor={buttonTextColor}
         bgColor={buttonBgColor}
-        hoverColor="hover:brightness-75"
-        fontFamily={buttonFontFamily}
-        fontWeight={buttonFontWeight}
-        className="w-[60%] justify-center items-center text-center rounded-4xl py-2 mt-10 text-lg font-semibold"
+        hoverColor={buttonHoverColor}
+        fontFamily="Onest"
+        fontWeight={800}
+        className="w-[60%] justify-center items-center text-center rounded-4xl text-2xl py-2 mt-10"
       >
         {buttonText}
-      </Button>
+      </ButtonAtom>
     </div>
   );
 };

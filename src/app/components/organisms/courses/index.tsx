@@ -22,7 +22,7 @@ function Courses() {
                 category="Programación"
               />
               <CardCourses
-                courseImage="/Course_Python.webp"
+                courseImage="/Course_minecraft.webp"
                 alt="course1"
                 courseName="Python"
                 teacher="Juan Pérez"
@@ -31,7 +31,7 @@ function Courses() {
                 category="Programación"
               />
               <CardCourses
-                courseImage="/Course_Python.webp"
+                courseImage="/Course_PythonKids-.webp"
                 alt="course1"
                 courseName="Python"
                 teacher="Juan Pérez"
@@ -43,7 +43,7 @@ function Courses() {
             {/* Second Column with Offset */}
             <div className="space-y-6 mt-12">
               <CardCourses
-                courseImage="/Course_Python.webp"
+                courseImage="/Course_Html.webp"
                 alt="course1"
                 courseName="Python"
                 teacher="Juan Pérez"
@@ -52,7 +52,7 @@ function Courses() {
                 category="Programación"
               />
               <CardCourses
-                courseImage="/Course_Python.webp"
+                courseImage="/Course_Web.webp"
                 alt="course1"
                 courseName="Python"
                 teacher="Juan Pérez"
@@ -61,7 +61,7 @@ function Courses() {
                 category="Programación"
               />
               <CardCourses
-                courseImage="/Course_Python.webp"
+                courseImage="/Course_DesarrolloWeb.webp"
                 alt="course1"
                 courseName="Python"
                 teacher="Juan Pérez"
