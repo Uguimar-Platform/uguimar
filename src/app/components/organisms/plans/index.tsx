@@ -1,10 +1,11 @@
 import React from "react";
 import CardPlan from "../../molecules/cardPlan";
 import LabelAtom from "../../atoms/label";
+import { Section } from "lucide-react";
 
 function Plans() {
   return (
-    <div className="flex flex-col items-center justify-center p-8">
+    <Section className="flex flex-col items-center justify-center p-8">
         <div className="flex flex-row gap-4 mb-6">
         <LabelAtom
         as="h1"
@@ -99,7 +100,7 @@ function Plans() {
           buttonTextColor="#ffffff"
         />
       </div>
-    </div>
+    </Section>
   );
 }
 
