@@ -18,15 +18,7 @@ export default function Home() {
   ];
   return (
     <div>
-      <DynamicSelectAtom
-        label="Categoría"
-        items={items}
-        value="2"
-        onInputChange={(value) => console.log("Input changed:", value)}
-        onValueChange={(value) => console.log("Value selected:", value)}
-        labelProps={{ className: "custom-label" }}
-        className="w-64"
-      />
+      <InputAtom name="example" placeholder="Escribe algo..." />
     </div>
   );
 }

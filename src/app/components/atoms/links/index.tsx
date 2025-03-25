@@ -5,7 +5,26 @@ import React from "react";
 import * as MynaIcons from "@mynaui/icons-react";
 
 type FontFamily = "Poppins" | "Onest" | "SFProDisplay";
-type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+type FontWeight =
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | "thin"
+  | "extralight"
+  | "light"
+  | "normal"
+  | "regular"
+  | "medium"
+  | "semibold"
+  | "bold"
+  | "extrabold"
+  | "black";
 
 interface LinkAtomProps {
   to: string;

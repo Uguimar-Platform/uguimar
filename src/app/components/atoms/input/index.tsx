@@ -2,13 +2,33 @@
 import React from "react";
 
 type FontFamily = "Poppins" | "Onest" | "SFProDisplay";
-type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+type FontWeight =
+  | 100
+  | 200
+  | 300
+  | 400
+  | 500
+  | 600
+  | 700
+  | 800
+  | 900
+  | "thin"
+  | "extralight"
+  | "light"
+  | "normal"
+  | "regular"
+  | "medium"
+  | "semibold"
+  | "bold"
+  | "extrabold"
+  | "black";
 
 interface InputAtomProps {
   type?: string;
   placeholder?: string;
   name: string;
   value?: string;
+  colorBG?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
   className?: string;
@@ -22,11 +42,12 @@ const InputAtom: React.FC<InputAtomProps> = ({
   placeholder = "",
   name,
   value,
+  colorBG = "#E7F1FF",
   onChange,
   onBlur,
   className = "",
-  fontFamily = "SFProDisplay",
-  fontWeight = 400,
+  fontFamily = "Poppins",
+  fontWeight = "regular",
 }) => {
   return (
     <div className="relative">
@@ -41,6 +62,7 @@ const InputAtom: React.FC<InputAtomProps> = ({
         style={{
           fontFamily: fontFamily,
           fontWeight: fontWeight,
+          backgroundColor: colorBG,
         }}
       />
     </div>
