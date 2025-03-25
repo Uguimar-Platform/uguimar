@@ -53,7 +53,7 @@ function easeOutCubic(t: number): number {
  * @param props.images Optional list of image URLs to be displayed as icons.
  * @returns Canvas component with the interactive icon cloud.
  */
-export function IconCloud({ icons, images }: IconCloudProps) {
+export function IconCloudAtom({ icons, images }: IconCloudProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [iconPositions, setIconPositions] = useState<Icon[]>([]);
   const [rotation, setRotation] = useState({ x: 0, y: 0 });

@@ -1,32 +1,37 @@
 "use client";
 import React from "react";
 
-/**
- * Interface that defines the properties for the ErrorMessage component.
- *
- * @param children The content to be displayed as an error message.
- * @param className Custom CSS classes to style the message.
- */
-interface ErrorMessageProps {
+type FontFamily = "Poppins" | "Onest" | "SFProDisplay";
+type FontWeight = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+
+interface ErrorMessageAtomProps {
   children?: React.ReactNode;
   className?: string;
+  isVisible?: boolean;
+  fontFamily?: FontFamily;
+  fontWeight?: FontWeight;
 }
 
-/**
- * Component that displays an error message.
- * Used to show validation messages or form errors.
- *
- * @param children The content to be displayed as an error message.
- * @param className Custom CSS classes to style the message (default: "text-red-500 text-sm ml-4").
- * @returns The error message component or null if there's no content.
- */
-const ErrorMessage: React.FC<ErrorMessageProps> = ({
+const ErrorMessageAtom: React.FC<ErrorMessageAtomProps> = ({
   children,
-  className = "text-red-500 text-sm ml-4",
+  className = "",
+  isVisible = true,
+  fontFamily = "Poppins",
+  fontWeight = 400,
 }) => {
-  if (!children) return null;
+  if (!children || !isVisible) return null;
 
-  return <span className={className}>{children}</span>;
+  return (
+    <span
+      className={`text-red-500 text-sm ml-4 ${className}`}
+      style={{
+        fontFamily: fontFamily,
+        fontWeight: fontWeight,
+      }}
+    >
+      {children}
+    </span>
+  );
 };
 
-export default ErrorMessage;
+export default ErrorMessageAtom;

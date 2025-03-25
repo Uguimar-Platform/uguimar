@@ -23,10 +23,7 @@ const Header: React.FC = () => {
             className="object-contain"
           />
         </div>
-        <Dropdown
-          options={dropdownOptions}
-          className="bg-white border border-[#334EAC] text-black rounded-full px-4 py-2"
-        />
+        <Dropdown options={dropdownOptions} />
       </div>
       <NavigationMenu />
       <div className="flex gap-4">
