@@ -1,14 +1,14 @@
 "use client";
 import Button from "../../atoms/button/index";
 import LabelAtom from "../../atoms/label";
+import TextAreaAtom from "../../atoms/textarea";
 import InputField from "../../molecules/inputField";
 
 const ContactSection: React.FC = () => {
-
   return (
     <section className="flex flex-col items-center py-10">
       <div className="mb-8">
-      <LabelAtom
+        <LabelAtom
           text="Contacto"
           as="h1"
           fontFamily="SFProDisplay"
@@ -24,33 +24,34 @@ const ContactSection: React.FC = () => {
           <img src="/icon_contact.webp" alt="" />
         </div>
 
-        <form
-          
-          className="flex flex-col gap-4 w-full max-w-lg p-6 rounded-lg space-y-2"
-        >
-       <InputField
-              label="Correo:"
-              name="correo"
-              type="email"
-              placeholder="Email"
-              inputClassName="bg-[#F5F8FF] text-[#202020] rounded-md border border-gray-400 w-full"
-              labelFontFamily="SFProDisplay"
-              labelFontWeight={900}
-              labelClassName="text-lg text-white "
-              labelPosition="left"
-            />
+        <form className="flex flex-col  w-full max-w-lg p-6 rounded-lg space-y-6">
           <InputField
-              label="Mensaje:"
-              name="mensaje"
-              type="textArea"
-              placeholder="Escibe tu mensaje"
-              inputClassName="bg-[#F5F8FF] text-[#202020] rounded-md border border-gray-400 w-full h-32"
-              labelFontFamily="SFProDisplay"
-              labelFontWeight={900}
-              labelClassName="text-lg text-white "
-              labelPosition="left"
+            label="Correo:"
+            name="correo"
+            type="email"
+            placeholder="Email"
+            inputClassName="bg-[#F5F8FF] text-[#202020] rounded-md border border-gray-400 w-full rounded-xl"
+            labelFontFamily="Onest"
+            labelFontWeight="extrabold"
+            labelClassName="text-lg text-white "
+            labelPosition="left"
+          />
+          <div>
+            <LabelAtom
+              fontFamily="Onest"
+              fontWeight="extrabold"
+              text="Contacto"
+              className="mb-1"
+              textColor="#fff"
             />
-       <Button
+            <TextAreaAtom
+              className="w-full rounded-xl"
+              name="mensaje"
+              placeholder="Escibe tu mensaje"
+              height={100}
+            />
+          </div>
+          <Button
             type="submit"
             fontFamily="Poppins"
             fontWeight={600}

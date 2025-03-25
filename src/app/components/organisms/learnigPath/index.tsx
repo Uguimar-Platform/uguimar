@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import InputField from "../../molecules/inputField";
+import TextAreaAtom from "../../atoms/textarea";
 import LabelAtom from "../../atoms/label";
 import ButtonAtom from "../../atoms/button";
 
@@ -35,16 +35,18 @@ const LearningPathSection: React.FC<LearningPathProps> = ({}) => {
 
       <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full max-w-4xl">
         <div className="flex flex-col items-center w-full max-w-xl">
-          <div className="bg-white rounded-xl border border-gray-400 p-6 w-full">
-            <InputField
-              label="Crea tu ruta personalizada"
+          <div className="bg-white rounded-3xl border border-gray-400 p-4 w-full">
+            <LabelAtom
+              text="Crea tu ruta personalizada"
+              fontWeight="bold"
+              className="justify-center mb-2"
+            />
+            <TextAreaAtom
               name="routeName"
               placeholder="Ruta personalizada"
-              inputClassName="bg-[#F5F8FF] text-[#202020] rounded-md border border-gray-400 w-full"
-              labelFontFamily="SFProDisplay"
-              labelFontWeight={800}
-              labelClassName="text-lg"
-              labelPosition="center"
+              colorBG="#E7F1FF"
+              className="w-full border border-[#202020] rounded-xl"
+              maxLength={256}
             />
           </div>
 

@@ -106,7 +106,7 @@ const InputField: React.FC<InputFieldProps> = ({
   };
 
   return (
-    <div className={`relative mb-7 ${getContainerClasses()} ${className}`}>
+    <div className={`relative  ${getContainerClasses()} ${className}`}>
       <LabelAtom
         text={label}
         htmlFor={name}
@@ -114,7 +114,7 @@ const InputField: React.FC<InputFieldProps> = ({
         iconPosition={iconPosition}
         fontFamily={labelFontFamily}
         fontWeight={labelFontWeight}
-        className={`mb-2 ${getLabelPositionClasses()} ${labelClassName}`}
+        className={`mb-1 ${getLabelPositionClasses()} ${labelClassName}`}
       />
       <InputAtom
         type={type}
