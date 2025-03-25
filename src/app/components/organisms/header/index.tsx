@@ -27,10 +27,10 @@ const Header: React.FC = () => {
       </div>
       <NavigationMenu />
       <div className="flex gap-4">
-        <Button
-          bgColor="bg-[#334EAC]"
-          textColor="text-white"
-          hoverColor="hover:bg-[#7096D1]"
+      <Button
+          bgColor="#334EAC"
+          textColor="#FFFFFF"
+          hoverColor="#7096D1"
           className="border border-[#334EAC] rounded-full px-6 py-2"
           fontFamily="Onest"
           fontWeight={600}
@@ -38,9 +38,9 @@ const Header: React.FC = () => {
           Iniciar sesión
         </Button>
         <Button
-          bgColor="bg-[#334EAC]"
-          textColor="text-white"
-          hoverColor="hover:bg-[#7096D1]"
+          bgColor="#334EAC"
+          textColor="#FFFFFF"
+          hoverColor="#7096D1"
           className="rounded-full px-10 py-2"
           fontFamily="Onest"
           fontWeight={600}

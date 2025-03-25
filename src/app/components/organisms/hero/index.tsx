@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { Label } from "../../atoms/label";
-import Button from "../../atoms/button";
+import  LabelAtom  from "../../atoms/label";
+import ButtonAtom from "../../atoms/button";
 
 const Hero: React.FC = () => {
   return (
@@ -9,62 +9,63 @@ const Hero: React.FC = () => {
       <div className="flex flex-row items-center gap-6">
         <div className="max-w-[610px] -mt-22">
           <div className="max-w-2xl">
-            <Label
+            <LabelAtom
               as="h1"
               text="Aprende, crece y"
-              textColor="text-black"
-              font="sfpro"
-              fontWeight={700}
-              className="text-6xl"
+              textColor="000000"
+              fontFamily="SFProDisplay"
+              fontWeight="bold"
+              fontSize={64}
             />
             <div className="flex-grow flex space-x-3">
-              <Label
+              <LabelAtom
                 as="h1"
                 text="destaca"
-                textColor="text-purple"
-                font="sfpro"
+                textColor="#334EAC"
+                fontFamily="SFProDisplay"
                 fontWeight={700}
-                className="text-6xl text-blue-900"
+                fontSize={64}
               />{" "}
-              <Label
+              <LabelAtom
                 as="h1"
                 text="con cursos"
-                textColor="text-black"
-                font="sfpro"
+                textColor="000000"
+                fontFamily="SFProDisplay"
                 fontWeight={700}
-                className="text-6xl"
+                fontSize={64}
               />
             </div>
-            <Label
+            <LabelAtom
               as="h1"
               text=" transformadores"
               textColor="text-black"
-              font="sfpro"
+              fontFamily="SFProDisplay"
               fontWeight={700}
-              className="text-6xl"
+              fontSize={64}
             />
-            <Label
+            <LabelAtom
               as="p"
               text="Tu plataforma de aprendizaje: crece, explora y alcanza tus metas con cursos que transforman."
               textColor="text-gray-600"
-              font="sfpro"
+              fontFamily="SFProDisplay"
               fontWeight={400}
-              className="mt-6 text-2xl text-start mb-12"
+              fontSize={24}
+              className="mt-6  text-start "
             />
           </div>
 
-          <Button
-            bgColor="bg-[#7096D1]"
-            hoverColor="hover:bg-blue-600"
-            textColor="text-white"
+          <ButtonAtom
+            bgColor="#7096D1"
+            hoverColor="#3B82F6"
+            textColor="#FFFFFF"
             fontFamily="Onest"
             fontWeight={600}
             icon="ArrowRight"
             iconPosition="right"
-            className="rounded-full px-8 py-3 text-lg"
+            className="rounded-full px-8 py-3 mt-6 text-lg"
           >
             Empezar gratis
-          </Button>
+          </ButtonAtom>
         </div>
         <div className="">
           <img src="/img_hero1.webp" alt="Hero" className="w-[400px] h-full" />
