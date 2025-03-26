@@ -101,12 +101,20 @@ const FormLogin: React.FC = () => {
                 className="w-full border border-gray-200 rounded-md"
                 fontFamily="Poppins"
               />
-
+               <button
+                type="button"
+                onClick={() => setShowPassword(!showPassword)}
+                className="absolute inset-y-0 right-3 flex items-center text-gray-500"
+              >
+                {showPassword ? <EyeSlash size={20} /> : <Eye size={20} />}
+              </button>
             </div>
+            
             {/* Propiedad para los mensajes de error */}
             {formik.touched.password && formik.errors.password && (
               <p className="text-red-500 text-sm">{formik.errors.password}</p>
             )}
+            
           </div>
 
           {/* Enlace para recuperar contraseña y checkbox para recordar */}
@@ -126,7 +134,7 @@ const FormLogin: React.FC = () => {
               color="#334EAC"
               fontFamily="Poppins"
               fontWeight="regular"
-              className="text-s"
+              className="text-[12px]"
               size="lg"
             />
           </div>
@@ -161,4 +169,4 @@ const FormLogin: React.FC = () => {
   );
 };
 
-export default FormLogin;
+export default FormLogin;
