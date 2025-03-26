@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import InputAtom from '../../atoms/input/index'
 import LabelAtom from '../../atoms/label/index';
 import ButtonAtom from '../../atoms/button/index';
+import {Formik, Form, Field} from 'formik'
 
 type FormCodePassProps = {
     onSubmit: (code: string) => void;
@@ -12,7 +13,7 @@ type FormCodePassProps = {
     styles?: {
       labelColor?: string;
       inputBgColor?: string;
-      fontFamily?: 'Poppins' | 'Onest' | 'SFProDisplay';
+      fontFamily?: 'Poppins' | 'Onest' | 'SFProDisplay' | 'BlackMango';
       buttonBgColor?: string;
       buttonTextColor?: string;
     };
@@ -49,53 +50,104 @@ type FormCodePassProps = {
     };
   
     return (
-      <form onSubmit={handleSubmit} className="w-full max-w-md mx-auto flex flex-col items-center gap-6">
-        <div className="text-center space-y-1">
-          <h1 className="text-3xl font-bold text-[#2A3693] font-Onest">Restablecer contraseña</h1>
-          <p className="text-[#1C1C1C] text-base font-normal font-SFProDisplay">
-            Se envió un correo a <strong>{email}</strong>, introduce tu código
-          </p>
-        </div>
-  
-        <div className="w-full border border-[#2A3693] rounded-2xl p-6 flex flex-col items-center gap-4">
-          <LabelAtom
-            text="Código de seguridad"
-            fontWeight="bold"
-            fontSize="18px"
-            textColor={styles.labelColor || '#2A3693'}
-            fontFamily={styles.fontFamily || 'Onest'}
-          />
-  
-          <div className="flex justify-center gap-3">
-            {code.map((val, i) => (
-              <InputAtom
-                key={i}
-                name={`code-${i}`}
-                type="text"
-                value={val}
-                onChange={(e) => handleChange(i, e.target.value)}
-                onBlur={() => {}}
-                className="w-12 h-14 text-center text-xl border border-[#2A3693] focus:ring-2 focus:ring-[#2A3693]"
-                colorBG={styles.inputBgColor || '#E7F1FF'}
-                fontFamily={styles.fontFamily || 'Poppins'}
-                fontWeight="medium"
-                style={{ borderRadius: '12px' }}
-                placeholder=""
-              />
-            ))}
-          </div>
-  
+      <div className="flex justify-center items-center min-h-screen bg-[#E7F1FF] p-4">
+      <div className="bg-[#F9FCFF] w-[1350px] h-[550px] rounded-2xl shadow-lg p-20 relative">
+        <Formik
+          initialValues={{ code: '' }}
+          onSubmit={(values) => console.log(values)}
+        >
+          {({ handleSubmit }) => (
+        <form onSubmit={handleSubmit} className="w-full w-[570px] mx-auto flex flex-col items-center gap-6">
           <ButtonAtom
-            className="w-full py-3 text-base font-semibold rounded-lg"
-            bgColor={styles.buttonBgColor || '#2A3693'}
-            textColor={styles.buttonTextColor || '#ffffff'}
-            type="submit"
+            className="absolute top-8 left-8 self-start px-4 py-2 border border-[#2A3693] rounded-lg text-[#2A3693] font-medium"
+            bgColor={styles.buttonBgColor || '#F9FCFF'}
+            textColor={styles.buttonTextColor || '#2A3693'}
+            icon="ArrowLeft"
+            iconPosition="left"
           >
-            Confirmar
+            Volver
           </ButtonAtom>
-        </div>
-      </form>
-    );
+
+          <div className="text-center">
+            <LabelAtom
+              className=" mb-0"
+              as="h2"
+              text="Restablecer contraseña"
+              fontSize={40}
+              fontWeight={600}
+              textColor={styles.labelColor || '#334EAC'}
+              fontFamily={styles.fontFamily || 'BlackMango'}
+            />
+          </div>
+
+          <div className="text-base text-center flex items-center flex-wrap gap-1 mb-6 -mt-6">
+            <LabelAtom
+              fontSize={17}
+              text="Se envió un correo a"
+              fontWeight="normal"
+              textColor='#081F5C'
+              fontFamily='Poppins'
+            />
+            <LabelAtom
+              className="font-semibold"
+              fontSize={17}
+              text={`${email},`}
+              textColor='#081F5C'
+              fontFamily='Poppins'
+            />
+            <LabelAtom
+              fontSize={17}
+              text="introduce tu código"
+              fontWeight="normal"
+              textColor='#081F5C'
+              fontFamily='Poppins'
+            />
+          </div>
+    
+          <div className="w-[448px] border border-[#2A3693] rounded-2xl p-6 flex flex-col items-center gap-4">
+            <LabelAtom
+              text="Código de seguridad"
+              fontWeight="bold"
+              fontSize="18px"
+              textColor={styles.labelColor || '#2A3693'}
+              fontFamily={styles.fontFamily || 'Poppins'}
+            />
+    
+            <div className="flex justify-center gap-3">
+              {code.map((val, i) => (
+                <InputAtom
+                  key={i}
+                  name={`code-${i}`}
+                  type="text"
+                  value={val}
+                  onChange={(e) => handleChange(i, e.target.value)}
+                  onBlur={() => {}}
+                  className="w-12 h-14 text-center text-xl border border-[#2A3693] focus:ring-2 focus:ring-[#2A3693]"
+                  colorBG={styles.inputBgColor || '#E7F1FF'}
+                  fontFamily={styles.fontFamily || 'Poppins'}
+                  fontWeight="medium"
+                  style={{ borderRadius: '12px' }}
+                  placeholder=""
+                />
+              ))}
+            </div>
+    
+            <ButtonAtom
+              className="w-full h-12 flex items-center justify-center text-base font-semibold rounded-lg"
+              bgColor={styles.buttonBgColor || '#2A3693'}
+              textColor={styles.buttonTextColor || '#ffffff'}
+              type="submit"
+            >
+              Confirmar
+            </ButtonAtom>
+
+          </div>
+        </form>
+      )}
+      </Formik>
+    </div>
+    </div>
+  );
   };
   
   export default FormCodePass;
