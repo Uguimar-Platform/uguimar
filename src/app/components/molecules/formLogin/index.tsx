@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import InputAtom from "../../atoms/input";
 import ButtonAtom from "../../atoms/button";
 import CheckboxAtom from "../../atoms/checkbox";
@@ -9,13 +11,30 @@ import LinkAtom from "../../atoms/links";
 import { Eye, EyeSlash, Lock, User } from "@mynaui/icons-react";
 
 const FormLogin: React.FC = () => {
-  const [password, setPassword] = useState(""); // Estado para la contraseña
   const [showPassword, setShowPassword] = useState(false); // Estado para mostrar/ocultar contraseña
 
-  // Función para alternar la visibilidad de la contraseña
-  const togglePasswordVisibility = () => {
-    setShowPassword(!showPassword);
-  };
+  //Implemente el yup para validar los correos y contraseñas
+  const validationSchema = Yup.object({
+    email: Yup.string()
+      .email("El correo electrónico es inválido")
+      .required("El correo es obligatorio"),
+    password: Yup.string()
+      .min(6, "La contraseña debe tener al menos 6 caracteres")
+      .required("La contraseña es obligatoria"),
+  });
+
+  //Declaramos formik
+  const formik = useFormik({
+    initialValues: {
+      email: "",
+      password: "",
+      rememberPassword: false,
+    },
+    validationSchema,
+    onSubmit: (values) => {
+      console.log("Formulario enviado con:", values);
+    },
+  });
 
   return (
     <div className="w-full max-w-md mx-auto">
@@ -30,7 +49,7 @@ const FormLogin: React.FC = () => {
       />
 
       <div className="bg-white rounded-3xl p-8 border border-blue-200 shadow-sm">
-        <form className="space-y-6">
+        <form onSubmit={formik.handleSubmit} className="space-y-6">
           {/* Campo de usuario/correo electrónico */}
           <div className="space-y-2">
             <LabelAtom
@@ -46,10 +65,17 @@ const FormLogin: React.FC = () => {
               type="text"
               placeholder="you@email.com"
               name="email"
+              value={formik.values.email}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
               colorBG="#F0F7FF"
               className="w-full border border-gray-200 rounded-md"
               fontFamily="Poppins"
             />
+            {/* Propiedad para los mensajes de error */}
+            {formik.touched.email && formik.errors.email && (
+              <p className="text-red-500 text-sm">{formik.errors.email}</p>
+            )}
           </div>
 
           {/* Campo de contraseña */}
@@ -68,21 +94,19 @@ const FormLogin: React.FC = () => {
                 type={showPassword ? "text" : "password"}
                 placeholder="Ingresa tu contraseña"
                 name="password"
+                value={formik.values.password}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
                 colorBG="#F0F7FF"
-                onChange={(e) => setPassword(e.target.value)} // Se actualiza el estado
-                className="w-full border border-gray-200 rounded-md pr-10"
+                className="w-full border border-gray-200 rounded-md"
                 fontFamily="Poppins"
               />
-              {password && ( // Solo se muestra el botón si hay texto en el input
-                <button
-                  type="button"
-                  onClick={togglePasswordVisibility}
-                  className="absolute inset-y-0 right-3 flex items-center"
-                >
-                  {showPassword ? <EyeSlash size={20} color="#334EAC" /> : <Eye size={20} color="#334EAC" />}
-                </button>
-              )}
+
             </div>
+            {/* Propiedad para los mensajes de error */}
+            {formik.touched.password && formik.errors.password && (
+              <p className="text-red-500 text-sm">{formik.errors.password}</p>
+            )}
           </div>
 
           {/* Enlace para recuperar contraseña y checkbox para recordar */}
@@ -97,10 +121,13 @@ const FormLogin: React.FC = () => {
             <CheckboxAtom
               label="Recordar la contraseña"
               name="rememberPassword"
+              checked={formik.values.rememberPassword}
+              onChange={formik.handleChange}
               color="#334EAC"
               fontFamily="Poppins"
               fontWeight="regular"
               className="text-s"
+              size="lg"
             />
           </div>
 
@@ -113,6 +140,7 @@ const FormLogin: React.FC = () => {
               className="w-1/2 py-3 rounded-full border border-[#334EAC] text-center flex justify-center"
               fontFamily="Poppins"
               fontWeight="semibold"
+              disabled={formik.isSubmitting}
             >
               Crea tu cuenta
             </ButtonAtom>
@@ -124,7 +152,7 @@ const FormLogin: React.FC = () => {
               fontFamily="Poppins"
               fontWeight="semibold"
             >
-              Acceder
+              {formik.isSubmitting ? "Accediendo" : "Acceder"}
             </ButtonAtom>
           </div>
         </form>
