@@ -22,7 +22,7 @@ function FrequentQuestions() {
             fontSize={20}
           />
         </div>
-        <img src="/img_FQ.webp" className="" alt="" />
+        <img src="/img_FQ.webp" className="mx-auto mt-5" alt="" />
       </div>
       <div>
         <Accordion

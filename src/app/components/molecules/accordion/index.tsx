@@ -79,7 +79,6 @@ export const Accordion: React.FC<AccordionProps> = ({
 
   return (
     <div className={`w-full rounded-lg overflow-hidden ${className}`}>
-      {/* Cabecera con botón de alternar */}
       <div
         onClick={toggleAccordion}
         onKeyDown={handleKeyDown}
@@ -98,9 +97,8 @@ export const Accordion: React.FC<AccordionProps> = ({
         />
       </div>
 
-      {/* Contenedor del contenido con padding para alinear con el título */}
       <div
-        className={`pl-6 overflow-hidden transition-all duration-300 ease-in-out ${
+        className={`pl-6 overflow-hidden transition-all duration-600 ease-in-out ${
           isExpanded ? "max-h-96" : "max-h-0"
         }`}
       >
