@@ -27,7 +27,7 @@ type FontWeight =
   | "extrabold"
   | "black";
 // Use the same InputType as in the InputAtom component
-type InputType = "text" | "email" | "password" | "number";
+type InputType = "text" | "email" | "password" | "number" | "date";
 interface InputFieldProps {
   /** Label text to display above the input. */
   label: string;
