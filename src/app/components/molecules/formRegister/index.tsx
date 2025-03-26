@@ -18,12 +18,13 @@ const FormRegister = () => {
         console.log("Valores del formulario:", values);
       }}
     >
-      <Form className="grid grid-cols-2 gap-4 p-6 bg-white border-2 border-[#334EAC] rounded-md m-3 w-[500px]">
+      <Form className="grid grid-cols-2 gap-4 p-6 bg-white border-1 border-[#334EAC] rounded-xl m-3 w-[500px]">
         <InputField
           className="col-span-2"
           inputClassName="w-full"
           icon="User"
           label="Nombre de usuario"
+          labelClassName="text-[#334EAC]"
           name="user"
           type="text"
           placeholder="username"
@@ -32,6 +33,7 @@ const FormRegister = () => {
         <InputField
           className="col-span-1"
           inputClassName="w-full"
+          labelClassName="text-[#334EAC]"
           label="Nombres:"
           name="nombres"
           type="text"
@@ -41,6 +43,7 @@ const FormRegister = () => {
         <InputField
           className="col-span-1"
           inputClassName="w-full"
+          labelClassName="text-[#334EAC]"
           label="Apellidos:"
           name="apellidos"
           type="text"
@@ -50,6 +53,7 @@ const FormRegister = () => {
         <InputField
           className="col-span-2"
           inputClassName="w-full"
+          labelClassName="text-[#334EAC]"
           icon="Envelope"
           label="Correo electrónico"
           name="correo"
@@ -59,7 +63,8 @@ const FormRegister = () => {
         />
         <InputField
           className="col-span-2"
-          inputClassName="w-full"
+          inputClassName="w-full text-[#8a8a8a]"
+          labelClassName="text-[#334EAC]"
           icon="Calendar"
           label="Fecha de nacimiento"
           name="fechaNacimiento"
@@ -70,6 +75,7 @@ const FormRegister = () => {
         <InputField
           className="col-span-2"
           inputClassName="w-full"
+          labelClassName="text-[#334EAC]"
           icon="Lock"
           label="Contraseña"
           name="contrasena"
@@ -80,6 +86,7 @@ const FormRegister = () => {
         <InputField
           className="col-span-2"
           inputClassName="w-full"
+          labelClassName="text-[#334EAC]"
           icon="Lock"
           label="Confirmar contraseña"
           name="confContrasena"
