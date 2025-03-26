@@ -36,23 +36,25 @@ const FormConfirmMail = () => {
         }
     };
 
+    const inputsCode = code.map((num, index) => (
+        <InputAtom
+            key={index}
+            name={`code-input-${index}`}
+            type="text"
+            value={num}
+            onChange={(e) => handleChange(index, e.target.value)}
+            className={`w-12 h-15 text-center text-xl font-semibold border-2 rounded-md bg-blue-100 focus:outline-none focus:border-blue-500 ${
+                error && num === "" ? "border-red-500" : "border-[#334EAC]"
+            }`}
+        />
+    ));
+    
     return (
         <div className="flex flex-col items-center p-6 border border-[#334EAC] rounded-2xl max-w-sm mx-auto bg-white">
             <h2 className="text-lg font-bold text-[#334EAC] mb-4">Código de seguridad</h2>
             <form onSubmit={handleSubmit} className="w-full flex flex-col items-center">
                 <div className="flex gap-1 mb-5">
-                    {code.map((num, index) => (
-                        <InputAtom
-                            key={index}
-                            name={`code-input-${index}`}
-                            type="text"
-                            value={num}
-                            onChange={(e) => handleChange(index, e.target.value)}
-                            className={`w-12 h-15 text-center text-xl font-semibold border-2 rounded-md bg-blue-100 focus:outline-none focus:border-blue-500 ${
-                                error && num === "" ? "border-red-500" : "border-[#334EAC]"
-                            }`}
-                        />
-                    ))}
+                    {inputsCode}
                 </div>
                 <ButtonAtom
                     type="submit"
