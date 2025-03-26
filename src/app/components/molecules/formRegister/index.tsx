@@ -1,8 +1,13 @@
+import { useState } from "react";
 import InputField from "../../molecules/inputField";
 import ButtonAtom from "../../atoms/button";
 import { Form, Formik } from "formik";
+import { Eye, EyeSlash } from "@mynaui/icons-react";
 
 const FormRegister = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   return (
     <Formik
       initialValues={{
@@ -72,28 +77,50 @@ const FormRegister = () => {
           placeholder="dd/mm/yyyy"
           labelPosition="left"
         />
-        <InputField
-          className="col-span-2"
-          inputClassName="w-full"
-          labelClassName="text-[#334EAC]"
-          icon="Lock"
-          label="Contraseña"
-          name="contrasena"
-          type="password"
-          placeholder="********"
-          labelPosition="left"
-        />
-        <InputField
-          className="col-span-2"
-          inputClassName="w-full"
-          labelClassName="text-[#334EAC]"
-          icon="Lock"
-          label="Confirmar contraseña"
-          name="confContrasena"
-          type="password"
-          placeholder="********"
-          labelPosition="left"
-        />
+        <div className="col-span-2 relative">
+          <InputField
+            inputClassName="w-full pr-10" // Espacio para el ícono
+            labelClassName="text-[#334EAC]"
+            icon="Lock"
+            label="Contraseña"
+            name="contrasena"
+            type={showPassword ? "text" : "password"}
+            placeholder="********"
+            labelPosition="left"
+          />
+          <ButtonAtom
+            type="button"
+            className="absolute right-2 top-[70%] transform -translate-y-1/2 p-0 bg-transparent"
+            onClick={() => setShowPassword(!showPassword)}
+            bgColor="transparent"
+            textColor="#334EAC"
+            hoverColor="transparent"
+          >
+            {showPassword ? <Eye/> : <EyeSlash />}
+          </ButtonAtom>
+        </div>
+        <div className="col-span-2 relative">
+          <InputField
+            inputClassName="w-full pr-10" // Espacio para el ícono
+            labelClassName="text-[#334EAC]"
+            icon="Lock"
+            label="Confirmar contraseña"
+            name="confContrasena"
+            type={showConfirmPassword ? "text" : "password"}
+            placeholder="********"
+            labelPosition="left"
+          />
+          <ButtonAtom
+            type="button"
+            className="absolute right-2 top-[70%] transform -translate-y-1/2 p-0 bg-transparent"
+            onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+            bgColor="transparent"
+            textColor="#334EAC"
+            hoverColor="transparent"
+          >
+            {showConfirmPassword ? <Eye /> : <EyeSlash/>}
+          </ButtonAtom>
+        </div>
         <ButtonAtom
           type="submit"
           fontFamily="Poppins"
