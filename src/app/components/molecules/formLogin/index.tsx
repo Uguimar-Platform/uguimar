@@ -1,30 +1,30 @@
 "use client";
 
 import { useState } from "react";
-import { Formik } from "formik";
+import { Formik, Form } from "formik";
 import ButtonAtom from "../../atoms/button";
 import CheckboxAtom from "../../atoms/checkbox";
 import LabelAtom from "../../atoms/label";
 import LinkAtom from "../../atoms/links";
 import InputField from "../../molecules/inputField";
-import { Eye, EyeSlash, Lock, User } from "@mynaui/icons-react";
+import { Eye, EyeSlash} from "@mynaui/icons-react";
 
 const FormLogin: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="w-full max-w-md mx-auto">
+    <div className="max-w-[450px] mx-auto  w-auto">
       <LabelAtom
         text="¡Bienvenido!"
         as="h1"
         textColor="#334EAC"
-        className="ml-18 mb-7"
+        className="flex justify-center py-4"
         fontFamily="SFProDisplay"
         fontWeight="bold"
         fontSize={50}
       />
 
-      <div className="bg-white rounded-3xl p-8 border border-gray-200 shadow-sm">
+      <div className="bg-white rounded-3xl p-4 border border-gray-200 shadow-sm">
         <Formik
           initialValues={{
             email: "",
@@ -35,19 +35,19 @@ const FormLogin: React.FC = () => {
             console.log("Formulario enviado con:", values);
           }}
         >
-          {({ handleChange, handleBlur, handleSubmit, values }) => (
-            <form onSubmit={handleSubmit} className="space-y-6">
+          {({ handleChange, values }) => (
+            <Form className="w-full space-y-8">
               <InputField
                 label="Usuario/Correo electrónico"
                 name="email"
                 type="text"
                 placeholder="you@email.com"
-                icon={<User size={20} color="#334EAC" />}
+                icon="User"
                 labelFontFamily="Poppins"
                 inputFontFamily="Poppins"
                 colorBG="#F0F7FF"
                 labelClassName="text-[#334EAC]"
-                inputClassName="w-full  text border border-gray-200 rounded-md"
+                inputClassName="w-full text border border-gray-200 rounded-md"
               />
 
               <div className="relative">
@@ -56,7 +56,7 @@ const FormLogin: React.FC = () => {
                   name="password"
                   type={showPassword ? "text" : "password"}
                   placeholder="••••••••"
-                  icon={<Lock size={20} color="#334EAC" />}
+                  icon="Lock"
                   labelFontFamily="Poppins"
                   inputFontFamily="Poppins"
                   colorBG="#F0F7FF"
@@ -71,15 +71,15 @@ const FormLogin: React.FC = () => {
                   onClick={() => setShowPassword(!showPassword)}
                   className="absolute inset-y-0 top-7 right-0 flex items-center bg-transparent text-blue-600"
                 >
-                  {showPassword ? <EyeSlash size={20} /> : <Eye size={20} />}
+                  {showPassword ? <Eye /> : <EyeSlash />}
                 </ButtonAtom>
               </div>
 
-              <div className="flex justify-between items-center">
+              <div className="flex items-center w-full gap-x-2">
                 <LinkAtom
                   to="/forgot-password"
                   label="¿Has olvidado tu contraseña?"
-                  className="text-[#334EAC] text-xs hover:underline"
+                  className="text-[#334EAC] text-xs hover:underline flex-grow"
                   fontFamily="Poppins"
                   fontWeight="regular"
                 />
@@ -91,7 +91,7 @@ const FormLogin: React.FC = () => {
                   color="#334EAC"
                   fontFamily="Poppins"
                   fontWeight="regular"
-                  className="text-[12px]"
+                  className="text-[12px] whitespace-nowrap"
                   size="md"
                 />
               </div>
@@ -118,7 +118,7 @@ const FormLogin: React.FC = () => {
                   Acceder
                 </ButtonAtom>
               </div>
-            </form>
+            </Form>
           )}
         </Formik>
       </div>
