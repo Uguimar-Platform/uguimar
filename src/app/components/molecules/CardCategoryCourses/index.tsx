@@ -43,13 +43,13 @@ const CardCategoryCourses: React.FC<CardCategoryCoursesProps> = ({
         fontSize={20}
       />
       <img
-        className="w-30 mx-auto m-6 justify-center"
+        className="w-35 mx-auto m-6 justify-center mt-12"
         src={categorycourseimage}
         alt={`${course}.webp`}
       />
-      <div className="flex justify-center">
+      <div className="flex justify-center mt-10">
         <Button
-          className="bg-[#334EAC] text-white px-16 py-2 rounded-full mt-4 text-[20px]"
+          className="bg-[#334EAC] text-white px-14 py-1 rounded-full mt-4 text-[20px]"
           fontFamily="Onest"
           fontWeight={800}
           hoverColor="#263a7e"
