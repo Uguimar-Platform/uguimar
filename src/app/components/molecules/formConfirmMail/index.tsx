@@ -5,11 +5,6 @@ import InputAtom from "../../atoms/input";
 import LabelAtom from "../../atoms/label";
 import { Formik, Form } from "formik";
 
-export interface FormConfirmProps {
-  title: string;
-  textDescription: string;
-}
-
 const FormConfirmMail = () => {
   // State to store the security code (an array of six empty strings)
   const [code] = useState<string[]>(new Array(6).fill(""));
