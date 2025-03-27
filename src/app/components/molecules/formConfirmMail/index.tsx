@@ -14,21 +14,6 @@ const FormConfirmMail = () => {
   // State to store the security code (an array of six empty strings)
   const [code] = useState<string[]>(new Array(6).fill(""));
 
-  const inputsCode = code.map((num, index) => (
-    <InputAtom
-      key={index}
-      name={`code-input-${index}`}
-      type="text"
-      value={num}
-      className={`w-14 h-16 
-        text-center text-xl 
-        font-semibold border-1 
-        rounded-md bg-blue-100 
-        focus:outline-none 
-        border-[#334EAC]`}
-    />
-  ));
-
   return (
     <div className="flex flex-col items-center justify-center">
       <LabelAtom
