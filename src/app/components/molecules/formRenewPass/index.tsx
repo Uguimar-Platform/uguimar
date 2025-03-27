@@ -4,14 +4,14 @@ import ButtonAtom from "../../atoms/button";
 import InputField from "../inputField";
 import { Formik, Form } from "formik";
 import { useState } from "react";
-import { Eye, EyeSlash, Lock, User } from "@mynaui/icons-react";
+import { Eye, EyeSlash } from "@mynaui/icons-react";
 
 const PasswordReset = () => {
   const [showPassword1, setShowPassword1] = useState(false);
   const [showPassword2, setShowPassword2] = useState(false);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-white">
+    <div className="flex flex-col items-center justify-center min-h-screen">
       <div className="p-8 rounded-2xl w-full max-w-2xl">
         <div className="flex flex-col items-center mb-6">
           <img
@@ -28,11 +28,11 @@ const PasswordReset = () => {
           />
 
           <LabelAtom
-            fontFamily="Onest"
+            fontFamily="Poppins"
             fontSize={18}
             fontWeight={300}
             textColor="#081F5C"
-            text="Tu identidad fue verificada!, ingresa tu nueva contraseña"
+            text="¡Tu identidad fue verificada!, ingresa tu nueva contraseña"
           />
         </div>
         <Formik
@@ -43,10 +43,10 @@ const PasswordReset = () => {
         >
           {() => (
             <Form className="space-y-4">
-              <div className="py-6 px-8 rounded-2xl border border-[#334EAC] bg-white max-w-md w-full mx-auto">
+              <div className="py-6 px-8 rounded-2xl border border-[#334EAC] max-w-md w-full mx-auto bg-white">
                 <div className="relative">
                   <InputField
-                    icon={<User size={20} color="#334EAC" />}
+                    icon="Envelope"
                     iconPosition="left"
                     label="Nueva contraseña"
                     labelClassName="!text-[#334EAC]"
@@ -66,12 +66,12 @@ const PasswordReset = () => {
                     onClick={() => setShowPassword1(!showPassword1)}
                     className="absolute inset-y-0 top-7 right-0 flex items-center bg-transparent text-blue-600"
                   >
-                    {showPassword1 ? <EyeSlash size={20} /> : <Eye size={20} />}
+                    {showPassword1 ? <Eye size={20} /> : <EyeSlash size={20} />}
                   </ButtonAtom>
                 </div>
                 <div className="relative">
                   <InputField
-                    icon={<User size={20} color="#334EAC" />}
+                    icon="Envelope"
                     label="Confirmar contraseña"
                     labelClassName="text-[#334EAC]"
                     labelFontFamily="Poppins"
@@ -90,7 +90,7 @@ const PasswordReset = () => {
                     onClick={() => setShowPassword2(!showPassword2)}
                     className="absolute inset-y-0 top-7 right-0 flex items-center bg-transparent text-blue-600"
                   >
-                    {showPassword2 ? <EyeSlash size={20} /> : <Eye size={20} />}
+                    {showPassword2 ? <Eye size={20} /> : <EyeSlash size={20} />}
                   </ButtonAtom>
                 </div>
                 <ButtonAtom
