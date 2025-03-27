@@ -4,148 +4,96 @@ import React, { useState } from 'react';
 import InputAtom from '../../atoms/input/index'
 import LabelAtom from '../../atoms/label/index';
 import ButtonAtom from '../../atoms/button/index';
-import {Formik, Form, Field} from 'formik'
+import {Formik, Form} from 'formik'
 
 type FormCodePassProps = {
     onSubmit: (code: string) => void;
     email: string;
     inputLength?: number;
-    styles?: {
-      labelColor?: string;
-      inputBgColor?: string;
-      fontFamily?: 'Poppins' | 'Onest' | 'SFProDisplay' | 'BlackMango';
-      buttonBgColor?: string;
-      buttonTextColor?: string;
-    };
   };
   
   const FormCodePass: React.FC<FormCodePassProps> = ({
     onSubmit,
     email,
     inputLength = 6,
-    styles = {},
   }) => {
-    const [code, setCode] = useState<string[]>(Array(inputLength).fill(''));
-  
-    const handleChange = (index: number, value: string) => {
-      if (value.length > 1) return;
-      const newCode = [...code];
-      newCode[index] = value;
-      setCode(newCode);
-  
-      const next = document.getElementById(`code-${index + 1}`);
-      if (value && next) (next as HTMLInputElement).focus();
-    };
-  
-    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>, index: number) => {
-      if (e.key === 'Backspace' && !code[index] && index > 0) {
-        const prev = document.getElementById(`code-${index - 1}`);
-        if (prev) (prev as HTMLInputElement).focus();
-      }
-    };
-  
-    const handleSubmit = (e: React.FormEvent) => {
-      e.preventDefault();
-      onSubmit(code.join(''));
-    };
+    
+    const [code] = useState<string[]>(new Array(inputLength).fill(''));
   
     return (
-      <div className="flex justify-center items-center min-h-screen bg-[#E7F1FF] p-4">
-      <div className="bg-[#F9FCFF] w-[1350px] h-[550px] rounded-2xl shadow-lg p-20 relative">
-        <Formik
-          initialValues={{ code: '' }}
-          onSubmit={(values) => console.log(values)}
-        >
-          {({ handleSubmit }) => (
-        <form onSubmit={handleSubmit} className="w-full w-[570px] mx-auto flex flex-col items-center gap-6">
-          <ButtonAtom
-            className="absolute top-8 left-8 self-start px-4 py-2 border border-[#2A3693] rounded-lg text-[#2A3693] font-medium"
-            bgColor={styles.buttonBgColor || '#F9FCFF'}
-            textColor={styles.buttonTextColor || '#2A3693'}
-            icon="ArrowLeft"
-            iconPosition="left"
-          >
-            Volver
-          </ButtonAtom>
+      <div className="flex flex-col items-center justify-center">
+        <LabelAtom
+          className="py-2"
+          as="h2"
+          text="Restablecer contraseña"
+          fontSize={40}
+          fontWeight={800}
+          textColor="#334EAC"
+          fontFamily="Poppins"
+        />
 
-          <div className="text-center">
-            <LabelAtom
-              className=" mb-0"
-              as="h2"
-              text="Restablecer contraseña"
-              fontSize={40}
-              fontWeight={600}
-              textColor={styles.labelColor || '#334EAC'}
-              fontFamily={styles.fontFamily || 'BlackMango'}
-            />
-          </div>
+      <div className="text-center flex items-center flex-wrap gap-1 mb-6">
+        <LabelAtom  
+          as="p"
+          fontSize={18}
+          text="Se envió un correo a"
+          fontWeight={300}
+          textColor='#081F5C'
+          fontFamily='Poppins'
+        />
+        <LabelAtom
+          as="p"
+          fontSize={18}
+          text={`${email},`}
+          fontWeight={600}
+          textColor='#081F5C'
+          fontFamily='Poppins'
+        />
+        <LabelAtom
+          as="p"
+          fontSize={18}
+          text="introduce tu código"
+          fontWeight={300}
+          textColor='#081F5C'
+          fontFamily='Poppins'
+        />
+      </div>
+      
+      <div className="flex flex-col items-center py-6 px-8  border border-[#334EAC] rounded-[25px] max-w-sm mx-auto bg-white box-content">
+        <LabelAtom
+          className="mb-4"
+          as="h3"
+          text="Código de seguridad"
+          fontWeight={600}
+          fontSize={20}
+          textColor="#334EAC"
+          fontFamily="Poppins"
+        />
 
-          <div className="text-base text-center flex items-center flex-wrap gap-1 mb-6 -mt-6">
-            <LabelAtom
-              fontSize={17}
-              text="Se envió un correo a"
-              fontWeight="normal"
-              textColor='#081F5C'
-              fontFamily='Poppins'
-            />
-            <LabelAtom
-              className="font-semibold"
-              fontSize={17}
-              text={`${email},`}
-              textColor='#081F5C'
-              fontFamily='Poppins'
-            />
-            <LabelAtom
-              fontSize={17}
-              text="introduce tu código"
-              fontWeight="normal"
-              textColor='#081F5C'
-              fontFamily='Poppins'
-            />
-          </div>
-    
-          <div className="w-[448px] border border-[#2A3693] rounded-2xl p-6 flex flex-col items-center gap-4">
-            <LabelAtom
-              text="Código de seguridad"
-              fontWeight="bold"
-              fontSize="18px"
-              textColor={styles.labelColor || '#2A3693'}
-              fontFamily={styles.fontFamily || 'Poppins'}
-            />
-    
-            <div className="flex justify-center gap-3">
+        <Formik initialValues={{ code: "" }} onSubmit={(values) => {}}>
+          <Form className="w-full flex flex-col items-center">
+            <div className="flex gap-2 mb-5">
               {code.map((val, i) => (
                 <InputAtom
                   key={i}
-                  name={`code-${i}`}
+                  name={`code-input-${i}`}
                   type="text"
                   value={val}
-                  onChange={(e) => handleChange(i, e.target.value)}
-                  onBlur={() => {}}
-                  className="w-12 h-14 text-center text-xl border border-[#2A3693] focus:ring-2 focus:ring-[#2A3693]"
-                  colorBG={styles.inputBgColor || '#E7F1FF'}
-                  fontFamily={styles.fontFamily || 'Poppins'}
-                  fontWeight="medium"
-                  style={{ borderRadius: '12px' }}
-                  placeholder=""
+                  className={"w-14 h-16 text-center text-xl font-semibold border-1 border-[#334EAC] focus:ring-2 focus:ring-[#334EAC]"}
+                  colorBG='#E7F1FF'
+                  fontFamily='Poppins'
                 />
               ))}
             </div>
-    
             <ButtonAtom
-              className="w-full h-12 flex items-center justify-center text-base font-semibold rounded-lg"
-              bgColor={styles.buttonBgColor || '#2A3693'}
-              textColor={styles.buttonTextColor || '#ffffff'}
+              className="w-full justify-center rounded-md"
               type="submit"
             >
               Confirmar
             </ButtonAtom>
-
-          </div>
-        </form>
-      )}
-      </Formik>
-    </div>
+          </Form>
+        </Formik>
+      </div>
     </div>
   );
   };
