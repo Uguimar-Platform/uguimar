@@ -1,101 +1,100 @@
 'use client';
 
-import React, { useState } from 'react';
-import InputAtom from '../../atoms/input/index'
-import LabelAtom from '../../atoms/label/index';
-import ButtonAtom from '../../atoms/button/index';
-import {Formik, Form} from 'formik'
+import React from 'react';
+import { Formik, Form } from 'formik';
+import InputAtom from '../../atoms/input';
+import LabelAtom from '../../atoms/label';
+import ButtonAtom from '../../atoms/button';
 
-type FormCodePassProps = {
-    onSubmit: (code: string) => void;
-    email: string;
-    inputLength?: number;
+interface FormCodePassProps {
+  className?: string;
+  email?: string;
+}
+
+const FormCodePass: React.FC<FormCodePassProps> = ({
+  email = 'uguimar@uguvirtual.edu.pe',
+  className = ''
+}) => {
+  const handleCodeSubmit = (code: string) => {
+    if (code === "123456") {
+      alert("¡Código correcto! Bienvenido");
+    } else {
+      alert("Código incorrecto. Por favor, intenta de nuevo.");
+    }
   };
-  
-  const FormCodePass: React.FC<FormCodePassProps> = ({
-    onSubmit,
-    email,
-    inputLength = 6,
-  }) => {
-    
-    const [code] = useState<string[]>(new Array(inputLength).fill(''));
-  
-    return (
-      <div className="flex flex-col items-center justify-center">
-        <LabelAtom
-          className="py-2"
-          as="h2"
-          text="Restablecer contraseña"
-          fontSize={40}
-          fontWeight={800}
-          textColor="#334EAC"
-          fontFamily="Poppins"
-        />
 
-      <div className="text-center flex items-center flex-wrap gap-1 mb-6">
-        <LabelAtom  
-          as="p"
-          fontSize={18}
-          text="Se envió un correo a"
-          fontWeight={300}
-          textColor='#081F5C'
-          fontFamily='Poppins'
-        />
-        <LabelAtom
-          as="p"
-          fontSize={18}
-          text={`${email},`}
-          fontWeight={600}
-          textColor='#081F5C'
-          fontFamily='Poppins'
-        />
-        <LabelAtom
-          as="p"
-          fontSize={18}
-          text="introduce tu código"
-          fontWeight={300}
-          textColor='#081F5C'
-          fontFamily='Poppins'
-        />
-      </div>
-      
-      <div className="flex flex-col items-center py-6 px-8  border border-[#334EAC] rounded-[25px] max-w-sm mx-auto bg-white box-content">
-        <LabelAtom
-          className="mb-4"
-          as="h3"
-          text="Código de seguridad"
-          fontWeight={600}
-          fontSize={20}
-          textColor="#334EAC"
-          fontFamily="Poppins"
-        />
+  return (
+    <Formik
+      initialValues={{ code: '' }}
+      onSubmit={(values) => handleCodeSubmit(values.code)}
+    >
+      {({ values, setFieldValue }) => (
+        <Form className={`w-full max-w-md mx-auto flex flex-col items-center gap-6 ${className}`}>
+          <div className="text-center space-y-1">
+            <h1 className="text-[40px] font-[800] text-[#2A3693] font-['Black_Mango'] leading-[100%] tracking-[0%] text-center">
+              Restablecer contraseña
+            </h1>
+            <p className="text-[#1C1C1C] text-[18px] font-[300] font-['Poppins'] leading-[100%] tracking-[0%] text-center">
+              Se envió un correo a <strong>{email}</strong>, introduce tu código
+            </p>
+          </div>
 
-        <Formik initialValues={{ code: "" }} onSubmit={(values) => {}}>
-          <Form className="w-full flex flex-col items-center">
-            <div className="flex gap-2 mb-5">
-              {code.map((val, i) => (
+          <div className="w-full border border-[#2A3693] rounded-[24px] p-6 flex flex-col items-center gap-4">
+            <LabelAtom
+              text="Código de seguridad"
+              fontFamily="Poppins"
+              fontWeight="bold"
+              className="text-lg text-[#2A3693]"
+            />
+
+            <div className="flex justify-center gap-3">
+              {Array(6).fill('').map((_, i) => (
                 <InputAtom
                   key={i}
-                  name={`code-input-${i}`}
+                  name={`code-${i}`}
                   type="text"
-                  value={val}
-                  className={"w-14 h-16 text-center text-xl font-semibold border-1 border-[#334EAC] focus:ring-2 focus:ring-[#334EAC]"}
-                  colorBG='#E7F1FF'
-                  fontFamily='Poppins'
+                  value={values.code[i] || ''}
+                  onChange={(e) => {
+                    const newValue = e.target.value;
+                    if (newValue.length > 1) return;
+                    
+                    const newCode = values.code.split('');
+                    newCode[i] = newValue;
+                    setFieldValue('code', newCode.join(''));
+
+                    if (newValue && i < 5) {
+                      const next = document.getElementById(`code-${i + 1}`);
+                      if (next) (next as HTMLInputElement).focus();
+                    }
+                  }}
+                  onBlur={(e) => {
+                    if (!values.code[i] && i > 0) {
+                      const prev = document.getElementById(`code-${i - 1}`);
+                      if (prev) (prev as HTMLInputElement).focus();
+                    }
+                  }}
+                  className="w-12 h-14 text-center text-xl border border-[#2A3693] rounded-lg 
+                            focus:ring-2 focus:ring-[#2A3693] bg-[#E7F1FF]"
+                  fontFamily="SFProDisplay"
+                  placeholder=""
                 />
               ))}
             </div>
+
             <ButtonAtom
-              className="w-full justify-center rounded-md"
               type="submit"
+              className="w-[424px] h-[35px] rounded-[8px] border border-[#334EAC] 
+                        bg-[#334EAC] text-white hover:bg-[#334EAC]/90 transition-colors
+                        flex justify-center  items-center"
+              fontFamily="SFProDisplay"
             >
               Confirmar
             </ButtonAtom>
-          </Form>
-        </Formik>
-      </div>
-    </div>
+          </div>
+        </Form>
+      )}
+    </Formik>
   );
-  };
-  
-  export default FormCodePass;
+};
+
+export default FormCodePass;
