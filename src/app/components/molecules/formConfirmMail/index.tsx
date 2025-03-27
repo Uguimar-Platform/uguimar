@@ -3,28 +3,19 @@ import React, { useState } from "react";
 import ButtonAtom from "../../atoms/button";
 import InputAtom from "../../atoms/input";
 import LabelAtom from "../../atoms/label";
-import { title } from "process";
+import { Formik } from "formik";
 
 export interface FormConfirmProps {
   title: string;
   textDescription: string;
-  
 }
 
 const FormConfirmMail: React.FC<FormConfirmProps> = ({
   title = "Confirma tu cuenta",
   textDescription = "En su correo llegó un código para confirmar la cuenta",
-
 }) => {
-
   // State to store the security code (an array of six empty strings)
   const [code] = useState<string[]>(new Array(6).fill(""));
-
-
-  /**
-   * Handles form submission.
-   * @param e - The form submit event.
-   */
 
   const inputsCode = code.map((num, index) => (
     <InputAtom
@@ -32,8 +23,12 @@ const FormConfirmMail: React.FC<FormConfirmProps> = ({
       name={`code-input-${index}`}
       type="text"
       value={num}
-  
-      className={`w-14 h-16 text-center text-xl font-semibold border-1 rounded-md bg-blue-100 focus:outline-none focus:border-blue-500"`}
+      className={`w-14 h-16 
+        text-center text-xl 
+        font-semibold border-1 
+        rounded-md bg-blue-100 
+        focus:outline-none 
+        border-[#334EAC]`}
     />
   ));
 
@@ -80,18 +75,17 @@ const FormConfirmMail: React.FC<FormConfirmProps> = ({
       {textDescriptionLabelAtom}
       <div className="flex flex-col items-center py-6 px-8  border border-[#334EAC] rounded-[25px] max-w-sm mx-auto bg-white box-content">
         {subtitle}
-        <form
-          
-          className="w-full flex flex-col items-center"
-        >
-          <div className="flex gap-1 mb-5">{inputsCode}</div>
-          <ButtonAtom
-            type="submit"
-            className="w-full justify-center rounded-md"
-          >
-            Confirmar
-          </ButtonAtom>
-        </form>
+        <Formik initialValues={{ code: "" }} onSubmit={(values) => {}}>
+          <form className="w-full flex flex-col items-center">
+            <div className="flex gap-1 mb-5">{inputsCode}</div>
+            <ButtonAtom
+              type="submit"
+              className="w-full justify-center rounded-md"
+            >
+              Confirmar
+            </ButtonAtom>
+          </form>
+        </Formik>
       </div>
     </div>
   );
