@@ -18,12 +18,12 @@ const CardCategoryCourses: React.FC<CardCategoryCoursesProps> = ({
   buttonText = "",
 }) => {
   return (
-    <div className="w-[380px] bg-[#F9FCFF] border border-[#334EAC] rounded-3xl p-6 py-8 shadow-md">
+    <div className="w-[500px] h-[575px] bg-[#F9FCFF] border border-[#334EAC] rounded-3xl p-8 py-8 shadow-md">
       <LabelAtom
         text={title}
         fontWeight="bold"
         fontFamily="SFProDisplay"
-        fontSize={32}
+        fontSize={44}
         className="text-3xl text-left"
       />
       <LabelAtom
@@ -32,7 +32,7 @@ const CardCategoryCourses: React.FC<CardCategoryCoursesProps> = ({
         className="text-3xl mb-2"
         fontWeight="bold"
         fontFamily="SFProDisplay"
-        fontSize={32}
+        fontSize={44}
       />
       <LabelAtom
         text={description}
@@ -40,7 +40,7 @@ const CardCategoryCourses: React.FC<CardCategoryCoursesProps> = ({
         fontFamily="SFProDisplay"
         fontWeight="regular"
         textColor="#202020"
-        fontSize={18}
+        fontSize={20}
       />
       <img
         className="w-30 mx-auto m-6 justify-center"
@@ -49,7 +49,7 @@ const CardCategoryCourses: React.FC<CardCategoryCoursesProps> = ({
       />
       <div className="flex justify-center">
         <Button
-          className="bg-[#334EAC] text-white px-16 py-2 rounded-full mt-4 "
+          className="bg-[#334EAC] text-white px-16 py-2 rounded-full mt-4 text-[20px]"
           fontFamily="Onest"
           fontWeight={800}
           hoverColor="#263a7e"
