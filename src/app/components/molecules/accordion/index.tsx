@@ -78,30 +78,27 @@ export const Accordion: React.FC<AccordionProps> = ({
   };
 
   return (
-    <div
-      className={`w-full rounded-lg overflow-hidden bg-[#E7F1FF] ${className}`}
-    >
+    <div className={`w-full rounded-lg overflow-hidden ${className}`}>
       <div
         onClick={toggleAccordion}
         onKeyDown={handleKeyDown}
         tabIndex={0}
         role="button"
         aria-expanded={isExpanded}
-        className="flex items-center justify-between cursor-pointer transition-colors outline-none"
+        className="flex items-start cursor-pointer transition-colors outline-none"
       >
-        <div className="flex items-center">
-          <span className="mr-2 text-xl">{isExpanded ? "−" : "+"}</span>
-          <LabelAtom
-            text={title}
-            fontFamily={titleFontFamily}
-            fontWeight={titleFontWeight}
-            textColor="text-blue-dark"
-            className="font-bold"
-          />
-        </div>
+        <span className="mr-2 text-xl">{isExpanded ? "−" : "+"}</span>
+        <LabelAtom
+          text={title}
+          fontFamily={titleFontFamily}
+          fontWeight={titleFontWeight}
+          textColor="text-blue-dark"
+          fontSize={20}
+        />
       </div>
+
       <div
-        className={`overflow-hidden transition-all duration-300 ease-in-out ${
+        className={`pl-6 overflow-hidden transition-all duration-600 ease-in-out ${
           isExpanded ? "max-h-96" : "max-h-0"
         }`}
       >
@@ -110,6 +107,7 @@ export const Accordion: React.FC<AccordionProps> = ({
           fontFamily={contentFontFamily}
           fontWeight={contentFontWeight}
           textColor="text-blue-dark"
+          fontSize={18}
         />
       </div>
     </div>
