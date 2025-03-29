@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import CardCategoryCourses from "../../molecules/CardCategoryCourses";
+import LabelAtom from "../../atoms/label";
 
 function CoursesExplorationSection() {
   const [selectedCourse, setSelectedCourse] = useState("Javascript");
@@ -61,6 +62,15 @@ function CoursesExplorationSection() {
 
   return (
     <section>
+      <div className="flex flex-row justify-center mb-12">
+        <LabelAtom text="Explora nuevos" fontSize={64} />
+        <LabelAtom
+          text="cursos"
+          className="ml-3"
+          textColor="#334EAC"
+          fontSize={64}
+        />
+      </div>
       <div className="flex justify-center space-x-40">
         <div className="flex flex-col space-y-18">
           {courses.map((course) => (

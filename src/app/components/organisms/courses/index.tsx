@@ -7,10 +7,8 @@ function Courses() {
   return (
     <div className=" min-h-screen ">
       <div className="grid grid-cols-3 gap-6 space-x-36 justify-between items-start max-w-7xl mx-auto">
-        {/* Left Section: Course Cards */}
         <div className="col-span-2 ">
           <div className="grid grid-cols-2 gap-6 col-span-2">
-            {/* First Column */}
             <div className="space-y-6">
               <CardCourses
                 courseImage="/Course_Python.webp"
@@ -40,7 +38,6 @@ function Courses() {
                 category="Programación"
               />
             </div>
-            {/* Second Column with Offset */}
             <div className="space-y-6 mt-12">
               <CardCourses
                 courseImage="/Course_Html.webp"
@@ -52,7 +49,7 @@ function Courses() {
                 category="Programación"
               />
               <CardCourses
-                courseImage="/Course_Web.webp"
+                courseImage="/course_web.webp"
                 alt="course1"
                 courseName="Python"
                 teacher="Juan Pérez"
@@ -73,7 +70,6 @@ function Courses() {
           </div>
         </div>
 
-        {/* Right Section: Promotional Text and Button */}
         <div className="flex items-center justify-center h-full">
           <div className="w-full">
             <LabelAtom
@@ -115,11 +111,11 @@ function Courses() {
               className="leading-tight whitespace-nowrap"
             />
             <ButtonAtom
-              bgColor="#7096D1"
+              bgColor="#334EAC"
               hoverColor="#3B82F6"
               textColor="#FFFFFF"
               fontFamily="Onest"
-              fontWeight={600}
+              fontWeight={500}
               icon="ArrowRight"
               iconPosition="right"
               className="rounded-full px-8 py-3 mt-6 text-lg"

@@ -2,7 +2,7 @@ import { MynaIconsProps } from "@mynaui/icons-react";
 import * as MynaIcons from "@mynaui/icons-react";
 import React, { isValidElement, cloneElement } from "react";
 
-export type FontFamily = "Poppins" | "Onest" | "SFProDisplay";
+export type FontFamily = "Poppins" | "Onest" | "SFProDisplay" | "BlackMango";
 type FontWeight =
   | 100
   | 200
