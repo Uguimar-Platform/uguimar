@@ -51,18 +51,18 @@ const Hero: React.FC = () => {
             fontFamily="SFProDisplay"
             fontWeight={400}
             fontSize={24}
-            className="text-start opacity-50 max-w-135  -mt-4"
+            className="text-start opacity-50 max-w-135 leading-tight"
           />
           <ButtonAtom
             bgColor="#7096D1"
             hoverColor="#3B82F6"
             textColor="#FFFFFF"
             fontFamily="Onest"
-            fontWeight="semibold"
+            fontWeight={600}
             icon="ArrowRight"
             iconPosition="right"
             iconSize={32}
-            className="rounded-full px-10 py-2 mt-8 text-xl"
+            className="rounded-full px-10 py-2 mt-10 text-xl"
           >
             Empezar gratis
           </ButtonAtom>

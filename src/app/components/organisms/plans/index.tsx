@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import CardPlan from "../../molecules/cardPlan";
 import LabelAtom from "../../atoms/label";
@@ -5,41 +6,41 @@ import { Section } from "lucide-react";
 
 function Plans() {
   return (
-    <Section className="flex flex-col items-center justify-center p-8">
-        <div className="flex flex-row gap-4 mb-6">
+    <section className="flex flex-col items-center justify-center p-8">
+      <div className="flex flex-row gap-4 mb-6">
         <LabelAtom
-        as="h1"
-        text="Escoge tu"
-        textColor="000000"
-        fontFamily="SFProDisplay"
-        fontWeight="bold"
-        fontSize={60}
-      />
+          as="h1"
+          text="Escoge tu"
+          textColor="000000"
+          fontFamily="SFProDisplay"
+          fontWeight="bold"
+          fontSize={60}
+        />
+        <LabelAtom
+          as="h1"
+          text="plan"
+          textColor="#334EAC"
+          fontFamily="SFProDisplay"
+          fontWeight="bold"
+          fontSize={60}
+        />
+      </div>
       <LabelAtom
-        as="h1"
-        text="plan"
-        textColor="#334EAC"
-        fontFamily="SFProDisplay"
-        fontWeight="bold"
-        fontSize={60}
-      />
-        </div>
-        <LabelAtom
         as="p"
         text="Escoge uno de nuestros planes, para tí y para tus amigos"
         textColor="#7096D1"
         fontFamily="SFProDisplay"
         fontWeight={600}
         fontSize={20}
-        className="mb-8"
+        className="mb-16 -mt-4"
       />
-   
+
       <div className="flex flex-wrap justify-center gap-8 p-8">
         <CardPlan
           imageSrc={["/iconA_cardplan.webp"]}
           smallLabel="(1 persona)"
           title="Básico"
-          price="100"
+          price="200"
           features={[
             "Acceso completo a todos los cursos.",
             "Certificado de finalización.",
@@ -47,7 +48,7 @@ function Plans() {
             "Certificado de finalización.",
             "Recompensas por suscripción continuada.",
           ]}
-          buttonText="Elegir Plan"
+          buttonText="Adquirir"
           bgColor="bg-[#7096D1]"
           labelColor="#F9FCFF"
           textColor="#ffffff"
@@ -67,7 +68,7 @@ function Plans() {
             "Certificado de finalización.",
             "Recompensas por suscripción continuada.",
           ]}
-          buttonText="Elegir Plan"
+          buttonText="Adquirir"
           bgColor="bg-[#FFFFFF]"
           labelColor="#081F5C"
           textColor="#081F5C"
@@ -91,7 +92,7 @@ function Plans() {
             "Certificado de finalización.",
             "Recompensas por suscripción continuada.",
           ]}
-          buttonText="Elegir Plan"
+          buttonText="Adquirir"
           bgColor="bg-[#334EAC]"
           labelColor="#F9FCFF"
           textColor="#ffffff"
@@ -100,7 +101,7 @@ function Plans() {
           buttonTextColor="#ffffff"
         />
       </div>
-    </Section>
+    </section>
   );
 }
 

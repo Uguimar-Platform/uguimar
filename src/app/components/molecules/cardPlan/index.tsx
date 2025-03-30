@@ -66,17 +66,14 @@ const CardPlan: React.FC<CardPlanProps> = ({
   buttonBgColor,
   buttonHoverColor,
   buttonTextColor,
-
-
-  
 }) => {
   return (
     <div
-      className={`${bgColor} rounded-4xl py-8 px-8 w-[450px] flex flex-col gap-4 items-center justify-start`}
+      className={`${bgColor} rounded-4xl py-8 px-8 w-[420px] flex flex-col gap-4 items-center justify-start`}
     >
       <div className="flex justify-center gap-2">
         {imageSrc.map((src, index) => (
-          <img key={index} src={src} className="w-16 h-16 object-contain" />
+          <img key={index} src={src} className="w-12 h-12 object-contain" />
         ))}
       </div>
       <LabelAtom
@@ -121,10 +118,7 @@ const CardPlan: React.FC<CardPlanProps> = ({
           fontSize={20}
         />
         {features.map((feature, index) => (
-          <li
-            key={index}
-            className="flex items-center leading-normal"
-          >
+          <li key={index} className="flex items-center leading-normal">
             <LabelAtom
               text={feature}
               icon="CheckWavesSolid"
