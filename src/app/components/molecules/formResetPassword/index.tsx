@@ -6,12 +6,12 @@ import InputAtom from '../../atoms/input';
 import LabelAtom from '../../atoms/label';
 import ButtonAtom from '../../atoms/button';
 
-interface FormCodePassProps {
+interface FormResetPasswordProps {
   className?: string;
   email?: string;
 }
 
-const FormCodePass: React.FC<FormCodePassProps> = ({
+const FormResetPassword: React.FC<FormResetPasswordProps> = ({
   email = 'uguimar@uguvirtual.edu.pe',
   className = ''
 }) => {
@@ -97,4 +97,4 @@ const FormCodePass: React.FC<FormCodePassProps> = ({
   );
 };
 
-export default FormCodePass;
+export default FormResetPassword;
