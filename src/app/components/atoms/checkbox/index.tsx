@@ -69,39 +69,41 @@ const CheckboxAtom: React.FC<CheckboxAtomProps> = ({
 
   return (
     <div className={`flex flex-col ${className}`}>
-      <label
-        htmlFor={id}
-        className={`flex items-center gap-2 cursor-pointer py-2 px-2 m-2 ${
-          disabled ? "opacity-50 cursor-not-allowed" : ""
-        } ${error ? "text-red-500" : ""}`}
+    <label
+      htmlFor={id}
+      className={`flex items-center gap-2 cursor-pointer py-2 px-2 m-2 ${
+        disabled ? "opacity-50 cursor-not-allowed" : ""
+      } ${error ? "text-red-500" : ""} sm:gap-1 md:gap-2 lg:gap-3`}
+    >
+      <input
+        type="checkbox"
+        id={id}
+        name={name}
+        disabled={disabled}
+        checked={checked}
+        onChange={onChange}
+        className={`${sizeStyles[size]} ${variantStyles[variant]} rounded ${
+          error ? "border-red-500" : ""
+        } transition-transform duration-200 ease-in-out checked:scale-110 appearance-none checked:appearance-auto`}
+        style={{ accentColor: "#334EAC" }}
+      />
+      <span
+        className={`select-none text-xs lg:text-sm  whitespace-normal`}
+        style={{
+          fontFamily: fontFamily,
+          fontWeight: fontWeight,
+          color: color,
+        }}
       >
-        <input
-          type="checkbox"
-          id={id}
-          name={name}
-          disabled={disabled}
-          checked={checked}
-          onChange={onChange}
-          className={`${sizeStyles[size]} ${variantStyles[variant]} rounded ${
-            error ? "border-red-500" : ""
-          } transition-transform duration-200 ease-in-out checked:scale-110 appearance-none checked:appearance-auto`}
-          style={{ accentColor: "#334EAC" }}
-        />
-        <span
-          className={`select-none`}
-          style={{
-            fontFamily: fontFamily,
-            fontWeight: fontWeight,
-            color: color,
-          }}
-        >
-          {label}{" "}
-        </span>
-      </label>
-      {typeof error === "string" && error && (
-        <span className="text-red-500 text-sm px-2">{error}</span>
-      )}
-    </div>
+        {label}{" "}
+      </span>
+    </label>
+    {typeof error === "string" && error && (
+      <span className="text-red-500 text-xs sm:text-xs md:text-sm lg:text-base px-2">
+        {error}
+      </span>
+    )}
+  </div>
   );
 };
 

@@ -68,6 +68,9 @@ const slugs = [
  * @property {string} [labelColor] - The color of the text in Tailwind class format.
  * @property {string} [className] - Additional CSS classes for the main container.
  * @property {string} [labelClassName] - Additional CSS classes for the Label component.
+ * @property {FontFamily} [fontFamily] - The font family for the label text.
+ * @property {FontWeight} [fontWeight] - The font weight for the label text.
+ * @property {number} [fontSize] - The font size for the label text in pixels.
  */
 interface DynamicIconProps {
   labelText?: string;
@@ -76,6 +79,7 @@ interface DynamicIconProps {
   labelClassName?: string;
   fontFamily?: FontFamily;
   fontWeight?: FontWeight;
+  fontSize?: number; // Font size in pixels
 }
 
 /**
@@ -86,15 +90,19 @@ interface DynamicIconProps {
  * @param {string} props.labelColor - The color of the text in Tailwind class format.
  * @param {string} props.className - Additional CSS classes for the main container.
  * @param {string} props.labelClassName - Additional CSS classes for the Label component.
+ * @param {FontFamily} props.fontFamily - The font family for the label text.
+ * @param {FontWeight} props.fontWeight - The font weight for the label text.
+ * @param {number} props.fontSize - The font size for the label text in pixels.
  * @returns {JSX.Element} A React component that displays icons and descriptive text.
  */
 export default function DynamicIcon({
   labelText = "Aprende, crece y destaca con cursos prácticos y accesibles en un solo lugar.",
-  labelColor = "text-[#081F5C]",
+  labelColor = "#081F5C",
   className = "",
-  labelClassName = "text-center max-w-[400px] -mt-8 text-xl leading-6",
+  labelClassName = "text-center max-w-[400px] -mt-8 leading-6",
   fontFamily = "SFProDisplay",
   fontWeight = "medium",
+  fontSize = 16, // Default font size in pixels
 }: DynamicIconProps) {
   /**
    * Generates image URLs for each slug in the array.
@@ -113,6 +121,7 @@ export default function DynamicIcon({
         className={labelClassName}
         fontFamily={fontFamily}
         fontWeight={fontWeight}
+        fontSize={fontSize} 
       />
     </div>
   );

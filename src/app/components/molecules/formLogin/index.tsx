@@ -13,18 +13,27 @@ const FormLogin: React.FC = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className="max-w-[450px] mx-auto  w-auto">
+    <div className="max-w-[550px] mx-auto  w-auto">
       <LabelAtom
         text="¡Bienvenido!"
         as="h1"
         textColor="#334EAC"
-        className="flex justify-center py-4"
-        fontFamily="SFProDisplay"
+        className="flex justify-center"
+        fontFamily="BlackMango"
         fontWeight="bold"
         fontSize={50}
       />
+      <LabelAtom
+        text="Para ingresar coloca tus datos"
+        as="h3"
+        textColor="#081F5C"
+        className="flex justify-center pb-4"
+        fontFamily="Poppins"
+        fontWeight={400}
+        fontSize={16}
+      />
 
-      <div className="bg-white rounded-3xl p-4 border border-gray-200 shadow-sm">
+      <div className="bg-white rounded-3xl p-10 border border-[#081F5C] shadow-sm">
         <Formik
           initialValues={{
             email: "",
@@ -91,17 +100,17 @@ const FormLogin: React.FC = () => {
                   color="#334EAC"
                   fontFamily="Poppins"
                   fontWeight="regular"
-                  className="text-[12px] whitespace-nowrap"
+                  className="text-xs lg:text-sm whitespace-nowrap"
                   size="md"
                 />
               </div>
 
-              <div className="flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4 pt-4">
+              <div className="flex flex-col space-y-4 md:flex-row md:space-y-0 sm:space-x-4 pt-4">
                 <ButtonAtom
                   type="button"
                   bgColor="#fff"
                   textColor="#334EAC"
-                  className="w-full sm:w-1/2 py-3 rounded-full border border-[#334EAC] text-center flex justify-center"
+                  className="w-full md:w-1/2 py-0 rounded-md border border-[#334EAC] text-center flex justify-center text-xs lg:text-base"
                   fontFamily="Poppins"
                   fontWeight="semibold"
                 >
@@ -111,7 +120,7 @@ const FormLogin: React.FC = () => {
                   type="submit"
                   bgColor="#334EAC"
                   textColor="#fff"
-                  className="w-full sm:w-1/2 py-3 rounded-full text-center flex justify-center"
+                  className="w-full md:w-1/2 py-0 rounded-md text-center flex justify-center md:text-xs lg:text-base"
                   fontFamily="Poppins"
                   fontWeight="semibold"
                 >
