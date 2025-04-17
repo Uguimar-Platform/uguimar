@@ -18,7 +18,7 @@ function ForgotPass() {
   return (
     <section className="w-full p-6 flex flex-col items-center">
       <div className="flex flex-col items-center mb-16">
-        <div className="bg-[#334EAC] rounded-[15px] p-3 mb-8">
+        <div className="hidden sm:flex bg-[#334EAC] rounded-[15px] p-3 mb-8">
           <Lock className="w-12 h-12 text-white" />
         </div>
         <LabelAtom
@@ -28,7 +28,7 @@ function ForgotPass() {
           fontWeight="bold"
           fontSize="40px"
           textColor="#2D3A8C"
-          className="text-center"
+          className="text-center "
         />
         <LabelAtom
           text="No hay problema, enviaremos un correo con las instrucciones"
@@ -73,6 +73,7 @@ function ForgotPass() {
               textColor="#FFFFFF"
               fontFamily="Poppins"
               fontWeight={600}
+              hoverColor="#081F5C"
             >
               Enviar
             </ButtonAtom>

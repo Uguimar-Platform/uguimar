@@ -6,7 +6,7 @@ import ButtonAtom from "../../atoms/button"
 
 function OForgotPass(){
     return (
-        <section className="bg-[#FFFFFF] rounded-[28px] p-10 pb-40 mt-4 m-24 ">
+        <section className="bg-[#FFFFFF] rounded-[28px] px-6 sm:px-10 py-10 pb-40 mt-4 md:m-24 ">
             <div className="flex justify-start">
                 <ButtonAtom
                     type="button"
@@ -16,7 +16,8 @@ function OForgotPass(){
                     textColor="#334EAC"
                     fontFamily="Poppins"
                     fontWeight={600}
-                    >Volver
+                >
+                    <span className="hidden sm:inline">Volver</span>
                 </ButtonAtom>
             </div>
             <div className="">
