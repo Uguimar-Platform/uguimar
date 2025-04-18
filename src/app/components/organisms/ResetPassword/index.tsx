@@ -9,7 +9,7 @@ const ResetPassword: React.FC = () => {
   const router = useRouter();
 
   return (
-    <section className="w-full mx-4 my-8 md:m-20 flex flex-col items-center justify-center bg-white  px-4 py-6 md:px-10 md:py-10 rounded-[20px] md:rounded-[30px]">
+    <section className="w-full md:w-[95%] my-20 mx-auto flex flex-col items-center justify-center bg-transparent md:bg-white px-2 py-6 md:px-10 md:py-10 rounded-[20px] md:rounded-[30px]">
         <div className="w-full">
           <ButtonAtom
             icon="ArrowLeft"
@@ -21,10 +21,10 @@ const ResetPassword: React.FC = () => {
             fontFamily="Poppins"
             fontWeight={500}
           >
-            Volver
+            <span className="hidden md:inline">Volver</span>
           </ButtonAtom>  
         </div>
-        <div className="w-full py-8 md:py-20">
+        <div className="w-full py-8 md:py-20 text-center">
           <FormResetPassword />
         </div> 
       
