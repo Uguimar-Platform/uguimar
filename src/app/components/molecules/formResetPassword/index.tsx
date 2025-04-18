@@ -19,7 +19,7 @@ const FormResetPassword: React.FC<FormResetPasswordProps> = ({
   const [code] = useState<string[]>(new Array(6).fill(''));
   
     return (
-      <div className="flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center text-center">
         <LabelAtom
           className="py-2"
           as="h2"
@@ -30,7 +30,7 @@ const FormResetPassword: React.FC<FormResetPasswordProps> = ({
           fontFamily="Poppins"
         />
 
-      <div className="text-center flex items-center flex-wrap gap-1 mb-6">
+      <div className="text-center justify-center flex items-center flex-wrap gap-1 mb-6">
         <LabelAtom  
           as="p"
           fontSize={18}
@@ -57,7 +57,7 @@ const FormResetPassword: React.FC<FormResetPasswordProps> = ({
         />
       </div>
       
-      <div className="flex flex-col items-center py-6 px-8  border border-[#334EAC] rounded-[25px] max-w-sm mx-auto bg-white box-content">
+      <div className="flex flex-col items-center py-6 px-4 sm:px-8  sm:border sm:border-[#334EAC] rounded-[25px] max-w-sm mx-auto sm:bg-white box-content">
         <LabelAtom
           className="mb-4"
           as="h3"
@@ -70,14 +70,14 @@ const FormResetPassword: React.FC<FormResetPasswordProps> = ({
 
         <Formik initialValues={{ code: "" }} onSubmit={(values) => {}}>
           <Form className="w-full flex flex-col items-center">
-            <div className="flex gap-2 mb-5">
+            <div className="flex gap-1.5 sm:gap-2 mb-5">
               {code.map((val, i) => (
                 <InputAtom
                   key={i}
                   name={`code-input-${i}`}
                   type="text"
                   value={val}
-                  className={"w-14 h-16 text-center text-xl font-semibold border-1 border-[#334EAC] focus:ring-2 focus:ring-[#334EAC]"}
+                  className={"w-12 sm:w-14 h-14 sm:h-16 text-center text-xl font-semibold border-1 border-[#334EAC] focus:ring-2 focus:ring-[#334EAC]"}
                   colorBG='#E7F1FF'
                   fontFamily='Poppins'
                 />
