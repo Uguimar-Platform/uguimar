@@ -43,7 +43,7 @@ function ForgotPass() {
 
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {({ values, handleChange, handleBlur }) => (
-          <Form className="space-y-4 max-w-lg w-full bg-white p-8 rounded-[25px] border-[#334EAC] border-1">
+          <Form className="space-y-4 sm:max-w-lg max-w-7xl w-full sm:bg-white sm:p-8 p-0 rounded-[25px] border-[#334EAC] sm:border-1">
             <div className="space-y-2">
               <LabelAtom
                 text="Correo electrónico"
@@ -61,7 +61,7 @@ function ForgotPass() {
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className="w-full text-[#334EAC] text-sm py-2"
+                className="w-full text-[#334EAC] text-sm py-2 my-3"
                 colorBG="#E7F1FF"
               />
             </div>
