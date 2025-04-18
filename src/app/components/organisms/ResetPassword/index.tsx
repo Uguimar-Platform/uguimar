@@ -9,9 +9,10 @@ const ResetPassword: React.FC = () => {
   const router = useRouter();
 
   return (
-    <section className="w-full md:w-[95%] my-20 mx-auto flex flex-col items-center justify-center bg-transparent md:bg-white px-2 py-6 md:px-10 md:py-10 rounded-[20px] md:rounded-[30px]">
-        <div className="w-full">
+    <section className="w-full md:w-[95%] my-20 mx-auto flex flex-col items-center justify-center bg-transparent md:bg-white py-6 md:px-10 md:py-10 rounded-[20px] md:rounded-[30px]">
+        <div className="w-full px-4">
           <ButtonAtom
+            onClick={() => router.back()}
             icon="ArrowLeft"
             iconPosition="left"
             textColor="#334EAC"
@@ -25,7 +26,7 @@ const ResetPassword: React.FC = () => {
           </ButtonAtom>  
         </div>
         <div className="w-full py-8 md:py-20 text-center">
-          <FormResetPassword />
+        <FormResetPassword />
         </div> 
       
     </section>
