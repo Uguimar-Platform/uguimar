@@ -5,26 +5,26 @@ import { useRouter } from 'next/navigation';
 import ButtonAtom from '@/app/components/atoms/button';
 import FormResetPassword from '@/app/components/molecules/formResetPassword';
 
-const organismResetPassword: React.FC = () => {
+const ResetPassword: React.FC = () => {
   const router = useRouter();
 
   return (
-    <section className="min-h-screen m-20 items-center justify-center bg-white  px-6 py-10 rounded-[30px]">
-        <div className="pb-6">
+    <section className="w-full mx-4 my-8 md:m-20 flex flex-col items-center justify-center bg-white  px-4 py-6 md:px-10 md:py-10 rounded-[20px] md:rounded-[30px]">
+        <div className="w-full">
           <ButtonAtom
             icon="ArrowLeft"
             iconPosition="left"
             textColor="#334EAC"
             bgColor="transparent"
             hoverColor="#cdddf5"
-            className="top-6 left-6 border border-[#334EAC]"
+            className="border border-[#334EAC]"
             fontFamily="Poppins"
             fontWeight={500}
           >
             Volver
           </ButtonAtom>  
         </div>
-        <div>
+        <div className="w-full py-8 md:py-20">
           <FormResetPassword />
         </div> 
       
@@ -32,4 +32,4 @@ const organismResetPassword: React.FC = () => {
   );
 };
 
-export default organismResetPassword;
+export default ResetPassword;
