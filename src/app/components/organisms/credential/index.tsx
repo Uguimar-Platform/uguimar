@@ -1,9 +1,9 @@
-import type React from "react";
+import React from "react";
 import FormRenewPass from "../../molecules/formRenewPass";
 
 const Credential: React.FC = () => {
   return (
-    <section className="flex flex-col items-center justify-center min-h-screen ">
+    <section className="bg-[#FFFFFF] md:min-h-0 md:rounded-[28px] mt-0 md:m-24 justify-center">
       <FormRenewPass />
     </section>
   );
