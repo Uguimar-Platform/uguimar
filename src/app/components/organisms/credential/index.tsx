@@ -1,7 +1,7 @@
 import React from "react";
 import FormRenewPass from "../../molecules/formRenewPass";
 
-const Credential: React.FC = () => {
+const organismNewCredential: React.FC = () => {
   return (
     <section className="bg-[#FFFFFF] md:min-h-0 md:rounded-[28px] mt-0 md:m-24 justify-center">
       <FormRenewPass />
@@ -9,4 +9,4 @@ const Credential: React.FC = () => {
   );
 };
 
-export default Credential;
+export default organismNewCredential;
