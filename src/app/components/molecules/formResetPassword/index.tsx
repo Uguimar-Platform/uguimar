@@ -21,13 +21,13 @@ const FormResetPassword: React.FC<FormResetPasswordProps> = ({
     return (
       <div className="flex flex-col items-center justify-center text-center">
         <LabelAtom
-          className="py-2"
+          className="py-2 leading-none"
           as="h2"
           text="Restablecer contraseña"
           fontSize={40}
           fontWeight={800}
           textColor="#334EAC"
-          fontFamily="Poppins"
+          fontFamily="BlackMango"
         />
 
       <div className="text-center justify-center flex items-center flex-wrap gap-1 mb-6">
@@ -57,7 +57,7 @@ const FormResetPassword: React.FC<FormResetPasswordProps> = ({
         />
       </div>
       
-      <div className="flex flex-col items-center py-6 px-4 sm:px-8  sm:border sm:border-[#334EAC] rounded-[25px] max-w-sm mx-auto sm:bg-white box-content">
+      <div className="flex flex-col items-center py-6 px-4 sm:px-8 sm:border sm:border-[#334EAC] rounded-[25px] max-w-sm mx-auto sm:bg-white box-content">
         <LabelAtom
           className="mb-4"
           as="h3"
