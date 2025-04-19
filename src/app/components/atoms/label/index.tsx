@@ -65,14 +65,14 @@ const LabelAtom: React.FC<LabelAtomProps> = ({
   };
 
   const resolvedFontWeight =
-  typeof fontWeight === "string"
-    ? fontWeightMap[fontWeight] || 400
-    : fontWeight;
+   typeof fontWeight === "string"
+     ? fontWeightMap[fontWeight] || 400
+     : fontWeight;
 
-let iconElement = icon;
-if (typeof icon === "string" && (MynaIcons  as any) [icon]){
-  const IconComponent = ( MynaIcons as any )[icon];
-  iconElement = <IconComponent size={20} />;
+ let iconElement = icon;
+ if (typeof icon === "string" && (MynaIcons  as any) [icon]){
+   const IconComponent = ( MynaIcons as any )[icon];
+   iconElement = <IconComponent size={20} />;
   }
 
   const isIconElement = isValidElement(iconElement);
