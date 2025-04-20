@@ -24,7 +24,7 @@ function ForgotPass() {
         <LabelAtom
           text="¿Has olvidado tu contraseña?"
           as="h1"
-          fontFamily="Poppins"
+          fontFamily="BlackMango"
           fontWeight="bold"
           fontSize="40px"
           textColor="#2D3A8C"
@@ -43,7 +43,7 @@ function ForgotPass() {
 
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {({ values, handleChange, handleBlur }) => (
-          <Form className="space-y-4 sm:max-w-lg max-w-7xl w-full sm:bg-white sm:p-8 p-0 rounded-[25px] border-[#334EAC] sm:border-1">
+          <Form className="space-y-4 sm:max-w-lg max-w-7xl w-full sm:bg-white sm:p-8 p-0 sm:rounded-[25px] sm:border sm:border-[#334EAC]">
             <div className="space-y-2">
               <LabelAtom
                 text="Correo electrónico"
