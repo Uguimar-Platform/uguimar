@@ -18,17 +18,17 @@ function ForgotPass() {
   return (
     <section className="w-full p-6 flex flex-col items-center">
       <div className="flex flex-col items-center mb-16">
-        <div className="bg-[#334EAC] rounded-[15px] p-3 mb-8">
+        <div className="hidden sm:flex bg-[#334EAC] rounded-[15px] p-3 mb-8">
           <Lock className="w-12 h-12 text-white" />
         </div>
         <LabelAtom
           text="¿Has olvidado tu contraseña?"
           as="h1"
-          fontFamily="Poppins"
+          fontFamily="BlackMango"
           fontWeight="bold"
           fontSize="40px"
           textColor="#2D3A8C"
-          className="text-center"
+          className="text-center "
         />
         <LabelAtom
           text="No hay problema, enviaremos un correo con las instrucciones"
@@ -43,7 +43,7 @@ function ForgotPass() {
 
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {({ values, handleChange, handleBlur }) => (
-          <Form className="space-y-4 max-w-lg w-full bg-white p-8 rounded-[25px] border-[#334EAC] border-1">
+          <Form className="space-y-4 sm:max-w-lg max-w-7xl w-full sm:bg-white sm:p-8 p-0 sm:rounded-[25px] sm:border sm:border-[#334EAC]">
             <div className="space-y-2">
               <LabelAtom
                 text="Correo electrónico"
@@ -61,7 +61,7 @@ function ForgotPass() {
                 value={values.email}
                 onChange={handleChange}
                 onBlur={handleBlur}
-                className="w-full text-[#334EAC] text-sm py-2"
+                className="w-full text-[#334EAC] text-sm py-2 my-3"
                 colorBG="#E7F1FF"
               />
             </div>
@@ -73,6 +73,7 @@ function ForgotPass() {
               textColor="#FFFFFF"
               fontFamily="Poppins"
               fontWeight={600}
+              hoverColor="#081F5C"
             >
               Enviar
             </ButtonAtom>
