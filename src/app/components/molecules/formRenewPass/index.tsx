@@ -17,14 +17,15 @@ const PasswordReset = () => {
           <img
             src="/AssetKey.svg"
             alt="Password Icon"
-            className="w-16 h-16 mb-4"
+            className="w-16 h-16 mb-4 hidden md:block"
           />
           <LabelAtom
-            fontFamily="Onest"
+            fontFamily="BlackMango"
             fontSize={40}
             fontWeight={800}
             textColor="#334EAC"
             text="Nuevas credenciales"
+            className="text-center"
           />
 
           <LabelAtom
@@ -32,6 +33,7 @@ const PasswordReset = () => {
             fontSize={18}
             fontWeight={300}
             textColor="#081F5C"
+            className="text-center"
             text="¡Tu identidad fue verificada!, ingresa tu nueva contraseña"
           />
         </div>
