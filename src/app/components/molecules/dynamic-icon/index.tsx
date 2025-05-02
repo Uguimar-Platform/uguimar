@@ -76,7 +76,6 @@ interface DynamicIconProps {
   labelClassName?: string;
   fontFamily?: FontFamily;
   fontWeight?: FontWeight;
-  fontSize?: number;
 }
 
 /**
