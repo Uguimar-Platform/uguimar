@@ -93,10 +93,9 @@ export default function DynamicIcon({
   labelText = "Aprende, crece y destaca con cursos prácticos y accesibles en un solo lugar.",
   labelColor = "text-[#081F5C]",
   className = "",
-  labelClassName = "text-center max-w-[600px] -mt-8 text-xl leading-6",
+  labelClassName = "text-center max-w-[400px] -mt-8 leading-6",
   fontFamily = "SFProDisplay",
   fontWeight = "medium",
-  fontSize = 40,
 }: DynamicIconProps) {
   /**
    * Generates image URLs for each slug in the array.
@@ -115,7 +114,6 @@ export default function DynamicIcon({
         className={labelClassName}
         fontFamily={fontFamily}
         fontWeight={fontWeight}
-        fontSize={fontSize}
       />
     </div>
   );
