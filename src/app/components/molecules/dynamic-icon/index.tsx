@@ -92,7 +92,7 @@ export default function DynamicIcon({
   labelText = "Aprende, crece y destaca con cursos prácticos y accesibles en un solo lugar.",
   labelColor = "text-[#081F5C]",
   className = "",
-  labelClassName = "text-center max-w-[600px] -mt-8 text-xl leading-6",
+  labelClassName = "text-center max-w-[400px] -mt-8 leading-6",
   fontFamily = "SFProDisplay",
   fontWeight = "medium",
 }: DynamicIconProps) {
