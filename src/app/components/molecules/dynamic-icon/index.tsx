@@ -76,7 +76,6 @@ interface DynamicIconProps {
   labelClassName?: string;
   fontFamily?: FontFamily;
   fontWeight?: FontWeight;
-  fontSize?: number; // Font size in pixels
 }
 
 /**
@@ -96,7 +95,6 @@ export default function DynamicIcon({
   labelClassName = "text-center max-w-[600px] -mt-8 text-xl leading-6",
   fontFamily = "SFProDisplay",
   fontWeight = "medium",
-  fontSize = 40,
 }: DynamicIconProps) {
   /**
    * Generates image URLs for each slug in the array.
@@ -115,7 +113,6 @@ export default function DynamicIcon({
         className={labelClassName}
         fontFamily={fontFamily}
         fontWeight={fontWeight}
-        fontSize={fontSize}
       />
     </div>
   );
