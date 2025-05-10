@@ -25,7 +25,7 @@ type FontWeight =
   | "black";
 
 interface ButtonAtomProps {
-  children?: React.ReactNode;
+  text: string;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   className?: string;
@@ -39,10 +39,12 @@ interface ButtonAtomProps {
   iconColor?: string;
   fontFamily?: FontFamily;
   fontWeight?: FontWeight;
+  fullWidth?: boolean;
+  textSize?: "xs" | "sm" | "base" | "lg" | "xl";
 }
 
 const ButtonAtom: React.FC<ButtonAtomProps> = ({
-  children,
+  text,
   onClick,
   type = "button",
   className,
@@ -56,8 +58,18 @@ const ButtonAtom: React.FC<ButtonAtomProps> = ({
   iconColor = "currentColor",
   fontFamily = "Poppins",
   fontWeight = "medium",
+  fullWidth = false,
+  textSize = "base",
 }) => {
   const [isHovered, setIsHovered] = useState(false);
+
+  const textSizeClasses = {
+    xs: "text-xs",
+    sm: "text-sm",
+    base: "text-base",
+    lg: "text-lg",
+    xl: "text-xl",
+  };
 
   const renderIcon = () => {
     if (!icon) return null;
@@ -76,7 +88,9 @@ const ButtonAtom: React.FC<ButtonAtomProps> = ({
     <button
       type={type}
       onClick={onClick}
-      className={`px-4 py-2 rounded flex items-center gap-2 cursor-pointer transition-colors duration-300 ${className}`}
+      className={`px-4 py-2 rounded flex items-center justify-center gap-2 cursor-pointer transition-colors duration-300 ${
+        fullWidth ? "w-full" : ""
+      } ${textSizeClasses[textSize]} ${className}`}
       disabled={disabled}
       style={{
         fontFamily: fontFamily,
@@ -90,7 +104,7 @@ const ButtonAtom: React.FC<ButtonAtomProps> = ({
       {icon && iconPosition === "left" && (
         <span className="flex items-center">{renderIcon()}</span>
       )}
-      <span>{children}</span>
+      <span>{text}</span>
       {icon && iconPosition === "right" && (
         <span className="flex items-center">{renderIcon()}</span>
       )}

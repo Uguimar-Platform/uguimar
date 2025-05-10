@@ -24,32 +24,26 @@ type FontWeight =
   | "black";
 
 interface ErrorMessageAtomProps {
-  children?: React.ReactNode;
+  message: string;
+  isVisible: boolean;
   className?: string;
-  isVisible?: boolean;
-  fontFamily?: FontFamily;
-  fontWeight?: FontWeight;
 }
 
 const ErrorMessageAtom: React.FC<ErrorMessageAtomProps> = ({
-  children,
+  message,
+  isVisible,
   className = "",
-  isVisible = true,
-  fontFamily = "Poppins",
-  fontWeight = 400,
 }) => {
-  if (!children || !isVisible) return null;
+  if (!isVisible) return null;
 
   return (
-    <span
-      className={`text-red-500 text-sm ml-4 ${className}`}
-      style={{
-        fontFamily: fontFamily,
-        fontWeight: fontWeight,
-      }}
+    <div
+      className={`text-red-500 text-sm ${className}`}
+      role="alert"
+      aria-live="polite"
     >
-      {children}
-    </span>
+      {message}
+    </div>
   );
 };
 

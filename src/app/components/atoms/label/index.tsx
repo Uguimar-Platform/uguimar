@@ -35,6 +35,9 @@ export type LabelAtomProps = {
   fontFamily?: FontFamily;
   fontWeight?: FontWeight;
   fontSize?: string | number;
+  textSize?: "xs" | "sm" | "base" | "lg" | "xl";
+  iconSize?: number;
+  iconSpacing?: "sm" | "md" | "lg";
 };
 
 const LabelAtom: React.FC<LabelAtomProps> = ({
@@ -48,8 +51,25 @@ const LabelAtom: React.FC<LabelAtomProps> = ({
   fontWeight = 700,
   fontSize = "16px",
   className = "",
+  textSize = "base",
+  iconSize = 20,
+  iconSpacing = "md",
 }) => {
   const Tag = as;
+
+  const textSizeClasses = {
+    xs: "text-xs",
+    sm: "text-sm",
+    base: "text-base",
+    lg: "text-lg",
+    xl: "text-xl",
+  };
+
+  const iconSpacingClasses = {
+    sm: "gap-1",
+    md: "gap-2",
+    lg: "gap-3",
+  };
 
   const fontWeightMap: Record<string, number> = {
     thin: 100,
@@ -65,14 +85,14 @@ const LabelAtom: React.FC<LabelAtomProps> = ({
   };
 
   const resolvedFontWeight =
-   typeof fontWeight === "string"
-     ? fontWeightMap[fontWeight] || 400
-     : fontWeight;
+    typeof fontWeight === "string"
+      ? fontWeightMap[fontWeight] || 400
+      : fontWeight;
 
- let iconElement = icon;
- if (typeof icon === "string" && (MynaIcons  as any) [icon]){
-   const IconComponent = ( MynaIcons as any )[icon];
-   iconElement = <IconComponent size={20} />;
+  let iconElement = icon;
+  if (typeof icon === "string" && (MynaIcons as any)[icon]) {
+    const IconComponent = (MynaIcons as any)[icon];
+    iconElement = <IconComponent size={iconSize} />;
   }
 
   const isIconElement = isValidElement(iconElement);
@@ -81,21 +101,19 @@ const LabelAtom: React.FC<LabelAtomProps> = ({
     isIconElement && iconPosition === "left"
       ? cloneElement(iconElement as React.ReactElement<MynaIconsProps>, {
           className: `${(iconElement as React.ReactElement<MynaIconsProps>).props.className || ""}`,
-          size: 20,
-          style: { marginRight: "8px" },
+          size: iconSize,
         })
       : isIconElement && iconPosition === "right"
         ? cloneElement(iconElement as React.ReactElement<MynaIconsProps>, {
             className: `${(iconElement as React.ReactElement<MynaIconsProps>).props.className || ""}`,
-            size: 20,
-            style: { marginLeft: "8px" },
+            size: iconSize,
           })
         : iconElement;
 
   return (
     <Tag
       {...(as === "label" ? { htmlFor } : {})}
-      className={`flex items-center ${className}`}
+      className={`flex items-center ${textSizeClasses[textSize]} ${iconSpacingClasses[iconSpacing]} ${className}`}
       style={{
         fontFamily: fontFamily,
         fontWeight: resolvedFontWeight,
@@ -104,7 +122,7 @@ const LabelAtom: React.FC<LabelAtomProps> = ({
       }}
     >
       {iconPosition === "left" && iconWithMargin}
-      {text}
+      <span className="whitespace-normal">{text}</span>
       {iconPosition === "right" && iconWithMargin}
     </Tag>
   );

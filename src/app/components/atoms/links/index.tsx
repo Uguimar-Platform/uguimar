@@ -26,6 +26,8 @@ type FontWeight =
   | "extrabold"
   | "black";
 
+type HoverStyle = "underline" | "color" | "background" | "none";
+
 interface LinkAtomProps {
   to: string;
   label: string;
@@ -36,6 +38,11 @@ interface LinkAtomProps {
   iconSize?: "sm" | "md" | "lg" | number;
   fontFamily?: FontFamily;
   fontWeight?: FontWeight;
+  textSize?: "xs" | "sm" | "base" | "lg" | "xl";
+  fullWidth?: boolean;
+  hoverStyle?: HoverStyle;
+  hoverColor?: string;
+  hoverBackground?: string;
 }
 
 const LinkAtom: React.FC<LinkAtomProps> = ({
@@ -48,11 +55,31 @@ const LinkAtom: React.FC<LinkAtomProps> = ({
   iconSize = "md",
   fontFamily = "Poppins",
   fontWeight = 400,
+  textSize = "base",
+  fullWidth = false,
+  hoverStyle = "underline",
+  hoverColor = "#334EAC",
+  hoverBackground = "transparent",
 }) => {
   const sizeMap = {
     sm: 16,
     md: 20,
     lg: 24,
+  };
+
+  const textSizeClasses = {
+    xs: "text-xs",
+    sm: "text-sm",
+    base: "text-base",
+    lg: "text-lg",
+    xl: "text-xl",
+  };
+
+  const hoverClasses = {
+    underline: "hover:underline",
+    color: `hover:text-[${hoverColor}]`,
+    background: `hover:bg-[${hoverBackground}]`,
+    none: "",
   };
 
   const resolvedIconSize =
@@ -67,7 +94,9 @@ const LinkAtom: React.FC<LinkAtomProps> = ({
   return (
     <Link
       href={to}
-      className={`inline-flex items-center p-2 text-lg font-medium ${className}`}
+      className={`inline-flex items-center p-2 ${textSizeClasses[textSize]} font-medium transition-all duration-200 ${
+        hoverClasses[hoverStyle]
+      } ${fullWidth ? "w-full justify-center" : ""} ${className}`}
       style={{
         fontFamily: fontFamily,
         fontWeight: fontWeight,
@@ -79,7 +108,7 @@ const LinkAtom: React.FC<LinkAtomProps> = ({
           style={{ width: resolvedIconSize, height: resolvedIconSize }}
         />
       )}
-      {label}
+      <span className="whitespace-normal">{label}</span>
       {IconComponent && iconPosition === "right" && (
         <IconComponent
           className={`ml-2 ${iconColor}`}
