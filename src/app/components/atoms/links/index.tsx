@@ -38,7 +38,7 @@ interface LinkAtomProps {
   iconSize?: "sm" | "md" | "lg" | number;
   fontFamily?: FontFamily;
   fontWeight?: FontWeight;
-  textSize?: "xs" | "sm" | "base" | "lg" | "xl";
+  fontSize?: string;
   fullWidth?: boolean;
   hoverStyle?: HoverStyle;
   hoverColor?: string;
@@ -55,7 +55,7 @@ const LinkAtom: React.FC<LinkAtomProps> = ({
   iconSize = "md",
   fontFamily = "Poppins",
   fontWeight = 400,
-  textSize = "base",
+  fontSize = "text-base",
   fullWidth = false,
   hoverStyle = "underline",
   hoverColor = "#334EAC",
@@ -65,14 +65,6 @@ const LinkAtom: React.FC<LinkAtomProps> = ({
     sm: 16,
     md: 20,
     lg: 24,
-  };
-
-  const textSizeClasses = {
-    xs: "text-xs",
-    sm: "text-sm",
-    base: "text-base",
-    lg: "text-lg",
-    xl: "text-xl",
   };
 
   const hoverClasses = {
@@ -94,7 +86,7 @@ const LinkAtom: React.FC<LinkAtomProps> = ({
   return (
     <Link
       href={to}
-      className={`inline-flex items-center p-2 ${textSizeClasses[textSize]} font-medium transition-all duration-200 ${
+      className={`inline-flex items-center ${fontSize} font-medium transition-all duration-200 ${
         hoverClasses[hoverStyle]
       } ${fullWidth ? "w-full justify-center" : ""} ${className}`}
       style={{

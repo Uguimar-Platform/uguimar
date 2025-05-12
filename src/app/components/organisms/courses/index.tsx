@@ -119,9 +119,8 @@ function Courses() {
               icon="ArrowRight"
               iconPosition="right"
               className="rounded-full px-8 py-3 mt-6 text-lg"
-            >
-              Empezar gratis
-            </ButtonAtom>
+              text="Empezar gratis"
+            />
           </div>
         </div>
       </div>

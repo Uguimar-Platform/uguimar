@@ -36,7 +36,7 @@ interface CheckboxAtomProps {
   className?: string;
   fontFamily?: FontFamily;
   fontWeight?: FontWeight;
-  textSize?: "xs" | "sm" | "base" | "lg";
+  fontSize?: string;
   description?: string;
 }
 
@@ -53,7 +53,7 @@ const CheckboxAtom: React.FC<CheckboxAtomProps> = ({
   className = "",
   fontFamily = "Poppins",
   fontWeight = "light",
-  textSize = "base",
+  fontSize = "text-base",
   description,
 }) => {
   const uniqueId = useId();
@@ -63,13 +63,6 @@ const CheckboxAtom: React.FC<CheckboxAtomProps> = ({
     sm: "w-3 h-3",
     md: "w-4 h-4",
     lg: "w-5 h-5",
-  };
-
-  const textSizeClasses = {
-    xs: "text-xs",
-    sm: "text-sm",
-    base: "text-base",
-    lg: "text-lg",
   };
 
   const variantStyles = {
@@ -82,9 +75,9 @@ const CheckboxAtom: React.FC<CheckboxAtomProps> = ({
     <div className={`flex flex-col ${className}`}>
       <label
         htmlFor={id}
-        className={`flex items-start gap-2 cursor-pointer py-2 px-2 m-2 ${
+        className={`flex items-start gap-1 cursor-pointer ${
           disabled ? "opacity-50 cursor-not-allowed" : ""
-        } ${error ? "text-red-500" : ""} sm:gap-1 md:gap-2 lg:gap-3`}
+        } ${error ? "text-red-500" : ""} sm:gap-1 md:gap-1 lg:gap-2`}
       >
         <input
           type="checkbox"
@@ -93,7 +86,7 @@ const CheckboxAtom: React.FC<CheckboxAtomProps> = ({
           disabled={disabled}
           checked={checked}
           onChange={onChange}
-          className={`mt-1 ${sizeStyles[size]} ${variantStyles[variant]} rounded ${
+          className={`mt-0.5 ${sizeStyles[size]} ${variantStyles[variant]} rounded ${
             error ? "border-red-500" : ""
           } transition-transform duration-200 ease-in-out checked:scale-110 appearance-none checked:appearance-auto`}
           style={{ accentColor: "#334EAC" }}
@@ -101,7 +94,7 @@ const CheckboxAtom: React.FC<CheckboxAtomProps> = ({
         />
         <div className="flex flex-col">
           <span
-            className={`select-none whitespace-normal ${textSizeClasses[textSize]}`}
+            className={`select-none whitespace-normal ${fontSize}`}
             style={{
               fontFamily: fontFamily,
               fontWeight: fontWeight,
@@ -113,7 +106,7 @@ const CheckboxAtom: React.FC<CheckboxAtomProps> = ({
           {description && (
             <span
               id={`${id}-description`}
-              className={`text-gray-500 ${textSizeClasses[textSize === "xs" ? "xs" : "sm"]}`}
+              className={`text-gray-500 ${fontSize}`}
               style={{
                 fontFamily: fontFamily,
                 fontWeight: fontWeight,
@@ -124,11 +117,6 @@ const CheckboxAtom: React.FC<CheckboxAtomProps> = ({
           )}
         </div>
       </label>
-      {typeof error === "string" && error && (
-        <span className="text-red-500 text-xs sm:text-xs md:text-sm lg:text-base px-2">
-          {error}
-        </span>
-      )}
     </div>
   );
 };

@@ -34,7 +34,7 @@ export type LabelAtomProps = {
   className?: string;
   fontFamily?: FontFamily;
   fontWeight?: FontWeight;
-  fontSize?: string | number;
+  fontSize?: string;
   textSize?: "xs" | "sm" | "base" | "lg" | "xl";
   iconSize?: number;
   iconSpacing?: "sm" | "md" | "lg";
@@ -49,7 +49,7 @@ const LabelAtom: React.FC<LabelAtomProps> = ({
   textColor = "text-black",
   fontFamily = "SFProDisplay",
   fontWeight = 700,
-  fontSize = "16px",
+  fontSize = "text-base",
   className = "",
   textSize = "base",
   iconSize = 20,
@@ -113,12 +113,11 @@ const LabelAtom: React.FC<LabelAtomProps> = ({
   return (
     <Tag
       {...(as === "label" ? { htmlFor } : {})}
-      className={`flex items-center ${textSizeClasses[textSize]} ${iconSpacingClasses[iconSpacing]} ${className}`}
+      className={`flex items-center ${fontSize} ${textSizeClasses[textSize]} ${iconSpacingClasses[iconSpacing]} ${className}`}
       style={{
         fontFamily: fontFamily,
         fontWeight: resolvedFontWeight,
         color: textColor,
-        fontSize: fontSize,
       }}
     >
       {iconPosition === "left" && iconWithMargin}

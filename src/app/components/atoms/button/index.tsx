@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, ReactNode } from "react";
 import { ArrowLeft, ArrowRight } from "@mynaui/icons-react";
 
 type FontFamily = "Poppins" | "Onest" | "SFProDisplay";
@@ -25,7 +25,7 @@ type FontWeight =
   | "black";
 
 interface ButtonAtomProps {
-  text: string;
+  text: string | ReactNode;
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   className?: string;

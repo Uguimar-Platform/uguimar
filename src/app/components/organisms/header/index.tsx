@@ -27,7 +27,7 @@ const Header: React.FC = () => {
       </div>
       <NavigationMenu />
       <div className="flex gap-4">
-      <Button
+        <Button
           bgColor="#334EAC"
           textColor="#FFFFFF"
           hoverColor="#7096D1"
