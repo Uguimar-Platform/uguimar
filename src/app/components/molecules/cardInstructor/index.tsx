@@ -1,13 +1,12 @@
 import React from "react";
-import LabelAtom, { FontFamily } from "../../atoms/label";
+import LabelAtom from "../../atoms/label";
 
 export type CarInstructorProps = {
   imageSrc: string;
   title: string;
   description: string;
-  textColor?: string;
-  fontFamily?: FontFamily;
-  fontWeight?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
+  textColorTitle?: string;
+  textColorDescription?: string;
   className?: string;
   style?: React.CSSProperties;
 };
@@ -16,7 +15,8 @@ const CardInstructor: React.FC<CarInstructorProps> = ({
   imageSrc,
   title,
   description,
-  fontWeight = 400,
+  textColorTitle = "#081F5C",
+  textColorDescription = "#202020",
   className = "",
   style,
 }) => {
@@ -36,7 +36,7 @@ const CardInstructor: React.FC<CarInstructorProps> = ({
         <LabelAtom
           text={title}
           as="h2"
-          textColor="#081F5C"
+          textColor={textColorTitle}
           fontFamily="SFProDisplay"
           fontWeight="bold"
           fontSize="text-[22px] md:text-[28px]"
@@ -45,7 +45,7 @@ const CardInstructor: React.FC<CarInstructorProps> = ({
         <LabelAtom
           text={description}
           as="p"
-          textColor="#202020"
+          textColor={textColorDescription}
           fontFamily="SFProDisplay"
           fontSize="text-[18px] md:text-[20px]"
           fontWeight="regular"

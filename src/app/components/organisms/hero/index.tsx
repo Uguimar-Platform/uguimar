@@ -6,16 +6,16 @@ import ButtonAtom from "../../atoms/button";
 const Hero: React.FC = () => {
   return (
     <section className="p-10 rounded-lg flex flex-col items-center text-center">
-      <div className="flex flex-row items-center justify-between w-[1050px] mx-auto">
-        <div className="max-w-[610px] -mt-22 space-y-6">
-          <div className="max-w-2xl -space-y-6">
+      <div className="flex flex-col lg:flex-row items-center justify-between lg:w-[1150px] mx-auto">
+        <div className="lg:max-w-[610px] md:max-w-[500px] sm:max-w-[410px] max-w-[375px] -mt-22 space-y-3 lg:space-y-4 flex flex-col  justify-center items-center lg:justify-start lg:items-start">
+          <div className="max-w-2xl -space-y-5 lg:-space-y-8 flex flex-col justify-center items-center lg:justify-start lg:items-start">
             <LabelAtom
               as="h1"
               text="Aprende, crece y"
               textColor="000000"
               fontFamily="SFProDisplay"
               fontWeight="bold"
-              fontSize={60}
+              fontSize="text-[29px] sm:text-[44px] md:text-[36px] lg:text-[64px]"
             />
             <div className="flex-grow flex space-x-3">
               <LabelAtom
@@ -24,7 +24,7 @@ const Hero: React.FC = () => {
                 textColor="#334EAC"
                 fontFamily="SFProDisplay"
                 fontWeight={700}
-                fontSize={60}
+                fontSize="text-[29px] sm:text-[44px] md:text-[36px] lg:text-[64px]"
               />{" "}
               <LabelAtom
                 as="h1"
@@ -32,7 +32,7 @@ const Hero: React.FC = () => {
                 textColor="000000"
                 fontFamily="SFProDisplay"
                 fontWeight={700}
-                fontSize={60}
+                fontSize="text-[29px] sm:text-[44px] md:text-[36px] lg:text-[64px]"
               />
             </div>
             <LabelAtom
@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
               textColor="text-black"
               fontFamily="SFProDisplay"
               fontWeight={700}
-              fontSize={60}
+              fontSize="text-[29px] sm:text-[44px] md:text-[36px] lg:text-[64px]"
             />
           </div>
           <LabelAtom
@@ -50,8 +50,8 @@ const Hero: React.FC = () => {
             textColor="text-gray-600"
             fontFamily="SFProDisplay"
             fontWeight={400}
-            fontSize={24}
-            className="text-start opacity-50 max-w-135 leading-tight"
+            fontSize="text-[16px] sm:text-[18px] md:text-[22px] lg:text-[24px]"
+            className="text-center lg:text-start opacity-50 max-w-135 leading-tight"
           />
           <ButtonAtom
             bgColor="#7096D1"
@@ -61,24 +61,23 @@ const Hero: React.FC = () => {
             fontWeight={600}
             icon="ArrowRight"
             iconPosition="right"
-            iconSize={32}
-            className="rounded-full px-10 py-2 mt-10 text-xl"
-          >
-            Empezar gratis
-          </ButtonAtom>
+            iconSize="text-[20px]"
+            className="rounded-[50px] px-4 lg:px-10 lg:py-2.5 mt-8 text-sm lg:text-xl mb-12 lg:mb-0"
+            text="Empezar gratis"
+          />
         </div>
-        <div>
+        <div className="flex flex-col ">
           <img src="/img_hero1.webp" alt="Hero" className="w-[400px] h-full" />
           <div className="flex flex-row items-center justify-between ">
             <img
               src="/img_hero3.webp"
               alt="Hero"
-              className="w-[200px] h-full justify-items-end -translate-x-[70px] translate-y-[40px]"
+              className="w-[150px] lg:w-[200px] h-full lg:justify-items-end lg:-translate-x-[70px] lg:translate-y-[40px]"
             />
             <img
               src="/img_hero2.webp"
               alt="Hero"
-              className="w-[250px] h-full -translate-x-[40px] translate-y-[20px]"
+              className="w-[250px] h-full lg:-translate-x-[40px] lg:translate-y-[20px]"
             />
           </div>
         </div>

@@ -1,13 +1,12 @@
 "use client";
 import DynamicIcon from "../../molecules/dynamic-icon";
 import FormLogin from "../../molecules/formLogin";
-import ButtonAtom from "../../atoms/button"; 
+import ButtonAtom from "../../atoms/button";
 
 export default function LoginOrganism() {
   return (
     <section className="flex flex-col items-center justify-center p-6 md:p-12">
       <div className="flex flex-col md:flex-row gap-6 md:gap-4 p-6 md:p-12 rounded-2xl border border-[#D0D5DD] bg-white w-full max-w-7xl">
-
         {/* Botón de volver visible solo en tablet */}
         <div className="block lg:hidden mb-4 ">
           <ButtonAtom
@@ -19,8 +18,8 @@ export default function LoginOrganism() {
             bgColor="#D0E3FF"
             hoverColor="#E7F1FF"
             fontWeight="medium"
-          >
-          </ButtonAtom>
+            text="Volver"
+          />
         </div>
 
         {/* Formulario */}
@@ -30,9 +29,7 @@ export default function LoginOrganism() {
 
         {/* DynamicIcon solo en desktop */}
         <div className="w-1/2 flex-col items-center text-center hidden lg:block">
-          <DynamicIcon
-          fontSize={20}
-          />
+          <DynamicIcon />
         </div>
       </div>
     </section>

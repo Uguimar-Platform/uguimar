@@ -15,7 +15,7 @@ const ContactSection: React.FC = () => {
           fontWeight={700}
           textColor="text-black"
           className="text-5xl text-center"
-          fontSize="2.5rem"
+          fontSize="text-[64px]"
         />
       </div>
 
@@ -59,9 +59,8 @@ const ContactSection: React.FC = () => {
             hoverColor="#081F5C"
             textColor="#fff"
             className="flex justify-center items-center w-full p-2 rounded-lg"
-          >
-            Enviar
-          </Button>
+            text="Enviar"
+          />
         </form>
       </div>
     </section>
