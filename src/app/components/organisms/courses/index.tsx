@@ -78,7 +78,7 @@ function Courses() {
               textColor="text-black"
               fontFamily="SFProDisplay"
               fontWeight="bold"
-              fontSize={40}
+              fontSize="text-[40px]"
               className="leading-tight"
             />
             <div className="flex space-x-6">
@@ -88,7 +88,7 @@ function Courses() {
                 textColor="#334EAC"
                 fontFamily="SFProDisplay"
                 fontWeight="bold"
-                fontSize={40}
+                fontSize="text-[40px]"
                 className="leading-tight"
               />
               <LabelAtom
@@ -97,7 +97,7 @@ function Courses() {
                 textColor="text-black"
                 fontFamily="SFProDisplay"
                 fontWeight="bold"
-                fontSize={40}
+                fontSize="text-[40px]"
                 className="leading-tight"
               />
             </div>
@@ -107,7 +107,7 @@ function Courses() {
               textColor="text-black"
               fontFamily="SFProDisplay"
               fontWeight="bold"
-              fontSize={40}
+              fontSize="text-[40px]"
               className="leading-tight whitespace-nowrap"
             />
             <ButtonAtom
@@ -119,9 +119,8 @@ function Courses() {
               icon="ArrowRight"
               iconPosition="right"
               className="rounded-full px-8 py-3 mt-6 text-lg"
-            >
-              Empezar gratis
-            </ButtonAtom>
+              text="Empezar gratis"
+            />
           </div>
         </div>
       </div>

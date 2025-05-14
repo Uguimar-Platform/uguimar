@@ -27,16 +27,15 @@ const Header: React.FC = () => {
       </div>
       <NavigationMenu />
       <div className="flex gap-4">
-      <Button
+        <Button
           bgColor="#334EAC"
           textColor="#FFFFFF"
           hoverColor="#7096D1"
           className="border border-[#334EAC] rounded-full px-6 py-2"
           fontFamily="Onest"
           fontWeight={600}
-        >
-          Iniciar sesión
-        </Button>
+          text="Iniciar sesión"
+        />
         <Button
           bgColor="#334EAC"
           textColor="#FFFFFF"
@@ -44,9 +43,8 @@ const Header: React.FC = () => {
           className="rounded-full px-10 py-2"
           fontFamily="Onest"
           fontWeight={600}
-        >
-          Registro
-        </Button>
+          text="Registro"
+        />
       </div>
     </header>
   );

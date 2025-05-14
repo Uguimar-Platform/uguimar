@@ -40,7 +40,7 @@ const CardCourses: React.FC<CardCoursesProps> = ({
           textColor="text-black"
           fontFamily="SFProDisplay"
           fontWeight={700}
-          fontSize={24}
+          fontSize="text-[24px]"
         />
         <div className="flex items-center gap-3 mt-2 ">
           <LabelAtom
@@ -50,7 +50,7 @@ const CardCourses: React.FC<CardCoursesProps> = ({
             as="p"
             fontFamily="SFProDisplay"
             fontWeight={500}
-            fontSize={16}
+            fontSize="text-[16px]"
             textColor="#334EAC"
           />
           <LabelAtom
@@ -60,7 +60,7 @@ const CardCourses: React.FC<CardCoursesProps> = ({
             as="p"
             fontFamily="SFProDisplay"
             fontWeight={500}
-            fontSize={16}
+            fontSize="text-[16px]"
             textColor="#334EAC"
           />
         </div>
@@ -69,30 +69,29 @@ const CardCourses: React.FC<CardCoursesProps> = ({
           textColor="#000000"
           fontFamily="SFProDisplay"
           fontWeight={500}
-          fontSize={20}
+          fontSize="text-[20px]"
           className="mt-2"
         />
-        <div className="flex justify-end gap-3 mt-10">
+        <div className="flex justify-between items-center mt-10">
           <Button
+            disabled={true}
             textColor="#F9FCFF"
             bgColor="#7096D1"
             hoverColor="#334EAC"
-            className="rounded-2xl px-6"
+            className="rounded-[15px] px-4 sm:px-6 text-[14px] sm:text-[16px]"
             fontFamily="SFProDisplay"
             fontWeight={500}
-          >
-            {category}
-          </Button>
+            text={category}
+          />
           <Button
             textColor="#081F5C"
             bgColor="#D0E3FF"
             hoverColor="#E7F1FF"
-            className="rounded-2xl px-8"
+            className="rounded-[15px] px-6  text-[14px] sm:text-[16px]"
             fontFamily="SFProDisplay"
-            fontWeight={700}
-          >
-            Agregar
-          </Button>
+            fontWeight="bold"
+            text="Agregar"
+          />
         </div>
       </div>
     </div>

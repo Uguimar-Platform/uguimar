@@ -17,17 +17,14 @@ const RegisterOrganism: React.FC = () => {
               className=""
               fontFamily="BlackMango"
               fontWeight="extrabold"
-              fontSize={40}
+              fontSize="text-[40px]"
               text="¡Regístrate!"
             />
 
             <DynamicIcon
               labelText="Aprende, crece y destaca con cursos prácticos y accesibles en un solo lugar."
               labelColor="#081F5C"
-              fontFamily="Poppins"
-              fontWeight="light"
               labelClassName="text-center italic max-w-md"
-              fontSize={20}
             />
           </div>
 

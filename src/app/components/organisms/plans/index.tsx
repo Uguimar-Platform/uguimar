@@ -2,7 +2,6 @@
 import React from "react";
 import CardPlan from "../../molecules/cardPlan";
 import LabelAtom from "../../atoms/label";
-import { Section } from "lucide-react";
 
 function Plans() {
   return (
@@ -14,7 +13,7 @@ function Plans() {
           textColor="000000"
           fontFamily="SFProDisplay"
           fontWeight="bold"
-          fontSize={60}
+          fontSize="text-[60px]"
         />
         <LabelAtom
           as="h1"
@@ -22,7 +21,7 @@ function Plans() {
           textColor="#334EAC"
           fontFamily="SFProDisplay"
           fontWeight="bold"
-          fontSize={60}
+          fontSize="text-[60px]"
         />
       </div>
       <LabelAtom
@@ -31,7 +30,7 @@ function Plans() {
         textColor="#7096D1"
         fontFamily="SFProDisplay"
         fontWeight={600}
-        fontSize={20}
+        fontSize="text-[20px]"
         className="mb-16 -mt-4"
       />
 

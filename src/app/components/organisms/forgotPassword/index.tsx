@@ -16,9 +16,8 @@ function ForgotPass() {
           textColor="#334EAC"
           fontFamily="Poppins"
           fontWeight={600}
-        >
-          <span className="hidden sm:inline">Volver</span>
-        </ButtonAtom>
+          text={<span className="hidden sm:inline">Volver</span>}
+        />
       </div>
       <div>
         <FormForgotPass />

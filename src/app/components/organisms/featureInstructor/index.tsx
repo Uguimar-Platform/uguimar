@@ -1,6 +1,6 @@
 import React from "react";
 import LabelAtom from "../../atoms/label";
-import { CarInstructor } from "../../molecules/cardInstructor";
+import CardInstructor from "../../molecules/cardInstructor";
 
 const FeatureInstructor: React.FC = () => {
   return (
@@ -12,7 +12,7 @@ const FeatureInstructor: React.FC = () => {
           fontFamily="SFProDisplay"
           fontWeight={700}
           textColor="text-black"
-          fontSize={64}
+          fontSize="text-[64px]"
           className="text-center"
         />
         <LabelAtom
@@ -21,36 +21,36 @@ const FeatureInstructor: React.FC = () => {
           fontFamily="SFProDisplay"
           fontWeight={700}
           textColor="#334EAC"
-          fontSize={64}
+          fontSize="text-[64px]"
           className="text-center -mt-6 mb-16"
         />
 
         <div className="flex flex-col gap-8 mt-6 w-full">
-          <CarInstructor
+          <CardInstructor
             imageSrc="/teacher_1.webp"
-            textColor="#081F5C"
             title="Lionel Andrés Messi Cuccittini"
             description="Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown-"
-            className="border border-gray-400 bg-white self-start "
+            className="border border-[#334EAC] bg-[#F9FCFF] self-start "
           />
-          <CarInstructor
+          <CardInstructor
             imageSrc="/teacher_2.webp"
             title="Lionel Andrés Messi Cuccittini"
-            textColor="#ffffff"
+            textColorTitle="#E7F1FF"
+            textColorDescription="#E7F1FF"
             description="Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown-"
             className="border border-gray-400 bg-[#334EAC] self-end"
           />
-          <CarInstructor
+          <CardInstructor
             imageSrc="/teacher_3.webp"
             title="Lionel Andrés Messi Cuccittini"
-            textColor="#081F5C"
             description="Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown-"
             className="border border-gray-400 bg-white self-start"
           />
-          <CarInstructor
+          <CardInstructor
             imageSrc="/teacher_4.webp"
             title="Lionel Andrés Messi Cuccittini"
-            textColor="#ffffff"
+            textColorTitle="#E7F1FF"
+            textColorDescription="#E7F1FF"
             description="Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown-"
             className="border border-gray-400 bg-[#334EAC] self-end"
           />

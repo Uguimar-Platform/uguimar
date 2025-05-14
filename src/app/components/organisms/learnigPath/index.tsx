@@ -19,7 +19,7 @@ const LearningPathSection: React.FC<LearningPathProps> = ({}) => {
           fontFamily="SFProDisplay"
           fontWeight={700}
           textColor="text-black"
-          fontSize={64}
+          fontSize="text-[64px]"
           className="text-center"
         />
         <LabelAtom
@@ -28,7 +28,7 @@ const LearningPathSection: React.FC<LearningPathProps> = ({}) => {
           fontFamily="SFProDisplay"
           fontWeight={700}
           textColor="#334EAC"
-          fontSize={64}
+          fontSize="text-[64px]"
           className="text-center"
         />
       </div>
@@ -58,9 +58,8 @@ const LearningPathSection: React.FC<LearningPathProps> = ({}) => {
               fontFamily="Onest"
               fontWeight={700}
               className="rounded-full text-xl px-12 py-3 text-center"
-            >
-              Generar ruta
-            </ButtonAtom>
+              text="Generar ruta"
+            />
           </div>
         </div>
 
