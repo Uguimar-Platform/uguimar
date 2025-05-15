@@ -24,7 +24,10 @@ const CardCourses: React.FC<CardCoursesProps> = ({
   category,
 }) => {
   return (
-    <div className="bg-white rounded-2xl overflow-hidden w-80 shadow-md">
+    <div
+      className={`bg-white rounded-2xl overflow-hidden w-80 shadow-lg" : ""
+      }`}
+    >
       <div className="relative aspect-video overflow-hidden mx-auto">
         <img
           src={courseImage}
