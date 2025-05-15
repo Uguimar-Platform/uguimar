@@ -18,7 +18,6 @@ function Courses() {
                 age="12 años"
                 price="200"
                 category="Programación"
-                withShadow={true}
               />
               <CardCourses
                 courseImage="/Course_minecraft.webp"
@@ -28,7 +27,6 @@ function Courses() {
                 age="12 años"
                 price="200"
                 category="Programación"
-                withShadow={true}
               />
             </div>
 
@@ -41,7 +39,6 @@ function Courses() {
                 age="12 años"
                 price="200"
                 category="Programación"
-                withShadow={true}
               />
               <CardCourses
                 courseImage="/course_web.webp"
@@ -51,7 +48,6 @@ function Courses() {
                 age="12 años"
                 price="200"
                 category="Programación"
-                withShadow={true}
               />
             </div>
           </div>
