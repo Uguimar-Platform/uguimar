@@ -54,66 +54,79 @@ function Courses() {
         </div>
 
         <div className="flex justify-center items-center h-full text-center">
-          <div className="flex flex-col items-center w-full">
-            <LabelAtom
-              as="h1"
-              text="Abre las puertas al"
-              textColor="text-black"
-              fontFamily="BlackMango"
-              fontWeight="bold"
-              fontSize="text-[40px]"
-              className="leading-tight"
+          <div className="flex flex-col items-center justify-center">
+            <img
+              src="/dolphin.webp"
+              alt="dolphin"
+              className="w-[380px] pb-[50px]"
             />
-            <div className="flex flex-wrap lg:flex-nowrap gap-2 justify-center">
+            <div className="flex flex-col items-center w-full">
               <LabelAtom
                 as="h1"
-                text="conocimiento"
-                textColor="#334EAC"
-                fontFamily="BlackMango"
-                fontWeight="bold"
-                fontSize="text-[40px]"
-                className="leading-tight"
-              />
-              <LabelAtom
-                as="h1"
-                text="con"
+                text="Abre las puertas al"
                 textColor="text-black"
                 fontFamily="BlackMango"
                 fontWeight="bold"
                 fontSize="text-[40px]"
                 className="leading-tight"
               />
+              <div className="flex flex-wrap lg:flex-nowrap gap-2 justify-center">
+                <LabelAtom
+                  as="h1"
+                  text="conocimiento"
+                  textColor="#334EAC"
+                  fontFamily="BlackMango"
+                  fontWeight="bold"
+                  fontSize="text-[40px]"
+                  className="leading-tight"
+                />
+                <LabelAtom
+                  as="h1"
+                  text="con"
+                  textColor="text-black"
+                  fontFamily="BlackMango"
+                  fontWeight="bold"
+                  fontSize="text-[40px]"
+                  className="leading-tight"
+                />
+                <LabelAtom
+                  as="h1"
+                  text="los"
+                  textColor="text-black"
+                  fontFamily="BlackMango"
+                  fontWeight="bold"
+                  fontSize="text-[40px]"
+                  className="leading-tight"
+                />
+              </div>
               <LabelAtom
                 as="h1"
-                text="los"
+                text="cursos mejor certificados"
                 textColor="text-black"
                 fontFamily="BlackMango"
                 fontWeight="bold"
                 fontSize="text-[40px]"
-                className="leading-tight"
+                className="leading-tight whitespace-nowrap"
+              />
+              <ButtonAtom
+                bgColor="#F9FCFF"
+                hoverColor="#E7E7E7"
+                textColor="#081F5C"
+                fontFamily="Onest"
+                fontWeight={500}
+                icon="ArrowRight"
+                iconPosition="right"
+                className="rounded-full px-8 py-3 mt-6 text-lg"
+                text="Empezar gratis"
               />
             </div>
-            <LabelAtom
-              as="h1"
-              text="cursos mejor certificados"
-              textColor="text-black"
-              fontFamily="BlackMango"
-              fontWeight="bold"
-              fontSize="text-[40px]"
-              className="leading-tight whitespace-nowrap"
-            />
-            <ButtonAtom
-              bgColor="#F9FCFF"
-              hoverColor="#E7E7E7"
-              textColor="#081F5C"
-              fontFamily="Onest"
-              fontWeight={500}
-              icon="ArrowRight"
-              iconPosition="right"
-              className="rounded-full px-8 py-3 mt-6 text-lg"
-              text="Empezar gratis"
-            />
+            <img src="/turtle.webp" alt="turtle" className="w-[300px] pt-[70px]" />
           </div>
+          <img
+            src="/seahorse.webp"
+            alt="seahorse"
+            className="w-[150px] ml-[30px]"
+          />
         </div>
       </div>
     </div>
