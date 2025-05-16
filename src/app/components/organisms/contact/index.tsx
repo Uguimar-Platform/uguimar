@@ -22,7 +22,7 @@ interface ContactSectionProps {
 }
 
 const ContactSection: React.FC<ContactSectionProps> = ({
-  style = "default",
+  style = "kids",
 }) => {
   const classStyles: ClassStyles = {
     default: {
@@ -33,11 +33,11 @@ const ContactSection: React.FC<ContactSectionProps> = ({
       bodyForm: "flex flex-col  w-full max-w-lg p-6 rounded-lg space-y-6",
     },
     kids: {
-      sectionStyle: "",
-      headStyle: "",
-      bodyStyle: "",
-      bodyContact: "",
-      bodyForm: "",
+      sectionStyle: "flex flex-col items-center py-10",
+      headStyle: "mt-3",
+      bodyStyle: "bg-[#5670CA] flex items-center justify-center pb-4 w-full",
+      bodyContact: "hidden md:flex flex-col items-center justify-center w-1/3",
+      bodyForm: "flex flex-col  w-full max-w-lg p-6 rounded-lg space-y-6",
     },
   };
   const { sectionStyle, headStyle, bodyStyle, bodyForm, bodyContact } =
@@ -50,7 +50,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
   ];
   return (
     <section className={sectionStyle}>
-      {style === "kids" && (
+      {/* {style === "kids" && (
         <div className={headStyle}>
           <LabelAtom
             text="Contacto"
@@ -62,7 +62,7 @@ const ContactSection: React.FC<ContactSectionProps> = ({
             fontSize="text-[64px]"
           />
         </div>
-      )}
+      )} 
       {style !== "kids" && (
         <div className={headStyle}>
           <LabelAtom
@@ -93,16 +93,16 @@ const ContactSection: React.FC<ContactSectionProps> = ({
             fontSize="text-[25px]"
           />
         </div>
-      )}
+      )} */}
 
       <div className={bodyStyle}>
-        {style == 'kids' && (
+        {style !== 'kids' && (
         <div className={bodyContact}>
           <img src="/icon_contact.webp" alt="" />
         </div>
         )}
 
-        {style !== 'kids' && (
+        {style == 'kids' && (
         <div className={bodyContact}>
           <Image src="/Logo.webp" alt="Logo" width={180} height={180} />
           <LabelAtom
@@ -117,87 +117,132 @@ const ContactSection: React.FC<ContactSectionProps> = ({
         </div>
         )}
         
-        {style !== "kids" && (
-          <form className={bodyForm}>
-            <div className="flex gap-4 mb-2">
-              <InputField
-                label=""
-                name="nombres"
-                type="text"
-                placeholder="Nombres"
+        {style == "kids" && (
+          <div>
+            <div className={headStyle}>
+              <LabelAtom
+                text="MANTENTE AL DÍA EN UGUIMAR"
+                as="h1"
+                fontFamily="SFProDisplay"
+                fontWeight={700}
+                textColor="text-black"
+                className="text-5xl text-right"
+                fontSize="text-[35px]"
               />
-              <InputField
-                label=""
-                name="apellidos"
-                type="text"
-                placeholder="Apellidos"
+              <LabelAtom
+                text="Recibe las últimas novedades, lanzamientos de cursos y consejos"
+                as="h3"
+                fontFamily="SFProDisplay"
+                fontWeight={100}
+                textColor="text-black"
+                className="text-right"
+                fontSize="text-[25px]"
               />
-            </div>
-            <div className="mb-2">
-              <DropdownAtom
-                options={dropdownOptions}
-              />
-              <InputField
-                label=""
-                name="correo"
-                type="email"
-                placeholder="Correo electrónico"
-              />
-            </div>
-            <div>
-              <Button
-                type="submit"
-                bgColor="#334EAC"
-                hoverColor="#081F5C"
-                textColor="#fff"
-                iconPosition="right"
-                text="Suscribete ahora"
+              <LabelAtom
+                text="de aprendizaje directamente en tu correo"
+                as="h3"
+                fontFamily="SFProDisplay"
+                fontWeight={100}
+                textColor="text-black"
+                className="text-right"
+                fontSize="text-[25px]"
               />
             </div>
-          </form>
+
+            <form className={bodyForm}>
+              <div className="flex gap-4 mb-2">
+                <InputField
+                  label=""
+                  name="nombres"
+                  type="text"
+                  placeholder="Nombres"
+                />
+                <InputField
+                  label=""
+                  name="apellidos"
+                  type="text"
+                  placeholder="Apellidos"
+                />
+              </div>
+              <div className="mb-2">
+                <DropdownAtom
+                  options={dropdownOptions}
+                />
+                <InputField
+                  label=""
+                  name="correo"
+                  type="email"
+                  placeholder="Correo electrónico"
+                />
+              </div>
+              <div>
+                <Button
+                  type="submit"
+                  bgColor="#334EAC"
+                  hoverColor="#081F5C"
+                  textColor="#fff"
+                  iconPosition="right"
+                  text="Suscribete ahora"
+                />
+              </div>
+            </form>
+          </div>
         )}
 
-        {(style == 'kids' &&
-          <form className={bodyForm}>
-            <InputField
-              label="Correo:"
-              name="correo"
-              type="email"
-              placeholder="Email"
-              inputClassName="bg-[#F5F8FF] text-[#202020] rounded-md border border-gray-400 w-full rounded-xl"
-              labelFontFamily="Onest"
-              labelFontWeight="extrabold"
-              labelClassName="text-lg text-white "
-              labelPosition="left"
-            />
-            {/* Label Input Text Area */}
-            <div>
+        {style !== 'kids' && (
+          <div>
+            <div className={headStyle} >
               <LabelAtom
-                fontFamily="Onest"
-                fontWeight="extrabold"
                 text="Contacto"
-                className="mb-1"
-                textColor="#fff"
-              />
-              <TextAreaAtom
-                className="w-full rounded-xl"
-                name="mensaje"
-                placeholder="Escribe tu mensaje"
-                height={100}
+                as="h1"
+                fontFamily="SFProDisplay"
+                fontWeight={700}
+                textColor="text-black"
+                className="text-5xl text-center"
+                fontSize="text-[64px]"
               />
             </div>
-            {/* Option Submit */}
-            <Button
-              type="submit"
-              fontFamily="Poppins"
-              fontWeight={600}
-              bgColor="#334EAC"
-              hoverColor="#081F5C"
-              textColor="#fff"
-              className="flex justify-center items-center w-full p-2 rounded-lg"
-              text="Enviar"
-            />
-          </form>
+              <form className={bodyForm}>
+                <InputField
+                  label="Correo:"
+                  name="correo"
+                  type="email"
+                  placeholder="Email"
+                  inputClassName="bg-[#F5F8FF] text-[#202020] rounded-md border border-gray-400 w-full rounded-xl"
+                  labelFontFamily="Onest"
+                  labelFontWeight="extrabold"
+                  labelClassName="text-lg text-white "
+                  labelPosition="left"
+                />
+                {/* Label Input Text Area */}
+                <div>
+                  <LabelAtom
+                    fontFamily="Onest"
+                    fontWeight="extrabold"
+                    text="Contacto"
+                    className="mb-1"
+                    textColor="#fff"
+                  />
+                  <TextAreaAtom
+                    className="w-full rounded-xl"
+                    name="mensaje"
+                    placeholder="Escribe tu mensaje"
+                    height={100}
+                  />
+                </div>
+                {/* Option Submit */}
+                <Button
+                  type="submit"
+                  fontFamily="Poppins"
+                  fontWeight={600}
+                  bgColor="#334EAC"
+                  hoverColor="#081F5C"
+                  textColor="#fff"
+                  className="flex justify-center items-center w-full p-2 rounded-lg"
+                  text="Enviar"
+                />
+            </form>
+          </div>
         )}
       </div>
     </section>
