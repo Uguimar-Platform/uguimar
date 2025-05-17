@@ -1,7 +1,7 @@
 import React from "react";
 import Hero from "../components/organisms/hero";
 import Courses from "../components/organisms/courses";
-import CombinedCoursesExploration from "../components/organisms/coursesExplorationSection";
+import CoursesExplorationSection from "../components/organisms/coursesExplorationSection";
 import LearningPathSection from "../components/organisms/learnigPath";
 import FeatureInstructor from "../components/organisms/featureInstructor";
 import FrequentQuestions from "../components/organisms/frequentQuestions";
@@ -14,7 +14,7 @@ const Landing = () => {
       <div className="mt-12 space-y-36">
         <Hero />
         <Courses />
-        <CombinedCoursesExploration/>
+        <CoursesExplorationSection/>
         <LearningPathSection />
         <FeatureInstructor />
         <FrequentQuestions />
