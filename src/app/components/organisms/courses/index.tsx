@@ -5,10 +5,10 @@ import ButtonAtom from "../../atoms/button";
 
 function Courses() {
   return (
-    <div className=" min-h-screen ">
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 space-x-36 justify-between items-start max-w-7xl mx-auto">
-        <div className="col-span-1 lg:col-span-2">
-          <div className="grid grid-cols-2 gap-6 col-span-2">
+    <div className=" min-h-screen px-4 py-8">
+      <div className="flex flex-col-reverse md:flex-row max-w-7xl mx-auto">
+        <div className="w-full md:w-[44%] lg:w-[40%] xl:w-[55%] flex justify-center">
+          <div className="grid grid-cols-1 md:grid-cols-1 xl:grid-cols-2 gap-6">
             <div className="space-y-6">
               <CardCourses
                 courseImage="/Course_Python.webp"
@@ -30,7 +30,7 @@ function Courses() {
               />
             </div>
 
-            <div className="space-y-6 mt-12 hidden lg:block">
+            <div className="space-y-6 mt-12 hidden xl:block">
               <CardCourses
                 courseImage="/Course_Html.webp"
                 alt="course1"
@@ -52,9 +52,14 @@ function Courses() {
             </div>
           </div>
         </div>
-
-        <div className="flex justify-center items-center h-full text-center">
-          <div className="flex flex-col items-center justify-center">
+        
+        <div className="relative w-full md:w-[56%] lg:w-[60%] xl:w-[45%] flex justify-center items-center text-center">
+          <img
+            src="/seahorse.webp"
+            alt="seahorse"
+            className="hidden lg:block absolute lg:right-[-35px] xl:right-[-90px] top-1/2 -translate-y-1/2 w-[120px]"
+          />
+          <div className="flex flex-col items-center justify-center w-full h-full">
             <img
               src="/dolphin.webp"
               alt="dolphin"
@@ -67,7 +72,7 @@ function Courses() {
                 textColor="text-black"
                 fontFamily="BlackMango"
                 fontWeight="bold"
-                fontSize="text-[40px]"
+                fontSize="text-[30px] lg:text-[35px]"
                 className="leading-tight"
               />
               <div className="flex flex-wrap lg:flex-nowrap gap-2 justify-center">
@@ -77,7 +82,7 @@ function Courses() {
                   textColor="#334EAC"
                   fontFamily="BlackMango"
                   fontWeight="bold"
-                  fontSize="text-[40px]"
+                  fontSize="text-[30px] lg:text-[35px]"
                   className="leading-tight"
                 />
                 <LabelAtom
@@ -86,7 +91,7 @@ function Courses() {
                   textColor="text-black"
                   fontFamily="BlackMango"
                   fontWeight="bold"
-                  fontSize="text-[40px]"
+                  fontSize="text-[30px] lg:text-[35px]"
                   className="leading-tight"
                 />
                 <LabelAtom
@@ -95,7 +100,7 @@ function Courses() {
                   textColor="text-black"
                   fontFamily="BlackMango"
                   fontWeight="bold"
-                  fontSize="text-[40px]"
+                  fontSize="text-[30px] lg:text-[35px]"
                   className="leading-tight"
                 />
               </div>
@@ -105,7 +110,7 @@ function Courses() {
                 textColor="text-black"
                 fontFamily="BlackMango"
                 fontWeight="bold"
-                fontSize="text-[40px]"
+                fontSize="text-[30px] lg:text-[35px]"
                 className="leading-tight whitespace-nowrap"
               />
               <ButtonAtom
@@ -120,13 +125,8 @@ function Courses() {
                 text="Empezar gratis"
               />
             </div>
-            <img src="/turtle.webp" alt="turtle" className="w-[300px] pt-[70px]" />
+            <img src="/turtle.webp" alt="turtle" className="w-[300px] pt-[70px] mb-[40px] md:mb-[0px]" />
           </div>
-          <img
-            src="/seahorse.webp"
-            alt="seahorse"
-            className="w-[150px] ml-[30px]"
-          />
         </div>
       </div>
     </div>
