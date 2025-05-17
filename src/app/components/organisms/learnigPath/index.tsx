@@ -13,14 +13,14 @@ interface LearningPathProps {
 const LearningPathSection: React.FC<LearningPathProps> = ({}) => {
   return (
     <section className="flex flex-col items-center justify-center py-12 px-4 text-center">
-      <div className="flex flex-col items-center justify-center mb-12 -space-y-6">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full max-w-4xl px-4">
         <LabelAtom
           text="Descubre tu ruta de"
           as="h1"
           fontFamily="SFProDisplay"
           fontWeight={700}
           textColor="text-black"
-          fontSize="text-[64px]"
+          fontSize="text-[32px] md:text-[64px]"
           className="text-center"
         />
         <LabelAtom
@@ -65,11 +65,12 @@ const LearningPathSection: React.FC<LearningPathProps> = ({}) => {
         </div>
 
         <div className="flex justify-center md:justify-start mt-4 md:mt-0">
-          <img
-            src="/logoIzquierda.svg"
-            alt="Logo"
-            className="w-32 h-32 md:w-44 md:h-44"
-          />
+         <img 
+         src="/logoIzquierda.svg" 
+         alt="Logo" 
+         className="w-24 h-24 md:w-44 md:h-44" 
+         />
+
         </div>
       </div>
     </section>
@@ -83,7 +84,7 @@ interface KidsLearningPathProps {
 
 const KidsLearningPathSection: React.FC<KidsLearningPathProps> = ({}) => {
   return (
-    <section className="relative flex flex-row items-start justify-between py-12 px-16 bg-[#FFFFFF]">
+    <section className="relative flex flex-col md:flex-row items-start justify-between py-12 px-4 md:px-16 bg-[#FFFFFF]">
       <div className="flex flex-row gap-16 items-start w-full">
         <div className="flex flex-col items-start justify-start">
           <LabelAtom
@@ -92,8 +93,8 @@ const KidsLearningPathSection: React.FC<KidsLearningPathProps> = ({}) => {
             fontFamily="BlackMango"
             fontWeight="extrabold"
             textColor="text-[#FF6B6B]"
-            fontSize="text-[35px]"
-            className="text-left mt-2 ml-16"
+            fontSize="text-[24px] md:text-[35px]"
+            className="text-left mt-2 ml-4 md:ml-16"
           />
           <LabelAtom
             text="aprendizaje personalizada"
@@ -136,8 +137,8 @@ const KidsLearningPathSection: React.FC<KidsLearningPathProps> = ({}) => {
         </div>
       </div>
 
-      <div className="absolute top-12 right-16 z-10">
-        <img src="/LogoUguimarKids.svg" alt="Logo" className="w-48 h-48" />
+      <div className="relative md:absolute top-0 md:top-12 right-0 md:right-16 z-10 flex justify-center md:justify-end mt-6 md:mt-0">
+        <img src="/LogoUguimarKids.svg" alt="Logo" className="w-32 h-32 md:w-48 md:h-48" />
       </div>
     </section>
   );
