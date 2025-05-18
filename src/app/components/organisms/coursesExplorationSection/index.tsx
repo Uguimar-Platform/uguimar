@@ -307,7 +307,7 @@ interface CombinedCoursesExplorationProps {
 const CombinedCoursesExploration: React.FC<CombinedCoursesExplorationProps> = ({
   className,
   style,
-  defaultUserType = "adult",
+  defaultUserType = "child",
   ageThreshold = 18,
   ageUser,
 }) => {
