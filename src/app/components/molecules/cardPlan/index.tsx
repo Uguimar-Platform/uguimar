@@ -70,7 +70,7 @@ const CardPlan: React.FC<CardPlanProps> = ({
 }) => {
   return (
     <div
-      className={`${bgColor} rounded-4xl p-12 w-[300px] h-[600px] md:w-[400px] md:h-[760px] flex flex-col gap-4 items-center justify-center`}
+      className={`${bgColor} rounded-4xl p-12 w-[300px] h-[600px] md:w-[400px] md:h-[760px] flex flex-col gap-4 items-center justify-center transition-transform hover:scale-105 shadow-lg`}
     >
       <div className="flex justify-center gap-2">
         {imageSrc.map((src, index) => (
