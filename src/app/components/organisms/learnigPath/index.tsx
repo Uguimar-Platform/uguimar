@@ -13,14 +13,14 @@ interface LearningPathProps {
 const LearningPathSection: React.FC<LearningPathProps> = ({}) => {
   return (
     <section className="flex flex-col items-center justify-center py-12 px-4 text-center">
-      <div className="flex flex-col md:flex-row items-center justify-center gap-8 w-full max-w-4xl px-4">
+      <div className="flex flex-col items-center justify-center mb-12 -space-y-6">
         <LabelAtom
           text="Descubre tu ruta de"
           as="h1"
           fontFamily="SFProDisplay"
           fontWeight={700}
           textColor="text-black"
-          fontSize="text-[32px] md:text-[64px]"
+          fontSize="text-[64px]"
           className="text-center"
         />
         <LabelAtom
@@ -65,12 +65,11 @@ const LearningPathSection: React.FC<LearningPathProps> = ({}) => {
         </div>
 
         <div className="flex justify-center md:justify-start mt-4 md:mt-0">
-         <img 
-         src="/logoIzquierda.svg" 
-         alt="Logo" 
-         className="w-24 h-24 md:w-44 md:h-44" 
-         />
-
+          <img
+            src="/logoIzquierda.svg"
+            alt="Logo"
+            className="w-32 h-32 md:w-44 md:h-44"
+          />
         </div>
       </div>
     </section>
@@ -84,17 +83,26 @@ interface KidsLearningPathProps {
 
 const KidsLearningPathSection: React.FC<KidsLearningPathProps> = ({}) => {
   return (
-    <section className="relative flex flex-col md:flex-row items-start justify-between py-12 px-4 md:px-16 bg-[#FFFFFF]">
-      <div className="flex flex-row gap-16 items-start w-full">
-        <div className="flex flex-col items-start justify-start">
+    <section className="relative flex flex-col sm:flex-row items-center sm:items-start justify-between py-6 sm:py-8 md:py-12 px-4 sm:px-8 md:px-16 bg-[#FFFFFF] min-h-screen overflow-hidden">
+      {/* Imagen de nubes de fondo */}
+      <img
+        src="/img_nubes.webp"
+        alt="Nubes de fondo"
+        className="absolute -bottom-70 left-0 w-full h-[120vh] sm:h-[130vh] md:h-[140vh] object-cover z-[1]"
+      />
+
+      {/* Contenedor principal - cambia a columna en móvil */}
+      <div className="flex flex-col sm:flex-row sm:gap-8 md:gap-16 items-center sm:items-start w-full relative z-[2] mt-16 sm:mt-8 md:mt-0">
+        {/* Título - centrado en móvil, alineado a la izquierda en desktop */}
+        <div className="flex flex-col items-center sm:items-start justify-start mb-8 sm:mb-0 w-full sm:w-auto">
           <LabelAtom
             text="Descubre tu ruta de"
             as="h1"
             fontFamily="BlackMango"
             fontWeight="extrabold"
             textColor="text-[#FF6B6B]"
-            fontSize="text-[24px] md:text-[35px]"
-            className="text-left mt-2 ml-4 md:ml-16"
+            fontSize="text-[28px] sm:text-[32px] md:text-[35px]"
+            className="text-center sm:text-left mt-2 sm:ml-0 md:ml-16"
           />
           <LabelAtom
             text="aprendizaje personalizada"
@@ -102,46 +110,48 @@ const KidsLearningPathSection: React.FC<KidsLearningPathProps> = ({}) => {
             fontFamily="BlackMango"
             fontWeight="extrabold"
             textColor="#081F5C"
-            fontSize="text-[35px]"
-            className="text-left -mt-2"
+            fontSize="text-[28px] sm:text-[32px] md:text-[35px]"
+            className="text-center sm:text-left -mt-2"
           />
         </div>
 
-        <div className="flex flex-col items-center w-full max-w-xl">
-          <div className="bg-white rounded-3xl border border-gray-400 p-4 w-full">
+        {/* Formulario - ancho completo en móvil, limitado en desktop */}
+        <div className="flex flex-col items-center w-full max-w-[95%] sm:max-w-[80%] md:max-w-xl">
+          <div className="bg-white rounded-3xl border border-gray-400 p-3 sm:p-4 w-full">
             <LabelAtom
               text="Crea tu ruta personalizada"
               fontWeight="bold"
-              className="justify-center mb-2"
+              className="justify-center mb-2 text-center text-sm sm:text-base"
             />
             <TextAreaAtom
               name="routeName"
               placeholder="Ruta personalizada"
               colorBG="#E7F1FF"
-              className="w-full border border-[#202020] rounded-xl"
+              className="w-full border border-[#202020] rounded-xl p-2 sm:p-3"
               maxLength={256}
             />
           </div>
 
-          <div className="mt-4">
+          <div className="mt-3 sm:mt-4">
             <ButtonAtom
               bgColor="#334EAC"
               textColor="#ffffff"
               hoverColor="#4A66C7"
               fontFamily="Onest"
               fontWeight={700}
-              className="rounded-full text-xl px-12 py-3 text-center"
+              className="rounded-full text-base sm:text-lg md:text-xl px-8 sm:px-10 md:px-12 py-2 sm:py-2.5 md:py-3 text-center"
               text="Generar ruta"
             />
           </div>
         </div>
       </div>
 
-      <div className="relative md:absolute top-0 md:top-12 right-0 md:right-16 z-10 flex justify-center md:justify-end mt-6 md:mt-0">
-        <img src="/LogoUguimarKids.svg" alt="Logo" className="w-32 h-32 md:w-48 md:h-48" />
+      {/* Logo - más pequeño y reposicionado en móvil */}
+      <div className="absolute top-2 sm:top-4 md:top-7 right-2 sm:right-8 md:right-16 lg:right-100 z-10">
+        <img src="/LogoUguimarKids.svg" alt="Logo" className="w-20 h-20 sm:w-32 sm:h-32 md:w-48 md:h-48" />
       </div>
     </section>
-  );
+  )
 };
 
 // Interfaz para las propiedades del componente principal
@@ -157,7 +167,7 @@ interface CombinedLearningPathProps {
 const CombinedLearningPath: React.FC<CombinedLearningPathProps> = ({
   className,
   style,
-  defaultUserType = "adult",
+  defaultUserType = "child",
   ageThreshold = 18,
   ageUser,
 }) => {
