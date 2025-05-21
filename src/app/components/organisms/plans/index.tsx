@@ -106,7 +106,7 @@ function Plans() {
 
 function PlansChildren() {
   return (
-    <section className="flex flex-col items-center justify-center p-8 bg-[url('/bg_plansChildren.svg')] bg-no-repeat bg-cover bg-center">
+    <section className="flex flex-col items-center justify-center p-8 bg-[url('/bg_plansChildren.svg')] bg-no-repeat bg-cover bg-center min-h-screen">
       <div className="flex flex-row gap-4 mb-6">
         <LabelAtom
           as="h1"
@@ -114,7 +114,7 @@ function PlansChildren() {
           textColor="#7196D1"
           fontFamily="SFProDisplay"
           fontWeight="bold"
-          fontSize="text-[60px]"
+          fontSize="text-[40px] md:text-[60px]"
         />
         <LabelAtom
           as="h1"
@@ -122,7 +122,7 @@ function PlansChildren() {
           textColor="#000000"
           fontFamily="SFProDisplay"
           fontWeight="bold"
-          fontSize="text-[60px]"
+          fontSize="text-[40px] md:text-[60px]"
         />
       </div>
 
@@ -149,9 +149,9 @@ function PlansChildren() {
         />
         <CardPlan
           imageSrc={["/iconA_cardplan.webp", "/iconA_cardplan.webp"]}
-          smallLabel="(2 persona)"
-          title="Duo"
-          price="200"
+          smallLabel="(2 personas)"
+          title="Dúo"
+          price="350"
           features={[
             "Acceso completo a todos los cursos.",
             "Certificado de finalización.",
@@ -161,7 +161,7 @@ function PlansChildren() {
           ]}
           buttonText="Adquirir"
           bgColor="bg-[#D0E3FF]"
-          labelColor="#0000000"
+          labelColor="#000000"
           textColor="#081F5C"
           buttonBgColor="#B6C5DA"
           buttonHoverColor="#E7E7E7"
@@ -173,7 +173,7 @@ function PlansChildren() {
             "/iconA_cardplan.webp",
             "/iconA_cardplan.webp",
           ]}
-          smallLabel="(1 persona)"
+          smallLabel="(3 personas)"
           title="Expert"
           price="500"
           features={[
