@@ -156,7 +156,7 @@ function CoursesChildren() {
               />
             </div>
 
-            <div className="space-y-6 mt-12 hidden xl:block">
+            <div className="space-y-6 mt-12 block md:hidden xl:block">
               <CardCourses
                 courseImage="/Course_Html.webp"
                 alt="course1"
