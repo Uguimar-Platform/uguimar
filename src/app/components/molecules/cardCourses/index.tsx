@@ -54,7 +54,7 @@ const CardCourses: React.FC<CardCoursesProps> = ({
             fontFamily="SFProDisplay"
             fontWeight={500}
             fontSize="text-[16px]"
-            textColor="#334EAC"
+            textColor="#06356C"
           />
           <LabelAtom
             text={age}
@@ -64,7 +64,7 @@ const CardCourses: React.FC<CardCoursesProps> = ({
             fontFamily="SFProDisplay"
             fontWeight={500}
             fontSize="text-[16px]"
-            textColor="#334EAC"
+            textColor="#06356C"
           />
         </div>
         <LabelAtom
@@ -78,8 +78,8 @@ const CardCourses: React.FC<CardCoursesProps> = ({
         <div className="flex justify-between items-center mt-10">
           <Button
             disabled={true}
-            textColor="#F9FCFF"
-            bgColor="#7096D1"
+            textColor="#06356C"
+            bgColor="#E4EFFA"
             hoverColor="#334EAC"
             className="rounded-[15px] px-4 sm:px-6 text-[14px] sm:text-[16px]"
             fontFamily="SFProDisplay"
@@ -87,8 +87,8 @@ const CardCourses: React.FC<CardCoursesProps> = ({
             text={category}
           />
           <Button
-            textColor="#081F5C"
-            bgColor="#D0E3FF"
+            textColor="#06356C"
+            bgColor="#A6DBF0"
             hoverColor="#E7F1FF"
             className="rounded-[15px] px-6  text-[14px] sm:text-[16px]"
             fontFamily="SFProDisplay"
