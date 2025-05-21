@@ -286,6 +286,15 @@
   font-display: swap;
 }
 
+/* kavoon-regular - latin */
+@font-face {
+  font-display: swap; 
+  font-family: 'Kavoon';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/fonts/kavoon/kavoon-v23-latin-regular.woff2') format('woff2'); 
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
