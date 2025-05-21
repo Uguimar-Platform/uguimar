@@ -76,26 +76,36 @@ const DropdownAtom: React.FC<DropdownAtomProps> = ({
     setIsOpen(!isOpen);
   };
 
+  // En la función handleOptionSelect, añade esta condición:
   const handleOptionSelect = (optionId: string) => {
     setSelectedOption(optionId);
     setIsOpen(false);
+
+    // Verificar si es el dropdown de selección de modo
+    if (options.some((opt) => ["adult", "teen", "child"].includes(opt.id))) {
+      // Actualizar localStorage y disparar evento
+      localStorage.setItem("userMode", optionId);
+      window.dispatchEvent(
+        new CustomEvent("userModeChange", { detail: optionId })
+      );
+    }
   };
 
+  // También añade este useEffect para mantener el dropdown sincronizado
   useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (
-        dropdownRef.current &&
-        !dropdownRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
+    // Si este dropdown contiene opciones de modo de usuario, mantenerlo sincronizado
+    if (options.some((opt) => ["adult", "teen", "child"].includes(opt.id))) {
+      const currentMode = localStorage.getItem("userMode");
+      if (currentMode && options.some((opt) => opt.id === currentMode)) {
+        setSelectedOption(currentMode);
       }
-    };
 
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
+      const handleModeChange = (e) => setSelectedOption(e.detail);
+      window.addEventListener("userModeChange", handleModeChange);
+      return () =>
+        window.removeEventListener("userModeChange", handleModeChange);
+    }
+  }, [options]);
 
   const selectedOptionName =
     options.find((option) => option.id === selectedOption)?.name || placeholder;
