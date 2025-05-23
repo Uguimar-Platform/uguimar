@@ -1,8 +1,28 @@
 "use client";
-import React from "react";
+import React, { createContext, useContext, useState, useEffect } from "react";
 import Dropdown from "../../atoms/dropdown";
 import NavigationMenu from "../../molecules/navigation-menu";
 import Button from "../../atoms/button";
+
+interface UserTypeContextType {
+  userType: string;
+  setUserType: (type: string) => void;
+}
+
+const defaultUserType = "adult";
+
+export const UserTypeContext = createContext<UserTypeContextType>({
+  userType: defaultUserType,
+  setUserType: () => {},
+});
+
+export const useUserType = () => {
+  const context = useContext(UserTypeContext);
+  if (!context) {
+    throw new Error('useUserType must be used within a UserTypeProvider');
+  }
+  return context;
+};
 
 const dropdownOptions = [
   { id: "adult", name: "Adulto (+18 años)" },
@@ -10,7 +30,36 @@ const dropdownOptions = [
   { id: "child", name: "Niño (menor de 13 años)" },
 ];
 
+export const UserTypeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [userType, setUserType] = useState(defaultUserType);
+
+  const contextValue = React.useMemo(
+    () => ({
+      userType,
+      setUserType,
+    }),
+    [userType]
+  );
+
+  return (
+    <UserTypeContext.Provider value={contextValue}>
+      {children}
+    </UserTypeContext.Provider>
+  );
+};
+
 const Header: React.FC = () => {
+  const { userType, setUserType } = useUserType();
+
+  useEffect(() => {
+    console.log("Header userType changed to:", userType);
+  }, [userType]);
+
+  const handleUserTypeChange = (selectedType: string) => {
+    console.log("Dropdown selection changed to:", selectedType);
+    setUserType(selectedType);
+  };
+
   return (
     <header className="mt-8 flex items-center justify-between max-w-[1500px] mx-auto">
       <div className="flex items-center gap-4">
@@ -23,7 +72,11 @@ const Header: React.FC = () => {
             className="object-contain"
           />
         </div>
-        <Dropdown options={dropdownOptions} />
+        <Dropdown 
+          options={dropdownOptions} 
+          defaultOption={userType}
+          onChange={handleUserTypeChange}
+        />
       </div>
       <NavigationMenu />
       <div className="flex gap-4">

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import { useUserType } from "../../organisms/header";
 import CardCategoryCourses from "../../molecules/CardCategoryCourses";
 import LabelAtom from "../../atoms/label";
 
@@ -299,37 +300,35 @@ function CoursesExplorationSectionKids() {
 interface CombinedCoursesExplorationProps {
   className?: string;
   style?: React.CSSProperties;
-  defaultUserType?: "adult" | "child";
-  ageThreshold?: number;
-  ageUser?: number;
 }
 
 const CombinedCoursesExploration: React.FC<CombinedCoursesExplorationProps> = ({
   className,
   style,
-  defaultUserType = "child",
-  ageThreshold = 18,
-  ageUser,
 }) => {
-  const [userType, setUserType] = useState<"adult" | "child">(defaultUserType);
-  const [age, setAge] = useState<number | null>(ageUser || null);
+  try {
+    const { userType } = useUserType();
 
-  useEffect(() => {
-    if (ageUser !== undefined) {
-      setAge(ageUser);
-      setUserType(ageUser < ageThreshold ? "child" : "adult");
+    useEffect(() => {
+      console.log("CombinedCoursesExploration - userType changed to:", userType);
+    }, [userType]);
+
+    if (!userType) {
+      console.log("No userType available, defaulting to adult section");
+      return <CoursesExplorationSection />;
     }
-  }, [ageUser, ageThreshold]);
 
-  return (
-    <div className={className} style={style}>
-      {userType === "adult" ? (
-        <CoursesExplorationSection />
-      ) : (
-        <CoursesExplorationSectionKids />
-      )}
-    </div>
-  );
+    if (userType === "child") {
+      console.log("Rendering CoursesExplorationSectionKids");
+      return <CoursesExplorationSectionKids />;
+    }
+
+    console.log("Rendering CoursesExplorationSection");
+    return <CoursesExplorationSection />;
+  } catch (error) {
+    console.error("Error in CombinedCoursesExploration:", error);
+    return <CoursesExplorationSection />;
+  }
 };
 
 export { CoursesExplorationSection, CoursesExplorationSectionKids };
