@@ -45,6 +45,7 @@ interface DropdownAtomProps {
   fullWidth?: boolean;
   textSize?: "xs" | "sm" | "base" | "lg";
   placeholder?: string;
+  onChange?: (selectedId: string) => void;
 }
 
 const DropdownAtom: React.FC<DropdownAtomProps> = ({
@@ -60,6 +61,7 @@ const DropdownAtom: React.FC<DropdownAtomProps> = ({
   fullWidth = false,
   textSize = "base",
   placeholder = "Seleccionar opción",
+  onChange,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(defaultOption);
@@ -79,6 +81,7 @@ const DropdownAtom: React.FC<DropdownAtomProps> = ({
   // En la función handleOptionSelect, añade esta condición:
   const handleOptionSelect = (optionId: string) => {
     setSelectedOption(optionId);
+    onChange?.(optionId);
     setIsOpen(false);
 
     // Verificar si es el dropdown de selección de modo
@@ -112,52 +115,30 @@ const DropdownAtom: React.FC<DropdownAtomProps> = ({
 
   return (
     <div
-      className={`relative ${fullWidth ? "w-full" : ""} ${className}`}
       ref={dropdownRef}
+      className={`relative inline-block ${fullWidth ? "w-full" : ""} ${className}`}
     >
       <button
         type="button"
         onClick={toggleDropdown}
-        className={`flex items-center justify-between w-full font-bold px-5 py-2.5 rounded-full ${textSizeClasses[textSize]}`}
-        aria-expanded={isOpen}
-        aria-haspopup="true"
-        style={{
-          fontFamily: fontFamily,
-          fontWeight: fontWeight,
-          backgroundColor: colorBGButton,
-          border: borderActive
-            ? `${borderWeight}px solid ${borderColor}`
-            : "none",
-        }}
+        className={`flex items-center justify-between gap-2 px-4 py-2 rounded-full ${textSizeClasses[textSize]} ${fontFamily} ${fontWeight} ${borderActive ? `border-[${borderWeight}px] border-[${borderColor}]` : ""} bg-[${colorBGButton}] ${fullWidth ? "w-full" : ""} ring-2 ring-[#334EAC] ring-offset-2`}
       >
-        <span className="truncate">{selectedOptionName}</span>
+        <span>{selectedOptionName}</span>
         <ChevronDown
-          className={`w-6 h-6 ml-2 transition-transform duration-200 flex-shrink-0 ${isOpen ? "rotate-180" : ""}`}
+          className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`}
         />
       </button>
 
       {isOpen && (
-        <div
-          className="absolute left-0 right-0 mt-0.5 py-0.5 bg-white rounded-lg shadow-lg z-10 border border-gray-200 max-h-60 overflow-y-auto"
-          style={{
-            fontFamily: fontFamily,
-            fontWeight: fontWeight,
-          }}
-        >
+        <div className="absolute z-10 w-full mt-2 bg-white border border-gray-300 rounded-lg shadow-lg overflow-hidden">
           {options.map((option) => (
-            <div
+            <button
               key={option.id}
-              className={`${textSizeClasses[textSize]} px-4 py-3 cursor-pointer hover:bg-[#334EAC] hover:text-white transition-colors duration-200 ${
-                option.id === selectedOption ? "bg-[#334EAC] text-white" : ""
-              }`}
-              style={{
-                fontFamily: fontFamily,
-                fontWeight: fontWeight,
-              }}
               onClick={() => handleOptionSelect(option.id)}
+              className={`block w-full px-4 py-2 text-left hover:bg-[#334EAC] hover:text-white ${option.fontFamily || fontFamily} ${option.fontWeight || fontWeight} ${textSizeClasses[textSize]} ${selectedOption === option.id ? "bg-[#334EAC] text-white" : ""}`}
             >
               {option.name}
-            </div>
+            </button>
           ))}
         </div>
       )}
