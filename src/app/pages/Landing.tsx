@@ -14,7 +14,7 @@ const Landing = () => {
       <div className="mt-12 space-y-36">
         <Hero />
         <Courses />
-        <CoursesExplorationSection />
+        <CoursesExplorationSection/>
         <LearningPathSection />
         <FeatureInstructor />
         <FrequentQuestions />
