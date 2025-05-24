@@ -7,7 +7,7 @@ import LearningPathSection from "../components/organisms/learnigPath";
 import FeatureInstructor from "../components/organisms/featureInstructor";
 import FrequentQuestions from "../components/organisms/frequentQuestions";
 import Plans from "../components/organisms/plans";
-import Contact, {ContactChildren} from "../components/organisms/contact";
+import Contact from "../components/organisms/contact";
 
 // Agregar evento personalizado para comunicación entre componentes
 export const USER_MODE_CHANGE_EVENT = "userModeChange";
@@ -15,7 +15,7 @@ export const USER_MODE_CHANGE_EVENT = "userModeChange";
 // Hook simple para obtener y establecer el modo de usuario
 export const useUserMode = () => {
   // Inicializar con un valor por defecto sin verificar window
-  const [userMode, setUserModeState] = useState("adult");
+  const [userMode, setUserModeState] = useState<string>("kids");
 
   // Mover la lógica de localStorage a useEffect para que solo se ejecute en el cliente
   useEffect(() => {
@@ -38,7 +38,7 @@ export const useUserMode = () => {
 };
 
 const Landing = () => {
-  const [activeMode, setActiveMode] = useState("adult");
+  const [activeMode, setActiveMode] = useState("kids");
 
   useEffect(() => {
     // Mover la lógica de localStorage dentro de useEffect
@@ -55,18 +55,6 @@ const Landing = () => {
       window.removeEventListener(USER_MODE_CHANGE_EVENT, handleModeChange);
   }, []);
 
-  // Función para renderizar el curso según el modo activo
-  const renderContact = () => {
-    switch (activeMode) {
-      case "child":
-        return <ContactChildren />;
-      case "teen":
-        return <Contact />;
-      default:
-        return <Contact />;
-    }
-  };
-
   return (
     <>
       <div className="mt-12 space-y-36">
@@ -77,7 +65,7 @@ const Landing = () => {
         <FeatureInstructor />
         <FrequentQuestions />
         <Plans />
-        {renderContact()}
+        <Contact activeMode={"kids"} />
       </div>
     </>
   );
