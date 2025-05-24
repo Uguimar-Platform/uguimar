@@ -1,8 +1,11 @@
+
 import React from "react";
 import LabelAtom, { FontFamily } from "../../atoms/label";
 import CardInstructor from "../../molecules/cardInstructor";
 
-const ageGroup: "child" | "teen" | "adult" = "child";
+
+//Con este se hace la prueba de los diferentes fontFamily
+const ageGroup: "child" | "teen" | "adult" = "teen";
 const fontsByAge: Record<"child" | "teen" | "adult", {
   labelFont: FontFamily;
   titleFont: FontFamily;
