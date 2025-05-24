@@ -8,6 +8,7 @@ import FrequentQuestions from "../components/organisms/frequentQuestions";
 import Plans from "../components/organisms/plans";
 import ContactSection from "../components/organisms/contact";
 
+
 const Landing = () => {
   return (
     <>
