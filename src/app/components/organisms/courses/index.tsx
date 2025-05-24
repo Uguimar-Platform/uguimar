@@ -7,7 +7,7 @@ import ButtonAtom from "../../atoms/button";
 function Courses({ mode = "general" }) {
   const isChild = mode === "child";
   return (
-    <div className={`${!isChild ? "min-h-screen" : "min-h-screen px-4 py-8 bg-[#7096D1]"}`}>
+    <div className={`${!isChild ? "min-h-screen" : "px-4 py-8 bg-[#7096D1] py-15"}`}>
       <div className={`${!isChild ? "grid grid-cols-3 gap-6 space-x-36 justify-between items-start max-w-7xl mx-auto" : "flex flex-col-reverse md:flex-row max-w-7xl mx-auto"}`}>
         <div className={`${!isChild ? "col-span-2":"w-full md:w-[44%] lg:w-[40%] xl:w-[55%] flex justify-center"}`}>
           <div className={`${!isChild ? "grid grid-cols-2 gap-6 col-span-2" : "grid grid-cols-1 md:grid-cols-1 xl:grid-cols-2 gap-6"}`}>
