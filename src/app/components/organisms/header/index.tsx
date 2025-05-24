@@ -1,16 +1,24 @@
 "use client";
 import React from "react";
-import Dropdown from "../../atoms/dropdown";
 import NavigationMenu from "../../molecules/navigation-menu";
 import Button from "../../atoms/button";
 
 const dropdownOptions = [
-  { id: "adult", name: "Adulto (+18 años)" },
-  { id: "teen", name: "Adolescente (13-17 años)" },
-  { id: "child", name: "Niño (menor de 13 años)" },
+  { id: "adultos", name: "Adulto (+18 años)" },
+  { id: "jovenes", name: "Adolescente (13-17 años)" },
+  { id: "ninos", name: "Niño (menor de 13 años)" },
 ];
 
-const Header: React.FC = () => {
+interface HeaderProps {
+  onChangeGroup: (id: string) => void;
+}
+
+const Header: React.FC<HeaderProps> = ({ onChangeGroup }) => {
+  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedId = e.target.value;
+    onChangeGroup(selectedId);
+  };
+
   return (
     <header className="mt-8 flex items-center justify-between max-w-[1500px] mx-auto">
       <div className="flex items-center gap-4">
@@ -23,9 +31,22 @@ const Header: React.FC = () => {
             className="object-contain"
           />
         </div>
-        <Dropdown options={dropdownOptions} />
+
+        {/* Select estilizado como el Dropdown original */}
+        <select
+          onChange={handleChange}
+          className="rounded-full border border-[#334EAC] px-4 py-2 text-sm text-[#334EAC] bg-white focus:outline-none focus:ring-2 focus:ring-[#7096D1]"
+        >
+          {dropdownOptions.map((option) => (
+            <option key={option.id} value={option.id}>
+              {option.name}
+            </option>
+          ))}
+        </select>
       </div>
+
       <NavigationMenu />
+
       <div className="flex gap-4">
         <Button
           bgColor="#334EAC"
