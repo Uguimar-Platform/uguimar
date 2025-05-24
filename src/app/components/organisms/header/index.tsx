@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { createContext, useContext, useState } from "react";
 import Dropdown from "../../atoms/dropdown";
 import NavigationMenu from "../../molecules/navigation-menu";
 import Button from "../../atoms/button";
@@ -19,7 +19,7 @@ export const UserTypeContext = createContext<UserTypeContextType>({
 export const useUserType = () => {
   const context = useContext(UserTypeContext);
   if (!context) {
-    throw new Error('useUserType must be used within a UserTypeProvider');
+    throw new Error("useUserType must be used within a UserTypeProvider");
   }
   return context;
 };
@@ -33,30 +33,15 @@ const dropdownOptions = [
 export const UserTypeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [userType, setUserType] = useState(defaultUserType);
 
-  const contextValue = React.useMemo(
-    () => ({
-      userType,
-      setUserType,
-    }),
-    [userType]
-  );
+  const contextValue = React.useMemo(() => ({ userType, setUserType }), [userType]);
 
-  return (
-    <UserTypeContext.Provider value={contextValue}>
-      {children}
-    </UserTypeContext.Provider>
-  );
+  return <UserTypeContext.Provider value={contextValue}>{children}</UserTypeContext.Provider>;
 };
 
 const Header: React.FC = () => {
   const { userType, setUserType } = useUserType();
 
-  useEffect(() => {
-    console.log("Header userType changed to:", userType);
-  }, [userType]);
-
   const handleUserTypeChange = (selectedType: string) => {
-    console.log("Dropdown selection changed to:", selectedType);
     setUserType(selectedType);
   };
 
@@ -72,8 +57,8 @@ const Header: React.FC = () => {
             className="object-contain"
           />
         </div>
-        <Dropdown 
-          options={dropdownOptions} 
+        <Dropdown
+          options={dropdownOptions}
           defaultOption={userType}
           onChange={handleUserTypeChange}
         />
