@@ -4,6 +4,7 @@ import { useUserType } from "../../organisms/header";
 import LabelAtom from "../../atoms/label";
 import CardCategoryCourses from "../../molecules/CardCategoryCourses";
 
+
 function CoursesExplorationSection() {
   const { userType } = useUserType();
   const isKid = userType === "child";
