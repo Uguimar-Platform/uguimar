@@ -1,6 +1,20 @@
 import React from "react";
-import LabelAtom from "../../atoms/label";
+import LabelAtom, { FontFamily } from "../../atoms/label";
 import CardInstructor from "../../molecules/cardInstructor";
+
+const ageGroup: "child" | "teen" | "adult" = "child";
+const fontsByAge: Record<"child" | "teen" | "adult", {
+  labelFont: FontFamily;
+  titleFont: FontFamily;
+  descriptionFont: FontFamily;
+}> = {
+  child: { labelFont: "Kavoon", titleFont: "Onest", descriptionFont: "SFProDisplay" },
+  teen: { labelFont: "Poppins", titleFont: "Onest", descriptionFont: "SFProDisplay" },
+  adult: { labelFont: "SFProDisplay", titleFont: "SFProDisplay", descriptionFont: "SFProDisplay" }
+};
+
+const fonts = fontsByAge[ageGroup];
+const { labelFont, titleFont, descriptionFont } = fonts;
 
 const FeatureInstructor: React.FC = () => {
   return (
@@ -9,7 +23,7 @@ const FeatureInstructor: React.FC = () => {
         <LabelAtom
           text="Aprende con los mejores"
           as="h1"
-          fontFamily="SFProDisplay"
+          fontFamily={labelFont}
           fontWeight={700}
           textColor="text-black"
           fontSize="text-[64px]"
@@ -18,7 +32,7 @@ const FeatureInstructor: React.FC = () => {
         <LabelAtom
           text="profesores"
           as="h1"
-          fontFamily="SFProDisplay"
+          fontFamily={labelFont}
           fontWeight={700}
           textColor="#334EAC"
           fontSize="text-[64px]"
@@ -31,6 +45,8 @@ const FeatureInstructor: React.FC = () => {
             title="Lionel Andrés Messi Cuccittini"
             description="Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown-"
             className="border border-[#334EAC] bg-[#F9FCFF] self-start "
+            fontFamilyTitle={titleFont}
+            fontFamilyDescription={descriptionFont}
           />
           <CardInstructor
             imageSrc="/teacher_2.webp"
@@ -39,12 +55,16 @@ const FeatureInstructor: React.FC = () => {
             textColorDescription="#E7F1FF"
             description="Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown-"
             className="border border-gray-400 bg-[#334EAC] self-end"
+            fontFamilyTitle={titleFont}
+            fontFamilyDescription={descriptionFont}
           />
           <CardInstructor
             imageSrc="/teacher_3.webp"
             title="Lionel Andrés Messi Cuccittini"
             description="Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown-"
             className="border border-gray-400 bg-white self-start"
+            fontFamilyTitle={titleFont}
+            fontFamilyDescription={descriptionFont}
           />
           <CardInstructor
             imageSrc="/teacher_4.webp"
@@ -53,6 +73,8 @@ const FeatureInstructor: React.FC = () => {
             textColorDescription="#E7F1FF"
             description="Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown-"
             className="border border-gray-400 bg-[#334EAC] self-end"
+            fontFamilyTitle={titleFont}
+            fontFamilyDescription={descriptionFont}
           />
         </div>
       </section>
