@@ -1,44 +1,43 @@
+"use client";
 import React from "react";
 import Button from "../../atoms/button/index";
 import DropdownAtom from "../../atoms/dropdown";
 import LabelAtom from "../../atoms/label";
 import InputField from "../../molecules/inputField";
 import Image from "next/image";
+import { useUserType } from "../../organisms/header";
 
-interface ContactProps {
-  activeMode: "adult" | "kids";
-}
+function Contact() {
+  const { userType } = useUserType(); 
+  const activeMode = userType === "child" ? "child" : "adult"; // ✅ ahora usa "child", no "kids"
 
-function Contact({ activeMode }: ContactProps) {
   const dropdownOptions = [
     { id: "1", name: "Selecciona tu interés" },
     { id: "2", name: "interés 1" },
     { id: "3", name: "interés 2" },
   ];
+
   const className = {
     adult: {
-      background:
-        "absolute z-[-1] bottom-0 left-0 w-full h-full bg-[#ffffff] [&>img]:hidden",
-      content:
-        "flex flex-col-reverse md:flex-row items-start md:justify-between w-full gap-6",
+      background: "absolute z-[-1] bottom-0 left-0 w-full h-full [&>img]:hidden",
+      content: "flex flex-col-reverse md:flex-row items-start md:justify-between w-full gap-6",
       left: "flex flex-col items-start w-full justify-center py-5 md:w-1/3",
       right: "flex flex-col items-center md:items-end w-full md:w-auto",
       background_inputs: "#334EAC",
       dropdown: "text-[#FFFFFF] rounded-xl",
-      inputClassName:
-        "text-white w-full rounded-xl px-4 py-3 placeholder:text-white",
+      inputClassName: "text-white w-full rounded-xl px-4 py-3 placeholder:text-white",
     },
-    kids: {
+    child: {
       background: "absolute z-[-1] bottom-0 left-0 w-full h-full bg-[#E1F1F6]",
-      content:
-        "flex flex-col-reverse md:flex-row items-start md:justify-between w-full gap-6",
+      content: "flex flex-col-reverse md:flex-row items-start md:justify-between w-full gap-6",
       left: "flex flex-col items-start w-full justify-center py-5 md:w-1/3",
       right: "flex flex-col items-center md:items-end w-full md:w-auto",
       background_inputs: "#FFFFFF",
       dropdown: "text-[#000000] rounded-xl",
-      inputClassName: "text-[#202020] w-full rounded-xl px-4 py-3 ",
+      inputClassName: "text-[#202020] w-full rounded-xl px-4 py-3",
     },
   };
+
   const {
     background,
     content,
@@ -47,7 +46,8 @@ function Contact({ activeMode }: ContactProps) {
     background_inputs,
     dropdown,
     inputClassName,
-  } = className[activeMode] ?? className["adult"];
+  } = className[activeMode];
+
   return (
     <div className="relative flex flex-col items-center py-22 px-6 md:px-30">
       {/* background */}
@@ -60,17 +60,13 @@ function Contact({ activeMode }: ContactProps) {
           priority
         />
       </div>
+
       {/* Content */}
       <div className={content}>
         {/* left */}
         <div className={left}>
           <div className="relative w-[100px] h-[50px] md:w-[150px] md:h-[60px]">
-            <Image
-              src="/Logo.webp"
-              alt="Logo"
-              fill
-              className="object-contain"
-            />
+            <Image src="/Logo.webp" alt="Logo" fill className="object-contain" />
           </div>
           <LabelAtom
             text="Inicio  |  Cursos  |  Planes  |  FAQ  |  Rutas  |  Feedback"
@@ -81,43 +77,22 @@ function Contact({ activeMode }: ContactProps) {
             className="text-left py-3 text-[14px] md:text-[20px]"
           />
 
-          <div className="flex gap-4 w-full mt-4 ">
-            <Button
-              text={
-                <img
-                  src="/Instagram_icon.webp"
-                  alt="Instagram"
-                  className="w-full h-full object-contain rounded-full"
-                />
-              }
-              className="rounded-full w-14 h-14"
-              bgColor="#FFFFFF"
-              hoverColor="#f9f9f9"
-            />
-            <Button
-              text={
-                <img
-                  src="/facebook_icon.webp"
-                  alt="Facebook"
-                  className="w-full h-full object-contain rounded-full"
-                />
-              }
-              className="rounded-full p-3 w-14 h-14"
-              bgColor="#FFFFFF"
-              hoverColor="#f9f9f9"
-            />
-            <Button
-              text={
-                <img
-                  src="/tiktok_icon.webp"
-                  alt="TikTok"
-                  className="w-full h-full object-contain rounded-full"
-                />
-              }
-              className="rounded-full p-3 w-14 h-14"
-              bgColor="#FFFFFF"
-              hoverColor="#f9f9f9"
-            />
+          <div className="flex gap-4 w-full mt-4">
+            {["Instagram", "facebook", "tiktok"].map((platform) => (
+              <Button
+                key={platform}
+                text={
+                  <img
+                    src={`/${platform}_icon.webp`}
+                    alt={platform}
+                    className="w-full h-full object-contain rounded-full"
+                  />
+                }
+                className="rounded-full p-3 w-14 h-14"
+                bgColor="#FFFFFF"
+                hoverColor="#f9f9f9"
+              />
+            ))}
           </div>
         </div>
 
@@ -154,7 +129,7 @@ function Contact({ activeMode }: ContactProps) {
           </div>
 
           <form className="flex flex-col w-full py-6 rounded-lg space-y-6 items-center md:items-end">
-            <div className="flex w-full gap-3 mb-4 just">
+            <div className="flex w-full gap-3 mb-4">
               <InputField
                 label=""
                 name="nombres"
@@ -163,7 +138,6 @@ function Contact({ activeMode }: ContactProps) {
                 colorBG={background_inputs}
                 inputClassName={inputClassName}
               />
-
               <InputField
                 label=""
                 name="apellidos"
@@ -173,6 +147,7 @@ function Contact({ activeMode }: ContactProps) {
                 inputClassName={inputClassName}
               />
             </div>
+
             <div className="mb-5 w-full">
               <DropdownAtom
                 options={dropdownOptions}
@@ -182,9 +157,9 @@ function Contact({ activeMode }: ContactProps) {
                 fontFamily="Poppins"
                 borderWeight={0}
                 textSize="base"
+                fullWidth={true} // ✅ asegura que use todo el ancho
                 className={dropdown}
               />
-
               <InputField
                 className="mt-2"
                 label=""
@@ -195,6 +170,7 @@ function Contact({ activeMode }: ContactProps) {
                 inputClassName={inputClassName}
               />
             </div>
+
             <div>
               <Button
                 type="submit"

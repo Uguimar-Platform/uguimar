@@ -103,7 +103,7 @@ const DropdownAtom: React.FC<DropdownAtomProps> = ({
         setSelectedOption(currentMode);
       }
 
-      const handleModeChange = (e:any) => setSelectedOption(e.detail);
+      const handleModeChange = (e: any) => setSelectedOption(e.detail);
       window.addEventListener("userModeChange", handleModeChange);
       return () =>
         window.removeEventListener("userModeChange", handleModeChange);
@@ -130,7 +130,10 @@ const DropdownAtom: React.FC<DropdownAtomProps> = ({
       </button>
 
       {isOpen && (
-        <div className="absolute z-10 w-full mt-2 bg-white border border-gray-300 rounded-lg shadow-lg overflow-hidden">
+        <div
+          className={`absolute z-10 w-full mt-2 border border-gray-300 rounded-lg shadow-lg overflow-hidden`}
+          style={{ backgroundColor: colorBGButton }}
+        >
           {options.map((option) => (
             <button
               key={option.id}

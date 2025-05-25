@@ -65,7 +65,7 @@ const Landing = () => {
         <FeatureInstructor />
         <FrequentQuestions />
         <Plans />
-        <Contact activeMode={"kids"} />
+        <Contact/>
       </div>
     </>
   );
