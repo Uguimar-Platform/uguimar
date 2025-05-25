@@ -4,18 +4,33 @@ import LabelAtom, { FontFamily } from "../../atoms/label";
 import CardInstructor from "../../molecules/cardInstructor";
 import { useUserType } from "../../organisms/header";
 
-const fontsByAge: Record<"child" | "teen" | "adult", {
-  labelFont: FontFamily;
-  titleFont: FontFamily;
-  descriptionFont: FontFamily;
-}> = {
-  child: { labelFont: "Kavoon", titleFont: "Onest", descriptionFont: "SFProDisplay" },
-  teen: { labelFont: "Poppins", titleFont: "Onest", descriptionFont: "SFProDisplay" },
-  adult: { labelFont: "SFProDisplay", titleFont: "SFProDisplay", descriptionFont: "SFProDisplay" }
+const fontsByAge: Record<
+  "child" | "teen" | "adult",
+  {
+    labelFont: FontFamily;
+    titleFont: FontFamily;
+    descriptionFont: FontFamily;
+  }
+> = {
+  child: {
+    labelFont: "Kavoon",
+    titleFont: "Onest",
+    descriptionFont: "SFProDisplay",
+  },
+  teen: {
+    labelFont: "Poppins",
+    titleFont: "Onest",
+    descriptionFont: "SFProDisplay",
+  },
+  adult: {
+    labelFont: "SFProDisplay",
+    titleFont: "SFProDisplay",
+    descriptionFont: "SFProDisplay",
+  },
 };
 
 const FeatureInstructor: React.FC = () => {
-  const { userType } = useUserType(); 
+  const { userType } = useUserType();
   const fonts = fontsByAge[userType as "child" | "teen" | "adult"];
   const { labelFont, titleFont, descriptionFont } = fonts;
 
@@ -29,8 +44,9 @@ const FeatureInstructor: React.FC = () => {
           ? {
               backgroundImage: `url(${backgroundKid})`,
               backgroundRepeat: "no-repeat",
-              backgroundSize: "100%",
-              backgroundPosition: "center",
+              backgroundSize: "cover",
+              backgroundAttachment: "fixed",
+              backgroundPosition: "center calc(100% - 5rem)", 
               width: "100%",
             }
           : undefined
@@ -60,36 +76,36 @@ const FeatureInstructor: React.FC = () => {
         <div className="flex flex-col gap-8 mt-6 w-full">
           <CardInstructor
             imageSrc="/teacher_1.webp"
-            title="Lionel Andrés Messi Cuccittini"
-            description="Texto de ejemplo para mostrar la descripción del profesor."
+            title="Valeria Montes Rivas"
+            description="Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown-"
             className="border border-[#334EAC] bg-[#F9FCFF] self-start"
             fontFamilyTitle={titleFont}
             fontFamilyDescription={descriptionFont}
           />
           <CardInstructor
             imageSrc="/teacher_2.webp"
-            title="Lionel Andrés Messi Cuccittini"
+            title="Andrés Ferrer Guzmán"
+            description="Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown-"
             textColorTitle="#E7F1FF"
             textColorDescription="#E7F1FF"
-            description="Texto de ejemplo para mostrar la descripción del profesor."
             className="border border-gray-400 bg-[#334EAC] self-end"
             fontFamilyTitle={titleFont}
             fontFamilyDescription={descriptionFont}
           />
           <CardInstructor
             imageSrc="/teacher_3.webp"
-            title="Lionel Andrés Messi Cuccittini"
-            description="Texto de ejemplo para mostrar la descripción del profesor."
+            title="Emilio Vargas Sotelo"
+            description="Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown-"
             className="border border-gray-400 bg-white self-start"
             fontFamilyTitle={titleFont}
             fontFamilyDescription={descriptionFont}
           />
           <CardInstructor
             imageSrc="/teacher_4.webp"
-            title="Lionel Andrés Messi Cuccittini"
+            title="Mateo Cisneros Luján"
+            description="Simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown-"
             textColorTitle="#E7F1FF"
             textColorDescription="#E7F1FF"
-            description="Texto de ejemplo para mostrar la descripción del profesor."
             className="border border-gray-400 bg-[#334EAC] self-end"
             fontFamilyTitle={titleFont}
             fontFamilyDescription={descriptionFont}

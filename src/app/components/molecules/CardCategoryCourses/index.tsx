@@ -8,7 +8,7 @@ interface CardCategoryCoursesProps {
   description?: string;
   categorycourseimage?: string;
   buttonText?: string;
-  variant?: "adult" | "kid";
+  variant?: "adult" | "child";
 }
 
 const CardCategoryCourses: React.FC<CardCategoryCoursesProps> = ({
@@ -19,8 +19,9 @@ const CardCategoryCourses: React.FC<CardCategoryCoursesProps> = ({
   buttonText = "",
   variant = "adult",
 }) => {
-  const bgColor = variant === "kid" ? "#F9FCFF" : "#FFFFFF";
-  const buttonColor = variant === "kid" ? "#30B9C8" : "#334EAC";
+  const bgColor = variant === "child" ? "#F9FCFF" : "#FFFFFF";
+  const buttonColor = variant === "child" ? "#30B9C8" : "#334EAC";
+  const titleFont = variant === "child" ? "LilyScriptOne" : "SFProDisplay";
 
   return (
     <div
@@ -31,7 +32,7 @@ const CardCategoryCourses: React.FC<CardCategoryCoursesProps> = ({
         <LabelAtom
           text={title}
           fontWeight="bold"
-          fontFamily="SFProDisplay"
+          fontFamily={titleFont}
           fontSize="text-[22px] sm:text-[32px] md:text-[42px]"
         />
         <LabelAtom
@@ -39,7 +40,7 @@ const CardCategoryCourses: React.FC<CardCategoryCoursesProps> = ({
           textColor="#334EAC"
           className="mt-1 md:mt-2"
           fontWeight="bold"
-          fontFamily="SFProDisplay"
+          fontFamily={titleFont}
           fontSize="text-[22px] sm:text-[32px] md:text-[42px]"
         />
       </div>

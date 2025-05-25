@@ -7,9 +7,9 @@ import CardCategoryCourses from "../../molecules/CardCategoryCourses";
 
 function CoursesExplorationSection() {
   const { userType } = useUserType();
-  const isKid = userType === "child";
+  const isChild = userType === "child";
 
-  const courses = isKid
+  const courses = isChild
     ? [
         {
           id: "Java",
@@ -82,20 +82,20 @@ function CoursesExplorationSection() {
     return `${60 + index * 150}px`;
   };
 
-  const arrowImage = isKid
+  const arrowImage = isChild
     ? "/img_explorationCoursesKids_1.webp"
     : "/img_explorationCourses_5.webp";
 
-  const backgroundClasses = isKid
+  const backgroundClasses = isChild
     ? "bg-gradient-to-b from-[#6FA2E0] to-white relative"
     : "";
 
-  const headingColor = isKid ? "#0F2B66" : "#000";
-  const titleColor = isKid ? "#1B3FCB" : "#334EAC";
+  const headingColor = isChild ? "#0F2B66" : "#000";
+  const titleColor = isChild ? "#1B3FCB" : "#334EAC";
 
   return (
     <section className={`pt-10 pb-20 px-4 sm:px-8 md:px-20 ${backgroundClasses}`}>
-      {isKid && (
+      {isChild && (
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-[url('/img_cloud_bg.webp')] bg-repeat-x bg-bottom"></div>
       )}
 
@@ -104,12 +104,14 @@ function CoursesExplorationSection() {
           text="Explora nuevos"
           fontSize="text-3xl sm:text-4xl md:text-[48px]"
           fontWeight="bold"
+          fontFamily={isChild ? "Kavoon" : "SFProDisplay"}
           textColor={headingColor}
         />
         <LabelAtom
-          text={isKid ? "CURSOS" : "cursos"}
+          text={isChild ? "CURSOS" : "cursos"}
           className="ml-2 font-bold"
           textColor={titleColor}
+          fontFamily={isChild ? "Kavoon" : "SFProDisplay"}
           fontSize="text-3xl sm:text-4xl md:text-[48px]"
         />
       </div>
@@ -155,7 +157,7 @@ function CoursesExplorationSection() {
                   description={course.description}
                   categorycourseimage={course.image}
                   buttonText="Ver curso"
-                  variant={isKid ? "kid" : "adult"}
+                  variant={isChild ? "child" : "adult"}
                 />
               )
           )}
