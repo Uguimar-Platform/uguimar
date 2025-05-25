@@ -5,7 +5,7 @@ import ButtonAtom from "../../atoms/button";
 
 function Courses() {
   return (
-    <div className=" min-h-screen ">
+    <div className=" relative z-40 w-full ">
       <div className="grid grid-cols-3 gap-6 space-x-36 justify-between items-start max-w-7xl mx-auto">
         <div className="col-span-2 ">
           <div className="grid grid-cols-2 gap-6 col-span-2">

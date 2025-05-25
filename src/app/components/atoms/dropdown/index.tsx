@@ -56,8 +56,7 @@ const DropdownAtom: React.FC<DropdownAtomProps> = ({
   fontWeight = "bold",
   borderActive = true,
   borderColor = "#334EAC",
-  borderWeight = 1.5,
-  colorBGButton = "#fff",
+  colorBGButton = "#F9FCFF",
   fullWidth = false,
   textSize = "base",
   placeholder = "Seleccionar opción",
@@ -105,35 +104,47 @@ const DropdownAtom: React.FC<DropdownAtomProps> = ({
     options.find((option) => option.id === selectedOption)?.name || placeholder;
 
   return (
-    <div
-      ref={dropdownRef}
-      className={`relative inline-block ${fullWidth ? "w-full" : ""} ${className}`}
-    >
-      <button
-        type="button"
-        onClick={toggleDropdown}
-        className={`flex items-center justify-between gap-2 px-4 py-2 rounded-full ${textSizeClasses[textSize]} ${fontFamily} ${fontWeight} ${borderActive ? `border-[${borderWeight}px] border-[${borderColor}]` : ""} bg-[${colorBGButton}] ${fullWidth ? "w-full" : ""} ring-2 ring-[#334EAC] ring-offset-2`}
-      >
-        <span>{selectedOptionName}</span>
-        <ChevronDown
-          className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`}
-        />
-      </button>
+   <div
+  ref={dropdownRef}
+  className={`relative ${fullWidth ? "w-full" : "w-auto"} ${className}`}
+>
+  <button
+    type="button"
+    onClick={toggleDropdown}
+    className={`flex items-center justify-between gap-2 px-4 py-2 rounded-full
+      ${textSizeClasses[textSize]} font-${fontWeight} font-${fontFamily?.toLowerCase()}
+      ${borderActive ? `border` : ""}
+      border-[${borderColor}]
+      bg-[${colorBGButton}]
+      ${fullWidth ? "w-full" : "min-w-[150px]"}
+      sm:min-w-[180px] md:min-w-[200px]
+      transition-all duration-200`}
+  >
+    <span className="truncate max-w-[130px] sm:max-w-[160px] md:max-w-[200px]">{selectedOptionName}</span>
+    <ChevronDown
+      className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`}
+    />
+  </button>
 
-      {isOpen && (
-        <div className="absolute z-10 w-full mt-2 bg-white border border-gray-300 rounded-lg shadow-lg overflow-hidden">
-          {options.map((option) => (
-            <button
-              key={option.id}
-              onClick={() => handleOptionSelect(option.id)}
-              className={`block w-full px-4 py-2 text-left hover:bg-[#334EAC] hover:text-white ${option.fontFamily || fontFamily} ${option.fontWeight || fontWeight} ${textSizeClasses[textSize]} ${selectedOption === option.id ? "bg-[#334EAC] text-white" : ""}`}
-            >
-              {option.name}
-            </button>
-          ))}
-        </div>
-      )}
+  {isOpen && (
+    <div
+      className="absolute z-10 mt-2 w-full max-h-[200px] overflow-y-auto
+        bg-white border border-gray-300 rounded-lg shadow-lg"
+    >
+      {options.map((option) => (
+        <button
+          key={option.id}
+          onClick={() => handleOptionSelect(option.id)}
+          className={`block w-full px-4 py-2 text-left hover:bg-[#334EAC] hover:text-white
+            font-${option.fontWeight || fontWeight} font-${option.fontFamily?.toLowerCase() || fontFamily?.toLowerCase()}
+            ${textSizeClasses[textSize]} ${selectedOption === option.id ? "bg-[#334EAC] text-white" : ""}`}
+        >
+          {option.name}
+        </button>
+      ))}
     </div>
+  )}
+</div>
   );
 };
 

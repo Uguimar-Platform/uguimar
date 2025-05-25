@@ -5,112 +5,127 @@ import { Spicy_Rice } from "next/font/google";
 import LabelAtom from "../../atoms/label";
 import ButtonAtom from "../../atoms/button";
 import InputAtom from "../../atoms/input";
+import { useUserType } from "../../organisms/header";
 
-// Importación de fuente para niños
 const spicyRice = Spicy_Rice({ weight: "400", subsets: ["latin"] });
 
-interface HeroProps {
-  ageGroup: string;
-}
+const Hero: React.FC = () => {
+  const { userType } = useUserType();
+  const isChild = userType === "child";
 
-const Hero: React.FC<HeroProps> = ({ ageGroup }) => {
-  const configs = {
-    ninos: {
-      mainColor: "#06356C",
-      description:
-        "Tu plataforma de aprendizaje: crece, explora y alcanza tus metas con cursos que transforman.",
-      background: "bg-hero-ninos",
-      fontClass: spicyRice.className,
-    },
-    jovenes: {
-      mainColor: "#334EAC",
-      description: "Impulsa tu futuro con cursos para jóvenes emprendedores.",
-      background: "bg-hero-jovenes",
-      fontClass: "", // Puedes añadir otra fuente si deseas
-    },
-    adultos: {
-      mainColor: "#047857",
-      description: "Transforma tu carrera con cursos para adultos profesionales.",
-      background: "bg-hero-adultos",
-      fontClass: "", // Puedes añadir otra fuente si deseas
-    },
+  const config = {
+    mainColor: isChild ? "#06356C" : "#334EAC",
+    description:
+      "Tu plataforma de aprendizaje: crece, explora y alcanza tus metas con cursos que transforman.",
+    fontClass: isChild ? spicyRice.className : "font-[SFProDisplay]",
   };
-
-  const config = configs[ageGroup as keyof typeof configs] ?? configs["ninos"];
-  const { mainColor, description, background, fontClass } = config;
 
   return (
     <section
-      className={`p-10 rounded-lg flex flex-col items-center text-center ${background} bg-cover bg-center`}
+      className={`relative w-full overflow-visible pt-5 ${
+        isChild
+          ? "pb-[450px] sm:pb-[500px] md:pb-[600px] lg:pb-[680px]"
+          : "pb-10"
+      }`}
     >
-      <div className="flex flex-col items-center justify-center lg:w-[1150px] mx-auto">
-        <div className="w-full text-white space-y-5 lg:space-y-6 flex flex-col items-center">
+      {/* Fondo ilustrado para niños */}
+      {isChild && (
+        <>
+          <img
+            src="/Nubes_Hero.webp"
+            alt="Nubes"
+            className="absolute top-[-50px] sm:top-[-60px] md:top-[-5px] lg:top-[-100px] left-0 w-full h-auto z-0 pointer-events-none"
+          />
+          <img
+            src="/Cesped_Hero.webp"
+            alt="Césped"
+            className="absolute top-28 sm:top-32 md:top-60 lg:top-60 w-full h-auto object-contain z-10 pointer-events-none"
+          />
+          <img
+            src="/School.webp"
+            alt="Escuela"
+            className="absolute top-[100px] sm:top-[150px] md:top-[300px] lg:top-[380px]  left-1/2 transform -translate-x-1/2 w-[180px] sm:w-[220px] md:w-[260px] lg:w-[300px] z-10 pointer-events-none hidden lg:block"
+          />
+          <img
+            src="/Ballena_Hero.webp"
+            alt="Ballena"
+            className="absolute top-42 sm:top-50 md:top-80 lg:top-90 left-0 -full h-auto object-cover z-20 pointer-events-none"
+          />
+        </>
+      )}
 
-          {/* Título con fuente y color dinámico */}
-          <div className={`w-full space-y-2 lg:space-y-1 flex flex-col items-center text-balance ${fontClass}`}>
+      {/* Contenido del Hero */}
+      <div className="relative z-30 flex flex-col items-center justify-center lg:w-[1150px] mx-auto px-4">
+        {isChild ? (
+          <div
+            className={`text-center space-y-2 sm:space-y-3 ${config.fontClass}`}
+          >
             <LabelAtom
               as="h1"
               text="Aprende, crece y destaca con"
-              textColor={mainColor}
-              fontFamily="inherit"
+              textColor={config.mainColor}
+              fontFamily="LilyScriptOne"
               fontWeight="medium"
-              fontSize="text-[32px] sm:text-[44px] md:text-[48px] lg:text-[64px]"
-              className="tracking-normal"
+              fontSize="text-[28px] sm:text-[36px] md:text-[48px] lg:text-[56px]"
             />
             <LabelAtom
               as="h1"
               text="cursos transformadores"
-              textColor={mainColor}
-              fontFamily="inherit"
+              textColor={config.mainColor}
+              fontFamily="LilyScriptOne"
               fontWeight="medium"
-              fontSize="text-[32px] sm:text-[44px] md:text-[48px] lg:text-[64px]"
-              className="tracking-normal"
+              fontSize="text-[28px] sm:text-[36px] md:text-[48px] lg:text-[56px]"
             />
           </div>
+        ) : (
+          <h1 className="text-[32px] sm:text-[42px] md:text-[56px] lg:text-[64px] font-extrabold font-[SFProDisplay] leading-tight text-center">
+            <span className="text-black">Aprende, crece y </span>
+            <span className="text-[#334EAC]">destaca</span>
+            <span className="text-black"> con</span>
+            <br />
+            <span className="text-black">cursos transformadores</span>
+          </h1>
+        )}
 
-          {/* Descripción */}
-          <LabelAtom
-            as="p"
-            text={description}
-            textColor={mainColor}
-            fontFamily="SFProDisplay"
-            fontWeight={600}
-            fontSize="text-[16px] sm:text-[18px] md:text-[22px] lg:text-[24px]"
-            className="text-center opacity-90 max-w-2xl leading-tight"
-          />
+        <LabelAtom
+          as="p"
+          text={config.description}
+          textColor="#858585"
+          fontFamily="SFProDisplay"
+          fontWeight={400}
+          fontSize="text-[15px] sm:text-[17px] md:text-[20px]"
+          className="text-center opacity-90 max-w-2xl leading-tight mt-4"
+        />
 
-          {/* Input con ícono SVG integrado */}
-          <div className="w-full flex justify-center">
-            <div className="w-full max-w-xl bg-[#E8F3FF] border-2 border-[#A3D4F7] rounded-full px-4 py-2.5 flex items-center gap-3 focus-within:ring-2 focus-within:ring-[#A3D4F7]">
-              <div className="bg-white border border-[#A3D4F7] text-[#2B4D88] rounded-full w-8 h-8 flex items-center justify-center shadow-sm">
-                <Search size={16} strokeWidth={2} />
-              </div>
-
-              <InputAtom
-                name="busqueda"
-                placeholder="¿Qué deseas aprender?"
-                colorBG="transparent"
-                className="flex-1 text-[#2B4D88] placeholder-[#8FB8DA] text-sm bg-transparent focus:outline-none"
-                fontFamily="Poppins"
-                fontWeight="medium"
-              />
+        <div className="w-full flex justify-center mt-6 px-4">
+          <div className="w-full max-w-xl bg-white border-2 border-[#A3D4F7] rounded-full px-4 py-2.5 sm:py-3 md:py-3.5 flex items-center gap-3 focus-within:ring-2 focus-within:ring-[#A3D4F7]">
+            <div className="bg-white border border-[#A3D4F7] text-[#2B4D88] rounded-full w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 flex items-center justify-center shadow-sm">
+              <Search size={18} strokeWidth={2} />
             </div>
-          </div>
 
-          {/* Botón */}
-          <ButtonAtom
-            bgColor="#A3D4F7"
-            hoverColor="#90C9F0"
-            textColor={mainColor}
-            fontFamily="Onest"
-            fontWeight={600}
-            icon="ArrowRight"
-            iconPosition="right"
-            iconSize="text-[20px]"
-            className="rounded-full px-6 lg:px-10 lg:py-2.5 mt-4 text-sm lg:text-base shadow-md"
-            text={`Empezar Gratis`}
-          />
+            <InputAtom
+              name="busqueda"
+              placeholder="¿Qué deseas aprender?"
+              colorBG="transparent"
+              className="flex-1 text-[#2B4D88] placeholder-[#8FB8DA] w-full text-sm sm:text-base md:text-base bg-transparent focus:outline-none"
+              fontFamily="Poppins"
+              fontWeight="medium"
+            />
+          </div>
         </div>
+
+        <ButtonAtom
+          bgColor={config.mainColor}
+          hoverColor="#263a7e"
+          textColor="#fff"
+          fontFamily="Onest"
+          fontWeight={600}
+          icon="ArrowRight"
+          iconPosition="right"
+          iconSize="text-[20px]"
+          className="rounded-full px-6 lg:px-10 lg:py-2.5 mt-4 text-sm lg:text-base shadow-md"
+          text="Empezar gratis"
+        />
       </div>
     </section>
   );
