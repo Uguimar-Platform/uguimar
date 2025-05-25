@@ -1,7 +1,28 @@
 "use client";
-import React from "react";
+import React, { createContext, useContext, useState } from "react";
+import Dropdown from "../../atoms/dropdown";
 import NavigationMenu from "../../molecules/navigation-menu";
 import Button from "../../atoms/button";
+
+interface UserTypeContextType {
+  userType: string;
+  setUserType: (type: string) => void;
+}
+
+const defaultUserType = "adult";
+
+export const UserTypeContext = createContext<UserTypeContextType>({
+  userType: defaultUserType,
+  setUserType: () => {},
+});
+
+export const useUserType = () => {
+  const context = useContext(UserTypeContext);
+  if (!context) {
+    throw new Error("useUserType must be used within a UserTypeProvider");
+  }
+  return context;
+};
 
 const dropdownOptions = [
   { id: "adultos", name: "Adulto (+18 años)" },
@@ -9,14 +30,19 @@ const dropdownOptions = [
   { id: "ninos", name: "Niño (menor de 13 años)" },
 ];
 
-interface HeaderProps {
-  onChangeGroup: (id: string) => void;
-}
+export const UserTypeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const [userType, setUserType] = useState(defaultUserType);
 
-const Header: React.FC<HeaderProps> = ({ onChangeGroup }) => {
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedId = e.target.value;
-    onChangeGroup(selectedId);
+  const contextValue = React.useMemo(() => ({ userType, setUserType }), [userType]);
+
+  return <UserTypeContext.Provider value={contextValue}>{children}</UserTypeContext.Provider>;
+};
+
+const Header: React.FC = () => {
+  const { userType, setUserType } = useUserType();
+
+  const handleUserTypeChange = (selectedType: string) => {
+    setUserType(selectedType);
   };
 
   return (
@@ -31,18 +57,11 @@ const Header: React.FC<HeaderProps> = ({ onChangeGroup }) => {
             className="object-contain"
           />
         </div>
-
-        {/* Select estilizado como el Dropdown original */}
-        <select
-          onChange={handleChange}
-          className="rounded-full border border-[#334EAC] px-4 py-2 text-sm text-[#334EAC] bg-white focus:outline-none focus:ring-2 focus:ring-[#7096D1]"
-        >
-          {dropdownOptions.map((option) => (
-            <option key={option.id} value={option.id}>
-              {option.name}
-            </option>
-          ))}
-        </select>
+        <Dropdown
+          options={dropdownOptions}
+          defaultOption={userType}
+          onChange={handleUserTypeChange}
+        />
       </div>
 
       <NavigationMenu />

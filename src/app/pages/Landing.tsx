@@ -20,7 +20,7 @@ const Landing = () => {
         <Header onChangeGroup={setAgeGroup}/>
         <Hero ageGroup={ageGroup}/>
         <Courses />
-        <CoursesExplorationSection />
+        <CoursesExplorationSection/>
         <LearningPathSection />
         <FeatureInstructor />
         <FrequentQuestions />
