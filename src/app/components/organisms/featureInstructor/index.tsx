@@ -34,7 +34,7 @@ const FeatureInstructor: React.FC = () => {
   const fonts = fontsByAge[userType as "child" | "teen" | "adult"];
   const { labelFont, titleFont, descriptionFont } = fonts;
 
-  const backgroundKid = "/featureinstructor.png";
+  const backgroundKid = "/featureinstructor.webp";
   const isKid = userType === "child";
 
   return (
