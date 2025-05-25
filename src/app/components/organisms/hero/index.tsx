@@ -115,15 +115,15 @@ const Hero: React.FC = () => {
         </div>
 
         <ButtonAtom
-          bgColor={config.mainColor}
-          hoverColor="#263a7e"
-          textColor="#fff"
+          bgColor={isChild ? "#A6DBF0" : config.mainColor}
+          textColor={isChild ? "#06356C" : "#fff"}
+          hoverColor={isChild ? "#90cde8" : "#263a7e"}
           fontFamily="Onest"
           fontWeight={600}
           icon="ArrowRight"
           iconPosition="right"
           iconSize="text-[20px]"
-          className="rounded-full px-6 lg:px-10 lg:py-2.5 mt-4 text-sm lg:text-base shadow-md"
+          className="rounded-full px-6 lg:px-10 lg:py-2.5 mt-6 text-sm lg:text-base shadow-md"
           text="Empezar gratis"
         />
       </div>
