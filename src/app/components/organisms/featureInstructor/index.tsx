@@ -19,66 +19,84 @@ const FeatureInstructor: React.FC = () => {
   const fonts = fontsByAge[userType as "child" | "teen" | "adult"];
   const { labelFont, titleFont, descriptionFont } = fonts;
 
-  return (
-    <section className="flex flex-col items-center max-w-4xl mx-auto">
-      <LabelAtom
-        text="Aprende con los mejores"
-        as="h1"
-        fontFamily={labelFont}
-        fontWeight={700}
-        textColor="text-black"
-        fontSize="text-[48px] sm:text-[56px] md:text-[64px]"
-        className="text-center"
-      />
-      <LabelAtom
-        text="profesores"
-        as="h1"
-        fontFamily={labelFont}
-        fontWeight={700}
-        textColor="#334EAC"
-        fontSize="text-[48px] sm:text-[56px] md:text-[64px]"
-        className="text-center -mt-4 sm:-mt-6 mb-12"
-      />
+  const backgroundKid = "/featureinstructor.png";
+  const isKid = userType === "child";
 
-      <div className="flex flex-col gap-8 mt-6 w-full">
-        <CardInstructor
-          imageSrc="/teacher_1.webp"
-          title="Lionel Andrés Messi Cuccittini"
-          description="Texto de ejemplo para mostrar la descripción del profesor."
-          className="border border-[#334EAC] bg-[#F9FCFF] self-start"
-          fontFamilyTitle={titleFont}
-          fontFamilyDescription={descriptionFont}
+  return (
+    <div
+      style={
+        isKid
+          ? {
+              backgroundImage: `url(${backgroundKid})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "100%",
+              backgroundPosition: "center",
+              width: "100%",
+            }
+          : undefined
+      }
+      className={isKid ? "w-full" : ""}
+    >
+      <section className="flex flex-col items-center max-w-4xl mx-auto">
+        <LabelAtom
+          text="Aprende con los mejores"
+          as="h1"
+          fontFamily={labelFont}
+          fontWeight={700}
+          textColor="text-black"
+          fontSize="text-[48px] sm:text-[56px] md:text-[64px]"
+          className="text-center"
         />
-        <CardInstructor
-          imageSrc="/teacher_2.webp"
-          title="Lionel Andrés Messi Cuccittini"
-          textColorTitle="#E7F1FF"
-          textColorDescription="#E7F1FF"
-          description="Texto de ejemplo para mostrar la descripción del profesor."
-          className="border border-gray-400 bg-[#334EAC] self-end"
-          fontFamilyTitle={titleFont}
-          fontFamilyDescription={descriptionFont}
+        <LabelAtom
+          text="profesores"
+          as="h1"
+          fontFamily={labelFont}
+          fontWeight={700}
+          textColor="#334EAC"
+          fontSize="text-[48px] sm:text-[56px] md:text-[64px]"
+          className="text-center -mt-4 sm:-mt-6 mb-12"
         />
-        <CardInstructor
-          imageSrc="/teacher_3.webp"
-          title="Lionel Andrés Messi Cuccittini"
-          description="Texto de ejemplo para mostrar la descripción del profesor."
-          className="border border-gray-400 bg-white self-start"
-          fontFamilyTitle={titleFont}
-          fontFamilyDescription={descriptionFont}
-        />
-        <CardInstructor
-          imageSrc="/teacher_4.webp"
-          title="Lionel Andrés Messi Cuccittini"
-          textColorTitle="#E7F1FF"
-          textColorDescription="#E7F1FF"
-          description="Texto de ejemplo para mostrar la descripción del profesor."
-          className="border border-gray-400 bg-[#334EAC] self-end"
-          fontFamilyTitle={titleFont}
-          fontFamilyDescription={descriptionFont}
-        />
-      </div>
-    </section>
+
+        <div className="flex flex-col gap-8 mt-6 w-full">
+          <CardInstructor
+            imageSrc="/teacher_1.webp"
+            title="Lionel Andrés Messi Cuccittini"
+            description="Texto de ejemplo para mostrar la descripción del profesor."
+            className="border border-[#334EAC] bg-[#F9FCFF] self-start"
+            fontFamilyTitle={titleFont}
+            fontFamilyDescription={descriptionFont}
+          />
+          <CardInstructor
+            imageSrc="/teacher_2.webp"
+            title="Lionel Andrés Messi Cuccittini"
+            textColorTitle="#E7F1FF"
+            textColorDescription="#E7F1FF"
+            description="Texto de ejemplo para mostrar la descripción del profesor."
+            className="border border-gray-400 bg-[#334EAC] self-end"
+            fontFamilyTitle={titleFont}
+            fontFamilyDescription={descriptionFont}
+          />
+          <CardInstructor
+            imageSrc="/teacher_3.webp"
+            title="Lionel Andrés Messi Cuccittini"
+            description="Texto de ejemplo para mostrar la descripción del profesor."
+            className="border border-gray-400 bg-white self-start"
+            fontFamilyTitle={titleFont}
+            fontFamilyDescription={descriptionFont}
+          />
+          <CardInstructor
+            imageSrc="/teacher_4.webp"
+            title="Lionel Andrés Messi Cuccittini"
+            textColorTitle="#E7F1FF"
+            textColorDescription="#E7F1FF"
+            description="Texto de ejemplo para mostrar la descripción del profesor."
+            className="border border-gray-400 bg-[#334EAC] self-end"
+            fontFamilyTitle={titleFont}
+            fontFamilyDescription={descriptionFont}
+          />
+        </div>
+      </section>
+    </div>
   );
 };
 
