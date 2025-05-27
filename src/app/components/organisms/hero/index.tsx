@@ -1,86 +1,131 @@
 "use client";
 import React from "react";
+import { Search } from "lucide-react";
+import { Spicy_Rice } from "next/font/google";
 import LabelAtom from "../../atoms/label";
 import ButtonAtom from "../../atoms/button";
+import InputAtom from "../../atoms/input";
+import { useUserType } from "../../organisms/header";
+
+const spicyRice = Spicy_Rice({ weight: "400", subsets: ["latin"] });
 
 const Hero: React.FC = () => {
+  const { userType } = useUserType();
+  const isChild = userType === "child";
+
+  const config = {
+    mainColor: isChild ? "#06356C" : "#334EAC",
+    description:
+      "Tu plataforma de aprendizaje: crece, explora y alcanza tus metas con cursos que transforman.",
+    fontClass: isChild ? spicyRice.className : "font-[SFProDisplay]",
+  };
+
   return (
-    <section className="p-10 rounded-lg flex flex-col items-center text-center">
-      <div className="flex flex-col lg:flex-row items-center justify-between lg:w-[1150px] mx-auto">
-        <div className="lg:max-w-[610px] md:max-w-[500px] sm:max-w-[410px] max-w-[375px] -mt-22 space-y-3 lg:space-y-4 flex flex-col  justify-center items-center lg:justify-start lg:items-start">
-          <div className="max-w-2xl -space-y-5 lg:-space-y-8 flex flex-col justify-center items-center lg:justify-start lg:items-start">
+    <section
+      className={`relative w-full overflow-visible pt-5 ${
+        isChild
+          ? "pb-[450px] sm:pb-[500px] md:pb-[600px] lg:pb-[680px]"
+          : "pb-10"
+      }`}
+    >
+      {/* Fondo ilustrado para niños */}
+      {isChild && (
+        <>
+          <img
+            src="/Nubes_Hero.webp"
+            alt="Nubes"
+            className="absolute top-[-50px] sm:top-[-60px] md:top-[-5px] lg:top-[-100px] left-0 w-full h-auto z-0 pointer-events-none"
+          />
+          <img
+            src="/Cesped_Hero.webp"
+            alt="Césped"
+            className="absolute top-28 sm:top-32 md:top-60 lg:top-60 w-full h-auto object-contain z-10 pointer-events-none"
+          />
+          <img
+            src="/School.webp"
+            alt="Escuela"
+            className="absolute top-[100px] sm:top-[150px] md:top-[300px] lg:top-[380px]  left-1/2 transform -translate-x-1/2 w-[180px] sm:w-[220px] md:w-[260px] lg:w-[300px] z-10 pointer-events-none hidden lg:block"
+          />
+          <img
+            src="/Ballena_Hero.webp"
+            alt="Ballena"
+            className="absolute top-42 sm:top-50 md:top-80 lg:top-90 left-0 -full h-auto object-cover z-20 pointer-events-none"
+          />
+        </>
+      )}
+
+      {/* Contenido del Hero */}
+      <div className="relative z-30 flex flex-col items-center justify-center lg:w-[1150px] mx-auto px-4">
+        {isChild ? (
+          <div
+            className={`text-center space-y-2 sm:space-y-3 ${config.fontClass}`}
+          >
             <LabelAtom
               as="h1"
-              text="Aprende, crece y"
-              textColor="000000"
-              fontFamily="SFProDisplay"
-              fontWeight="bold"
-              fontSize="text-[29px] sm:text-[44px] md:text-[36px] lg:text-[64px]"
+              text="Aprende, crece y destaca con"
+              textColor={config.mainColor}
+              fontFamily="LilyScriptOne"
+              fontWeight="medium"
+              fontSize="text-[28px] sm:text-[36px] md:text-[48px] lg:text-[56px]"
             />
-            <div className="flex-grow flex space-x-3">
-              <LabelAtom
-                as="h1"
-                text="destaca"
-                textColor="#334EAC"
-                fontFamily="SFProDisplay"
-                fontWeight={700}
-                fontSize="text-[29px] sm:text-[44px] md:text-[36px] lg:text-[64px]"
-              />{" "}
-              <LabelAtom
-                as="h1"
-                text="con cursos"
-                textColor="000000"
-                fontFamily="SFProDisplay"
-                fontWeight={700}
-                fontSize="text-[29px] sm:text-[44px] md:text-[36px] lg:text-[64px]"
-              />
+            <LabelAtom
+              as="h1"
+              text="cursos transformadores"
+              textColor={config.mainColor}
+              fontFamily="LilyScriptOne"
+              fontWeight="medium"
+              fontSize="text-[28px] sm:text-[36px] md:text-[48px] lg:text-[56px]"
+            />
+          </div>
+        ) : (
+          <h1 className="text-[32px] sm:text-[42px] md:text-[56px] lg:text-[64px] font-extrabold font-[SFProDisplay] leading-tight text-center">
+            <span className="text-black">Aprende, crece y </span>
+            <span className="text-[#334EAC]">destaca</span>
+            <span className="text-black"> con</span>
+            <br />
+            <span className="text-black">cursos transformadores</span>
+          </h1>
+        )}
+
+        <LabelAtom
+          as="p"
+          text={config.description}
+          textColor="#858585"
+          fontFamily="SFProDisplay"
+          fontWeight={400}
+          fontSize="text-[15px] sm:text-[17px] md:text-[20px]"
+          className="text-center opacity-90 max-w-2xl leading-tight mt-4"
+        />
+
+        <div className="w-full flex justify-center mt-6 px-4">
+          <div className="w-full max-w-xl bg-white border-2 border-[#A3D4F7] rounded-full px-4 py-2.5 sm:py-3 md:py-3.5 flex items-center gap-3 focus-within:ring-2 focus-within:ring-[#A3D4F7]">
+            <div className="bg-white border border-[#A3D4F7] text-[#2B4D88] rounded-full w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 flex items-center justify-center shadow-sm">
+              <Search size={18} strokeWidth={2} />
             </div>
-            <LabelAtom
-              as="h1"
-              text=" transformadores"
-              textColor="text-black"
-              fontFamily="SFProDisplay"
-              fontWeight={700}
-              fontSize="text-[29px] sm:text-[44px] md:text-[36px] lg:text-[64px]"
-            />
-          </div>
-          <LabelAtom
-            as="p"
-            text="Tu plataforma de aprendizaje: crece, explora y alcanza tus metas con cursos que transforman."
-            textColor="text-gray-600"
-            fontFamily="SFProDisplay"
-            fontWeight={400}
-            fontSize="text-[16px] sm:text-[18px] md:text-[22px] lg:text-[24px]"
-            className="text-center lg:text-start opacity-50 max-w-135 leading-tight"
-          />
-          <ButtonAtom
-            bgColor="#7096D1"
-            hoverColor="#3B82F6"
-            textColor="#FFFFFF"
-            fontFamily="Onest"
-            fontWeight={600}
-            icon="ArrowRight"
-            iconPosition="right"
-            iconSize="text-[20px]"
-            className="rounded-[50px] px-4 lg:px-10 lg:py-2.5 mt-8 text-sm lg:text-xl mb-12 lg:mb-0"
-            text="Empezar gratis"
-          />
-        </div>
-        <div className="flex flex-col ">
-          <img src="/img_hero1.webp" alt="Hero" className="w-[400px] h-full" />
-          <div className="flex flex-row items-center justify-between ">
-            <img
-              src="/img_hero3.webp"
-              alt="Hero"
-              className="w-[150px] lg:w-[200px] h-full lg:justify-items-end lg:-translate-x-[70px] lg:translate-y-[40px]"
-            />
-            <img
-              src="/img_hero2.webp"
-              alt="Hero"
-              className="w-[250px] h-full lg:-translate-x-[40px] lg:translate-y-[20px]"
+
+            <InputAtom
+              name="busqueda"
+              placeholder="¿Qué deseas aprender?"
+              colorBG="transparent"
+              className="flex-1 text-[#2B4D88] placeholder-[#8FB8DA] w-full text-sm sm:text-base md:text-base bg-transparent focus:outline-none"
+              fontFamily="Poppins"
+              fontWeight="medium"
             />
           </div>
         </div>
+
+        <ButtonAtom
+          bgColor={isChild ? "#A6DBF0" : config.mainColor}
+          textColor={isChild ? "#06356C" : "#fff"}
+          hoverColor={isChild ? "#90cde8" : "#263a7e"}
+          fontFamily="Onest"
+          fontWeight={600}
+          icon="ArrowRight"
+          iconPosition="right"
+          iconSize="text-[20px]"
+          className="rounded-full px-6 lg:px-10 lg:py-2.5 mt-6 text-sm lg:text-base shadow-md"
+          text="Empezar gratis"
+        />
       </div>
     </section>
   );
