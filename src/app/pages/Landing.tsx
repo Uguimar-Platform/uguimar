@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Hero from "../components/organisms/hero";
 import Courses from "../components/organisms/courses";
 import CoursesExplorationSection from "../components/organisms/coursesExplorationSection";
