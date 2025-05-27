@@ -7,10 +7,9 @@ import InputField from "../../molecules/inputField";
 import Image from "next/image";
 import { useUserType } from "../../organisms/header";
 
-function Contact() {
+const ContactSection: React.FC = () => {
   const { userType } = useUserType();
   const isKid = userType === "child";
-  const activeMode = userType === "child" ? "child" : "adult"; // ✅ ahora usa "child", no "kids"
 
   const dropdownOptions = [
     { id: "1", name: "Selecciona tu interés" },
@@ -36,7 +35,7 @@ function Contact() {
           src="/sea_background.webp"
           alt="Fondo Kids"
           fill
-          className="object-scale-down md:object-cover object-bottom"
+          className="w-full object-scale-down md:object-cover object-bottom"
           priority
         />
       </div>
@@ -176,4 +175,4 @@ function Contact() {
   );
 }
 
-export default Contact;
+export default ContactSection;
