@@ -45,6 +45,7 @@ interface DropdownAtomProps {
   fullWidth?: boolean;
   textSize?: "xs" | "sm" | "base" | "lg";
   placeholder?: string;
+  onChange?: (selectedId: string) => void;
 }
 
 const DropdownAtom: React.FC<DropdownAtomProps> = ({
@@ -55,11 +56,11 @@ const DropdownAtom: React.FC<DropdownAtomProps> = ({
   fontWeight = "bold",
   borderActive = true,
   borderColor = "#334EAC",
-  borderWeight = 1.5,
-  colorBGButton = "#fff",
+  colorBGButton = "#F9FCFF",
   fullWidth = false,
   textSize = "base",
   placeholder = "Seleccionar opción",
+  onChange,
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(defaultOption);
@@ -79,6 +80,7 @@ const DropdownAtom: React.FC<DropdownAtomProps> = ({
   // En la función handleOptionSelect, añade esta condición:
   const handleOptionSelect = (optionId: string) => {
     setSelectedOption(optionId);
+    onChange?.(optionId);
     setIsOpen(false);
 
     // Verificar si es el dropdown de selección de modo
@@ -93,70 +95,64 @@ const DropdownAtom: React.FC<DropdownAtomProps> = ({
 
   // También añade este useEffect para mantener el dropdown sincronizado
   useEffect(() => {
-    // Si este dropdown contiene opciones de modo de usuario, mantenerlo sincronizado
-    if (options.some((opt) => ["adult", "teen", "child"].includes(opt.id))) {
-      const currentMode = localStorage.getItem("userMode");
-      if (currentMode && options.some((opt) => opt.id === currentMode)) {
-        setSelectedOption(currentMode);
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsOpen(false);
       }
+    };
 
-      const handleModeChange = (e:any) => setSelectedOption(e.detail);
-      window.addEventListener("userModeChange", handleModeChange);
-      return () =>
-        window.removeEventListener("userModeChange", handleModeChange);
-    }
-  }, [options]);
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const selectedOptionName =
     options.find((option) => option.id === selectedOption)?.name || placeholder;
-
   return (
     <div
-      className={`relative ${fullWidth ? "w-full" : ""} ${className}`}
       ref={dropdownRef}
+      className={`relative ${fullWidth ? "w-full" : "w-auto"} ${className}`}
     >
       <button
+        type="button"
         onClick={toggleDropdown}
-        className={`flex items-center justify-between w-full font-bold px-5 py-2.5 rounded-full ${textSizeClasses[textSize]}`}
-        aria-expanded={isOpen}
-        aria-haspopup="true"
-        style={{
-          fontFamily: fontFamily,
-          fontWeight: fontWeight,
-          backgroundColor: colorBGButton,
-          border: borderActive
-            ? `${borderWeight}px solid ${borderColor}`
-            : "none",
-        }}
+        className={`flex items-center justify-between gap-2 px-4 py-2 rounded-full
+      ${textSizeClasses[textSize]} font-${fontWeight} font-${fontFamily?.toLowerCase()}
+      ${borderActive ? `border` : ""}
+      border-[${borderColor}]
+      bg-[${colorBGButton}]
+      ${fullWidth ? "w-full" : "min-w-[150px]"}
+      sm:min-w-[180px] md:min-w-[200px]
+      transition-all duration-200`}
       >
-        <span className="truncate">{selectedOptionName}</span>
+        <span className="truncate max-w-[130px] sm:max-w-[160px] md:max-w-[200px]">
+          {selectedOptionName}
+        </span>
         <ChevronDown
-          className={`w-6 h-6 ml-2 transition-transform duration-200 flex-shrink-0 ${isOpen ? "rotate-180" : ""}`}
+          className={`w-4 h-4 transition-transform ${isOpen ? "rotate-180" : ""}`}
         />
       </button>
 
       {isOpen && (
         <div
-          className="absolute left-0 right-0 mt-0.5 py-0.5 bg-white rounded-lg shadow-lg z-10 border border-gray-200 max-h-60 overflow-y-auto"
-          style={{
-            fontFamily: fontFamily,
-            fontWeight: fontWeight,
-          }}
+          className="absolute z-10 mt-2 w-full max-h-[200px] overflow-y-auto
+        bg-white border border-gray-300 rounded-lg shadow-lg"
         >
           {options.map((option) => (
-            <div
+            <button
               key={option.id}
-              className={`${textSizeClasses[textSize]} px-4 py-3 cursor-pointer hover:bg-[#334EAC] hover:text-white transition-colors duration-200 ${
-                option.id === selectedOption ? "bg-[#334EAC] text-white" : ""
-              }`}
-              style={{
-                fontFamily: fontFamily,
-                fontWeight: fontWeight,
-              }}
               onClick={() => handleOptionSelect(option.id)}
+              className={`block w-full px-4 py-2 text-left hover:bg-[#334EAC] hover:text-white
+            font-${option.fontWeight || fontWeight} font-${option.fontFamily?.toLowerCase() || fontFamily?.toLowerCase()}
+            ${textSizeClasses[textSize]} ${selectedOption === option.id ? "bg-[#334EAC] text-white" : ""}`}
             >
               {option.name}
-            </div>
+            </button>
           ))}
         </div>
       )}

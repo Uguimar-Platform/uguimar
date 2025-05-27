@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Hero from "../components/organisms/hero";
 import Courses from "../components/organisms/courses";
 import CoursesExplorationSection from "../components/organisms/coursesExplorationSection";
@@ -14,8 +14,8 @@ const Landing = () => {
   return (
     <>
       <div className="mt-12 space-y-36">
-        <Hero />
-        <Courses mode="child" />
+        <Hero/>
+        <Courses />
         <CoursesExplorationSection />
         <LearningPathSection />
         <FeatureInstructor />

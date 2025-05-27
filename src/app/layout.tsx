@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Header from "./components/organisms/header";
 import Footer from "./components/organisms/footer";
+import { UserTypeProvider } from "./components/organisms/header";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,10 +16,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="bg-[#E7F1FF]">
-        <Header />
-        <main>{children}</main>
-        <Footer />
+      <body className="bg-white">
+        <UserTypeProvider>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </UserTypeProvider>
       </body>
     </html>
   );
